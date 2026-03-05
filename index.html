@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Pooly DAW | Coming Soon</title>
+    <meta
+      name="description"
+      content="Pooly DAW is on the way. Follow for updates, community, and launch announcements."
+    >
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Unbounded:wght@400;500;700;800&display=swap"
+      rel="stylesheet"
+    >
+    <link rel="stylesheet" href="styles.css">
+  </head>
+  <body>
+    <main class="landing-page">
+      <section class="hero" aria-labelledby="coming-soon-title">
+        <div class="brand-stack">
+          <div class="logo-shell" data-logo>
+            <img
+              class="logo-image"
+              src="assets/pooly-logo.png"
+              alt="Pooly DAW logo"
+            >
+            <span class="logo-fallback" aria-hidden="true">POOLY</span>
+          </div>
+          <h1 id="coming-soon-title">Coming Soon</h1>
+        </div>
+      </section>
+
+      <footer class="page-footer">
+        <nav class="social-links" aria-label="Pooly DAW social links">
+          <a class="social-link" href="https://linktr.ee/poolydaw" target="_blank" rel="noopener noreferrer">Linktree</a>
+          <a class="social-link" href="https://discord.gg/zbNVJYBtw7" target="_blank" rel="noopener noreferrer">Discord</a>
+          <a class="social-link" href="https://www.threads.net/@poolydaw" target="_blank" rel="noopener noreferrer">Threads</a>
+          <a class="social-link" href="https://patreon.com/godboat" target="_blank" rel="noopener noreferrer">Patreon</a>
+          <a class="social-link" href="https://www.instagram.com/poolydaw" target="_blank" rel="noopener noreferrer">Instagram</a>
+          <a class="social-link" href="https://www.youtube.com/@poolydaw" target="_blank" rel="noopener noreferrer">YouTube</a>
+        </nav>
+      </footer>
+    </main>
+
+    <script>
+      const logoShell = document.querySelector("[data-logo]");
+      const logoImage = logoShell?.querySelector(".logo-image");
+
+      const showLogo = () => logoShell?.classList.add("is-ready");
+      const showFallback = () => logoShell?.classList.remove("is-ready");
+
+      if (logoImage) {
+        if (logoImage.complete && logoImage.naturalWidth > 0) {
+          showLogo();
+        } else {
+          showFallback();
+          logoImage.addEventListener("load", showLogo);
+          logoImage.addEventListener("error", showFallback);
+        }
+      }
+    </script>
+  </body>
+</html>
