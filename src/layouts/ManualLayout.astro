@@ -1,0 +1,380 @@
+---
+import BaseLayout from "./BaseLayout.astro";
+import { getCollection } from "astro:content";
+
+interface Props {
+	title: string;
+	description?: string;
+	section: string;
+	headings: Array<{ depth: number; slug: string; text: string }>;
+}
+
+const { title, description, section, headings } = Astro.props;
+
+const allManual = (await getCollection("manual", ({ data }) => !data.draft))
+	.sort((a, b) => {
+		const sectionOrder = ["concepts", "views", "instruments", "reference"];
+		const sa = sectionOrder.indexOf(a.data.section);
+		const sb = sectionOrder.indexOf(b.data.section);
+		if (sa !== sb) return sa - sb;
+		return a.data.order - b.data.order;
+	});
+
+const sectionOrder = ["concepts", "views", "instruments", "reference"];
+const sectionLabels: Record<string, string> = {
+	concepts: "Core Concepts",
+	views: "Views",
+	instruments: "Instruments",
+	reference: "Reference",
+};
+
+const currentIndex = allManual.findIndex(e => e.data.title === title);
+const prev = currentIndex > 0 ? allManual[currentIndex - 1] : null;
+const next = currentIndex < allManual.length - 1 ? allManual[currentIndex + 1] : null;
+---
+
+<BaseLayout title={title} description={description}>
+	<div class="manual-page">
+		<aside class="manual-sidebar">
+			<details class="sidebar-drawer" open>
+				<summary class="sidebar-toggle">
+					<span>Navigation</span>
+					<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
+				</summary>
+				<nav class="sidebar-nav" aria-label="Manual navigation">
+					{sectionOrder.map(sec => {
+						const entries = allManual.filter(e => e.data.section === sec);
+						if (entries.length === 0) return null;
+						return (
+							<div class="sidebar-section">
+								<h4 class="sidebar-heading">{sectionLabels[sec]}</h4>
+								<ul class="sidebar-list">
+									{entries.map(entry => (
+										<li>
+											<a
+												href={`/manual/${entry.id}/`}
+												class:list={["sidebar-link", { active: entry.data.title === title }]}
+											>
+												{entry.data.title}
+											</a>
+										</li>
+									))}
+								</ul>
+							</div>
+						);
+					})}
+				</nav>
+			</details>
+		</aside>
+
+		<article class="manual-article">
+			<header class="article-header">
+				<p class="article-section-label">{sectionLabels[section]}</p>
+				<h1>{title}</h1>
+				{description && <p class="article-lead">{description}</p>}
+			</header>
+
+			<div class="article-content">
+				<slot />
+			</div>
+
+			<nav class="article-nav" aria-label="Previous and next pages">
+		{prev && (
+			<a href={`/manual/${prev.id}/`} class="article-nav-link prev">
+						<span class="nav-label">&larr; Previous</span>
+						<span class="nav-title">{prev.data.title}</span>
+					</a>
+				)}
+		{next && (
+			<a href={`/manual/${next.id}/`} class="article-nav-link next">
+						<span class="nav-label">Next &rarr;</span>
+						<span class="nav-title">{next.data.title}</span>
+					</a>
+				)}
+			</nav>
+		</article>
+
+		{headings.length > 0 && (
+			<aside class="toc">
+				<h4 class="toc-title">On this page</h4>
+				<nav>
+					<ul class="toc-list">
+						{headings.filter(h => h.depth <= 3).map(h => (
+							<li class:list={[`toc-depth-${h.depth}`]}>
+								<a href={`#${h.slug}`} class="toc-link">{h.text}</a>
+							</li>
+						))}
+					</ul>
+				</nav>
+			</aside>
+		)}
+	</div>
+</BaseLayout>
+
+<style>
+	.manual-page {
+		max-width: var(--content-max);
+		margin: 0 auto;
+		display: grid;
+		grid-template-columns: 1fr;
+		gap: 0;
+		padding: var(--space-md);
+	}
+
+	.manual-sidebar {
+		margin-bottom: var(--space-xl);
+	}
+
+	.sidebar-drawer {
+		border: 1px solid var(--color-border);
+		border-radius: var(--radius-md);
+		background: var(--color-bg-glass);
+	}
+
+	.sidebar-toggle {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		padding: var(--space-md) var(--space-lg);
+		cursor: pointer;
+		font-family: var(--font-display);
+		font-size: var(--text-sm);
+		font-weight: 600;
+		list-style: none;
+	}
+
+	.sidebar-toggle::-webkit-details-marker {
+		display: none;
+	}
+
+	.sidebar-nav {
+		padding: 0 var(--space-lg) var(--space-lg);
+	}
+
+	.sidebar-section {
+		margin-bottom: var(--space-lg);
+	}
+
+	.sidebar-section:last-child {
+		margin-bottom: 0;
+	}
+
+	.sidebar-heading {
+		font-size: var(--text-xs);
+		font-weight: 700;
+		text-transform: uppercase;
+		letter-spacing: 0.1em;
+		color: var(--color-text-muted);
+		margin-bottom: var(--space-sm);
+	}
+
+	.sidebar-list {
+		list-style: none;
+		display: flex;
+		flex-direction: column;
+		gap: 2px;
+	}
+
+	.sidebar-link {
+		display: block;
+		padding: var(--space-xs) var(--space-sm);
+		border-radius: var(--radius-sm);
+		color: var(--color-text-soft);
+		font-size: var(--text-sm);
+		transition: all var(--duration-fast) var(--ease-out);
+	}
+
+	.sidebar-link:hover {
+		color: var(--color-text);
+		background: var(--color-bg-surface);
+	}
+
+	.sidebar-link.active {
+		color: var(--color-accent);
+		background: var(--color-accent-soft);
+	}
+
+	.article-header {
+		margin-bottom: var(--space-2xl);
+	}
+
+	.article-section-label {
+		font-size: var(--text-xs);
+		font-weight: 600;
+		text-transform: uppercase;
+		letter-spacing: 0.1em;
+		color: var(--color-accent);
+		margin-bottom: var(--space-sm);
+	}
+
+	.article-header h1 {
+		font-size: clamp(var(--text-2xl), 5vw, var(--text-3xl));
+		margin-bottom: var(--space-md);
+	}
+
+	.article-lead {
+		font-size: var(--text-lg);
+		color: var(--color-text-soft);
+		line-height: 1.6;
+	}
+
+	.article-content {
+		line-height: 1.7;
+	}
+
+	.article-content :global(h2) {
+		margin-top: var(--space-3xl);
+		margin-bottom: var(--space-md);
+		padding-bottom: var(--space-sm);
+		border-bottom: 1px solid var(--color-border);
+	}
+
+	.article-content :global(h3) {
+		margin-top: var(--space-2xl);
+		margin-bottom: var(--space-sm);
+	}
+
+	.article-content :global(p) {
+		margin-bottom: var(--space-md);
+	}
+
+	.article-content :global(ul),
+	.article-content :global(ol) {
+		margin-bottom: var(--space-md);
+		padding-left: var(--space-xl);
+	}
+
+	.article-content :global(li) {
+		margin-bottom: var(--space-xs);
+	}
+
+	.article-content :global(li + li) {
+		margin-top: var(--space-xs);
+	}
+
+	.article-content :global(strong) {
+		color: var(--color-text);
+		font-weight: 600;
+	}
+
+	.article-nav {
+		display: grid;
+		grid-template-columns: 1fr 1fr;
+		gap: var(--space-md);
+		margin-top: var(--space-3xl);
+		padding-top: var(--space-xl);
+		border-top: 1px solid var(--color-border);
+	}
+
+	.article-nav-link {
+		display: flex;
+		flex-direction: column;
+		gap: var(--space-xs);
+		padding: var(--space-lg);
+		border-radius: var(--radius-md);
+		border: 1px solid var(--color-border);
+		color: var(--color-text);
+		text-decoration: none;
+		transition: all var(--duration-fast) var(--ease-out);
+	}
+
+	.article-nav-link:hover {
+		border-color: var(--color-border-strong);
+		background: var(--color-bg-surface);
+		color: var(--color-text);
+	}
+
+	.article-nav-link.next {
+		text-align: right;
+		grid-column: 2;
+	}
+
+	.nav-label {
+		font-size: var(--text-xs);
+		color: var(--color-text-muted);
+	}
+
+	.nav-title {
+		font-size: var(--text-sm);
+		font-weight: 600;
+	}
+
+	.toc {
+		display: none;
+	}
+
+	.toc-title {
+		font-size: var(--text-xs);
+		font-weight: 700;
+		text-transform: uppercase;
+		letter-spacing: 0.1em;
+		color: var(--color-text-muted);
+		margin-bottom: var(--space-md);
+	}
+
+	.toc-list {
+		list-style: none;
+		display: flex;
+		flex-direction: column;
+		gap: var(--space-xs);
+	}
+
+	.toc-link {
+		display: block;
+		font-size: var(--text-sm);
+		color: var(--color-text-muted);
+		padding: 2px 0;
+		transition: color var(--duration-fast) var(--ease-out);
+	}
+
+	.toc-link:hover {
+		color: var(--color-text);
+	}
+
+	.toc-depth-3 {
+		padding-left: var(--space-md);
+	}
+
+	@media (min-width: 64rem) {
+		.manual-page {
+			grid-template-columns: 15rem 1fr;
+			gap: var(--space-2xl);
+			padding: var(--space-xl) var(--space-2xl);
+		}
+
+		.manual-sidebar {
+			position: sticky;
+			top: 4rem;
+			max-height: calc(100svh - 5rem);
+			overflow-y: auto;
+			margin-bottom: 0;
+		}
+
+		.sidebar-drawer {
+			border: none;
+			background: none;
+		}
+
+		.sidebar-toggle {
+			display: none;
+		}
+
+		.manual-article {
+			max-width: var(--article-max);
+		}
+	}
+
+	@media (min-width: 80rem) {
+		.manual-page {
+			grid-template-columns: 15rem 1fr 12rem;
+		}
+
+		.toc {
+			display: block;
+			position: sticky;
+			top: 4rem;
+			max-height: calc(100svh - 5rem);
+			overflow-y: auto;
+		}
+	}
+</style>

@@ -1,0 +1,29 @@
+---
+interface Props {
+	class?: string;
+	narrow?: boolean;
+}
+
+const { class: className, narrow = false } = Astro.props;
+---
+
+<section class:list={["page-section", className, { narrow }]}>
+	<div class="section-inner">
+		<slot />
+	</div>
+</section>
+
+<style>
+	.page-section {
+		padding: var(--space-3xl) var(--space-md);
+	}
+
+	.section-inner {
+		max-width: var(--content-max);
+		margin: 0 auto;
+	}
+
+	.page-section.narrow .section-inner {
+		max-width: var(--article-max);
+	}
+</style>

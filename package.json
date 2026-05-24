@@ -1,0 +1,17 @@
+{
+	"name": "pooly-site",
+	"type": "module",
+	"version": "0.0.1",
+	"scripts": {
+		"dev": "astro dev",
+		"build": "astro build && npx pagefind --site dist",
+		"preview": "astro preview"
+	},
+	"dependencies": {
+		"@astrojs/mdx": "^5.0.6",
+		"astro": "^6.3.7"
+	},
+	"devDependencies": {
+		"pagefind": "^1.5.2"
+	}
+}

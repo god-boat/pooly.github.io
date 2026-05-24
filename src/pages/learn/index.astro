@@ -1,0 +1,72 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import GuideCard from "../../components/GuideCard.astro";
+import { getCollection } from "astro:content";
+
+const guides = (await getCollection("guides", ({ data }) => !data.draft))
+	.sort((a, b) => a.data.order - b.data.order);
+---
+
+<BaseLayout
+	title="Learn Pooly"
+	description="Step-by-step guides for getting started with Pooly."
+>
+	<div class="learn-page">
+		<header class="learn-header">
+			<h1>Learn Pooly</h1>
+			<p class="learn-subtitle">What are you trying to do?</p>
+		</header>
+
+		<div class="guides-grid">
+			{guides.map(guide => (
+				<GuideCard
+					title={guide.data.title}
+					description={guide.data.description}
+					href={`/learn/${guide.id}/`}
+					difficulty={guide.data.difficulty}
+					estimatedTime={guide.data.estimatedTime}
+				/>
+			))}
+		</div>
+	</div>
+</BaseLayout>
+
+<style>
+	.learn-page {
+		max-width: var(--content-max);
+		margin: 0 auto;
+		padding: var(--space-2xl) var(--space-md);
+	}
+
+	.learn-header {
+		text-align: center;
+		margin-bottom: var(--space-3xl);
+	}
+
+	.learn-header h1 {
+		margin-bottom: var(--space-sm);
+	}
+
+	.learn-subtitle {
+		font-size: var(--text-xl);
+		color: var(--color-text-soft);
+	}
+
+	.guides-grid {
+		display: grid;
+		grid-template-columns: 1fr;
+		gap: var(--space-md);
+	}
+
+	@media (min-width: 40rem) {
+		.guides-grid {
+			grid-template-columns: repeat(2, 1fr);
+		}
+	}
+
+	@media (min-width: 64rem) {
+		.guides-grid {
+			grid-template-columns: repeat(3, 1fr);
+		}
+	}
+</style>

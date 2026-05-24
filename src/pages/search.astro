@@ -1,0 +1,51 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+---
+
+<BaseLayout title="Search" description="Search the Pooly documentation.">
+	<div class="search-page">
+		<h1>Search</h1>
+		<div id="search"></div>
+	</div>
+</BaseLayout>
+
+<style>
+	.search-page {
+		max-width: var(--article-max);
+		margin: 0 auto;
+		padding: var(--space-2xl) var(--space-md);
+	}
+
+	.search-page h1 {
+		margin-bottom: var(--space-xl);
+	}
+</style>
+
+<script is:inline>
+	(async function loadPagefind() {
+		const link = document.createElement("link");
+		link.rel = "stylesheet";
+		link.href = "/pagefind/pagefind-ui.css";
+		document.head.appendChild(link);
+
+		const pagefind = await import("/pagefind/pagefind-ui.js");
+		new pagefind.PagefindUI({
+			element: "#search",
+			showSubResults: true,
+		});
+	})();
+</script>
+
+<style is:global>
+	.pagefind-ui {
+		--pagefind-ui-scale: 1;
+		--pagefind-ui-primary: #78b5ff;
+		--pagefind-ui-text: #f4f7fb;
+		--pagefind-ui-background: rgba(199, 220, 255, 0.08);
+		--pagefind-ui-border: rgba(244, 247, 251, 0.10);
+		--pagefind-ui-tag: rgba(199, 220, 255, 0.06);
+		--pagefind-ui-border-width: 1px;
+		--pagefind-ui-border-radius: 0.75rem;
+		--pagefind-ui-font: "Inter", system-ui, sans-serif;
+	}
+</style>

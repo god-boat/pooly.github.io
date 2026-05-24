@@ -1,0 +1,112 @@
+---
+const pathname = Astro.url.pathname;
+---
+
+<header class="header">
+	<div class="header-inner">
+		<a href="/" class="header-brand">
+			<img src="/images/brand/pooly_icon_stacked.png" alt="" class="header-logo" width="32" height="32" />
+			<span class="header-title">pooly</span>
+		</a>
+
+		<nav class="header-nav">
+			<a href="/learn/" class:list={["nav-link", { active: pathname.startsWith("/learn") }]}>Learn</a>
+			<a href="/manual/" class:list={["nav-link", { active: pathname.startsWith("/manual") }]}>Manual</a>
+		</nav>
+
+		<a href="/search/" class="header-search" aria-label="Search">
+			<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+				<circle cx="11" cy="11" r="8" />
+				<line x1="21" y1="21" x2="16.65" y2="16.65" />
+			</svg>
+		</a>
+	</div>
+</header>
+
+<style>
+	.header {
+		position: sticky;
+		top: 0;
+		z-index: 100;
+		background: rgba(5, 7, 11, 0.8);
+		backdrop-filter: blur(20px);
+		-webkit-backdrop-filter: blur(20px);
+		border-bottom: 1px solid var(--color-border);
+	}
+
+	.header-inner {
+		display: flex;
+		align-items: center;
+		gap: var(--space-lg);
+		max-width: var(--content-max);
+		margin: 0 auto;
+		padding: var(--space-sm) var(--space-md);
+	}
+
+	.header-brand {
+		display: flex;
+		align-items: center;
+		gap: var(--space-sm);
+		color: var(--color-text);
+		text-decoration: none;
+	}
+
+	.header-brand:hover {
+		color: var(--color-text);
+	}
+
+	.header-logo {
+		width: 28px;
+		height: 28px;
+		object-fit: contain;
+	}
+
+	.header-title {
+		font-family: var(--font-display);
+		font-size: var(--text-sm);
+		font-weight: 600;
+		letter-spacing: 0.05em;
+		text-transform: lowercase;
+	}
+
+	.header-nav {
+		display: flex;
+		gap: var(--space-xs);
+		margin-left: auto;
+	}
+
+	.nav-link {
+		padding: var(--space-xs) var(--space-md);
+		border-radius: var(--radius-sm);
+		color: var(--color-text-soft);
+		font-size: var(--text-sm);
+		font-weight: 500;
+		transition: all var(--duration-fast) var(--ease-out);
+	}
+
+	.nav-link:hover {
+		color: var(--color-text);
+		background: var(--color-bg-surface);
+	}
+
+	.nav-link.active {
+		color: var(--color-text);
+		background: var(--color-bg-surface);
+	}
+
+	.header-search {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		width: 36px;
+		height: 36px;
+		border-radius: var(--radius-sm);
+		color: var(--color-text-soft);
+		transition: all var(--duration-fast) var(--ease-out);
+	}
+
+	.header-search:hover {
+		color: var(--color-text);
+		background: var(--color-bg-surface);
+	}
+</style>

@@ -1,0 +1,294 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import FeatureCard from "../components/FeatureCard.astro";
+import PageSection from "../components/PageSection.astro";
+---
+
+<BaseLayout
+	title="Pooly"
+	description="A playful, mobile-first DAW for capturing ideas, building sounds, and arranging music anywhere."
+>
+	<section class="hero">
+		<div class="hero-bg"></div>
+		<div class="hero-content">
+			<img
+				src="/images/brand/pooly_icon_stacked.png"
+				alt=""
+				class="hero-logo"
+				width="120"
+				height="75"
+			/>
+			<h1>make music<br />anywhere</h1>
+			<p class="hero-subtitle">
+				A playful mobile DAW for capturing ideas, building instruments,
+				and arranging songs — right on your phone.
+			</p>
+			<div class="hero-actions">
+				<a href="/learn/" class="btn btn-primary">Start learning</a>
+				<a href="/manual/" class="btn btn-secondary">Read the manual</a>
+			</div>
+		</div>
+	</section>
+
+	<PageSection>
+		<div class="section-header">
+			<h2>Everything you need to make music</h2>
+			<p class="section-lead">
+				Pooly gives you clips, scenes, instruments, and a full arrangement view
+				— designed for touch, built for creativity.
+			</p>
+		</div>
+		<div class="features-grid">
+			<FeatureCard
+				icon="\u26A1"
+				title="Capture ideas"
+				description="Clips and patterns let you sketch musical ideas quickly. Tap out rhythms, play melodies, and build from small pieces."
+			/>
+			<FeatureCard
+				icon="\u{1F39B}\uFE0F"
+				title="Perform live"
+				description="Launch scenes, trigger clips, and perform your music in real time. Every session is a performance."
+			/>
+			<FeatureCard
+				icon="\u{1F3B9}"
+				title="Build sounds"
+				description="Synthesize instruments from FM patches, samplers, and drum kits. Over 650 built-in voices to start from."
+			/>
+			<FeatureCard
+				icon="\u{1F4F1}"
+				title="Arrange anywhere"
+				description="Full arrangement view to compose complete songs on the go. Touch-friendly timeline with intuitive editing."
+			/>
+		</div>
+	</PageSection>
+
+	<PageSection class="cta-section">
+		<div class="cta-content">
+			<h2>Ready to start making music?</h2>
+			<p class="section-lead">
+				Explore guides, read the manual, or join the community.
+			</p>
+			<div class="cta-cards">
+				<a href="/learn/" class="cta-card">
+					<span class="cta-card-icon">{"\u{1F4D6}"}</span>
+					<span class="cta-card-title">Learn Pooly</span>
+					<span class="cta-card-desc">Step-by-step guides for getting started</span>
+				</a>
+				<a href="/manual/" class="cta-card">
+					<span class="cta-card-icon">{"\u{1F4DA}"}</span>
+					<span class="cta-card-title">Manual</span>
+					<span class="cta-card-desc">In-depth reference for every feature</span>
+				</a>
+				<a href="https://discord.gg/zbNVJYBtw7" class="cta-card" target="_blank" rel="noopener noreferrer">
+					<span class="cta-card-icon">{"\u{1F4AC}"}</span>
+					<span class="cta-card-title">Discord</span>
+					<span class="cta-card-desc">Join the community and share your music</span>
+				</a>
+			</div>
+		</div>
+	</PageSection>
+</BaseLayout>
+
+<style>
+	.hero {
+		position: relative;
+		min-height: 85svh;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		padding: var(--space-2xl) var(--space-md);
+		overflow: hidden;
+		isolation: isolate;
+	}
+
+	.hero-bg {
+		position: absolute;
+		inset: 0;
+		background-image: url("/images/brand/poolyHero01.png");
+		background-position: center;
+		background-size: cover;
+		background-repeat: no-repeat;
+		z-index: -2;
+	}
+
+	.hero-bg::before,
+	.hero-bg::after {
+		content: "";
+		position: absolute;
+		inset: 0;
+	}
+
+	.hero-bg::before {
+		background:
+			linear-gradient(180deg, rgba(5, 7, 11, 0.06), rgba(5, 7, 11, 0.24)),
+			linear-gradient(90deg, rgba(255, 255, 255, 0.04) 1px, transparent 1px),
+			linear-gradient(rgba(255, 255, 255, 0.04) 1px, transparent 1px);
+		background-size: auto, 48px 48px, 48px 48px;
+		mix-blend-mode: screen;
+		opacity: 0.22;
+	}
+
+	.hero-bg::after {
+		background:
+			radial-gradient(circle at 20% 18%, rgba(255, 255, 255, 0.14), transparent 28%),
+			radial-gradient(circle at 84% 10%, rgba(120, 181, 255, 0.16), transparent 24%),
+			linear-gradient(to bottom, transparent 60%, var(--color-bg));
+	}
+
+	.hero-content {
+		text-align: center;
+		max-width: 36rem;
+	}
+
+	.hero-logo {
+		width: min(28vw, 120px);
+		height: auto;
+		margin: 0 auto var(--space-xl);
+		object-fit: contain;
+	}
+
+	.hero h1 {
+		font-size: clamp(2.8rem, 10vw, 5rem);
+		font-weight: 700;
+		line-height: 0.95;
+		letter-spacing: -0.04em;
+		text-transform: lowercase;
+		margin-bottom: var(--space-lg);
+		text-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+	}
+
+	.hero-subtitle {
+		font-size: clamp(var(--text-base), 2.5vw, var(--text-lg));
+		color: var(--color-text-soft);
+		line-height: 1.6;
+		max-width: 30rem;
+		margin: 0 auto var(--space-2xl);
+	}
+
+	.hero-actions {
+		display: flex;
+		gap: var(--space-md);
+		justify-content: center;
+		flex-wrap: wrap;
+	}
+
+	.btn {
+		display: inline-flex;
+		align-items: center;
+		justify-content: center;
+		padding: var(--space-md) var(--space-xl);
+		border-radius: var(--radius-md);
+		font-family: var(--font-display);
+		font-size: var(--text-sm);
+		font-weight: 600;
+		text-decoration: none;
+		transition: all var(--duration-normal) var(--ease-out);
+		min-height: 48px;
+	}
+
+	.btn-primary {
+		background: var(--color-text);
+		color: var(--color-bg);
+	}
+
+	.btn-primary:hover {
+		transform: translateY(-2px);
+		box-shadow: 0 8px 24px rgba(244, 247, 251, 0.2);
+		color: var(--color-bg);
+	}
+
+	.btn-secondary {
+		background: var(--color-bg-glass-strong);
+		color: var(--color-text);
+		backdrop-filter: blur(20px);
+		-webkit-backdrop-filter: blur(20px);
+		border: 1px solid var(--color-border-strong);
+	}
+
+	.btn-secondary:hover {
+		background: var(--color-bg-surface-hover);
+		transform: translateY(-2px);
+		color: var(--color-text);
+	}
+
+	.section-header {
+		text-align: center;
+		margin-bottom: var(--space-3xl);
+	}
+
+	.section-lead {
+		color: var(--color-text-soft);
+		font-size: var(--text-lg);
+		max-width: 36rem;
+		margin: var(--space-md) auto 0;
+		line-height: 1.6;
+	}
+
+	.features-grid {
+		display: grid;
+		grid-template-columns: 1fr;
+		gap: var(--space-md);
+	}
+
+	.cta-section {
+		text-align: center;
+	}
+
+	.cta-content {
+		max-width: var(--content-max);
+		margin: 0 auto;
+	}
+
+	.cta-cards {
+		display: grid;
+		grid-template-columns: 1fr;
+		gap: var(--space-md);
+		margin-top: var(--space-2xl);
+		text-align: left;
+	}
+
+	.cta-card {
+		display: flex;
+		flex-direction: column;
+		gap: var(--space-xs);
+		padding: var(--space-xl);
+		border-radius: var(--radius-lg);
+		background: var(--color-bg-glass);
+		border: 1px solid var(--color-border);
+		color: var(--color-text);
+		text-decoration: none;
+		transition: all var(--duration-normal) var(--ease-out);
+	}
+
+	.cta-card:hover {
+		background: var(--color-bg-glass-strong);
+		border-color: var(--color-border-strong);
+		transform: translateY(-2px);
+		color: var(--color-text);
+	}
+
+	.cta-card-icon {
+		font-size: 1.5rem;
+	}
+
+	.cta-card-title {
+		font-family: var(--font-display);
+		font-weight: 600;
+		font-size: var(--text-lg);
+	}
+
+	.cta-card-desc {
+		color: var(--color-text-soft);
+		font-size: var(--text-sm);
+	}
+
+	@media (min-width: 40rem) {
+		.features-grid {
+			grid-template-columns: repeat(2, 1fr);
+		}
+
+		.cta-cards {
+			grid-template-columns: repeat(3, 1fr);
+		}
+	}
+</style>
