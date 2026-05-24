@@ -1,0 +1,107 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import ManualCard from "../../components/ManualCard.astro";
+import { getCollection } from "astro:content";
+
+const allManual = (await getCollection("manual", ({ data }) => !data.draft))
+	.sort((a, b) => a.data.order - b.data.order);
+
+const sections = [
+	{ key: "concepts", label: "Core Concepts", description: "Understand the building blocks of Pooly." },
+	{ key: "views", label: "Views", description: "Learn about each screen in the app." },
+	{ key: "instruments", label: "Instruments", description: "Explore the sound engines." },
+	{ key: "reference", label: "Reference", description: "Quick reference and troubleshooting." },
+];
+---
+
+<BaseLayout
+	title="Manual"
+	description="The Pooly reference manual. Everything about clips, views, instruments, and more."
+>
+	<div class="manual-index">
+		<header class="manual-header">
+			<h1>Manual</h1>
+			<p class="manual-subtitle">Everything you need to know about Pooly.</p>
+		</header>
+
+		{sections.map(section => {
+			const entries = allManual.filter(e => e.data.section === section.key);
+			if (entries.length === 0) return null;
+			return (
+				<div class="manual-group">
+					<div class="manual-group-header">
+						<h2>{section.label}</h2>
+						<p class="manual-group-desc">{section.description}</p>
+					</div>
+					<div class="manual-group-cards">
+						{entries.map(entry => (
+							<ManualCard
+								title={entry.data.title}
+								description={entry.data.description}
+								href={`/manual/${entry.id}/`}
+							/>
+						))}
+					</div>
+				</div>
+			);
+		})}
+	</div>
+</BaseLayout>
+
+<style>
+	.manual-index {
+		max-width: var(--content-max);
+		margin: 0 auto;
+		padding: var(--space-2xl) var(--space-md);
+	}
+
+	.manual-header {
+		text-align: center;
+		margin-bottom: var(--space-3xl);
+	}
+
+	.manual-header h1 {
+		margin-bottom: var(--space-sm);
+	}
+
+	.manual-subtitle {
+		font-size: var(--text-xl);
+		color: var(--color-text-soft);
+	}
+
+	.manual-group {
+		margin-bottom: var(--space-3xl);
+	}
+
+	.manual-group-header {
+		margin-bottom: var(--space-lg);
+	}
+
+	.manual-group-header h2 {
+		font-size: var(--text-xl);
+		margin-bottom: var(--space-xs);
+	}
+
+	.manual-group-desc {
+		color: var(--color-text-soft);
+		font-size: var(--text-sm);
+	}
+
+	.manual-group-cards {
+		display: grid;
+		grid-template-columns: 1fr;
+		gap: var(--space-sm);
+	}
+
+	@media (min-width: 40rem) {
+		.manual-group-cards {
+			grid-template-columns: repeat(2, 1fr);
+		}
+	}
+
+	@media (min-width: 64rem) {
+		.manual-group-cards {
+			grid-template-columns: repeat(3, 1fr);
+		}
+	}
+</style>
