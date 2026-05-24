@@ -1,0 +1,107 @@
+site_name: Pooly Manual
+site_url: https://pooly.studio/
+site_description: Documentation and user manual for Pooly.
+repo_url: https://github.com/god-boat/pooly.github.io
+repo_name: god-boat/pooly.github.io
+
+theme:
+  name: material
+  custom_dir: overrides
+  logo: assets/logo.png
+  favicon: assets/favicon.png
+  features:
+    - navigation.instant
+    - navigation.tracking
+    - navigation.sections
+    - navigation.expand
+    - navigation.top
+    - search.suggest
+    - search.highlight
+    - content.code.copy
+  palette:
+    - scheme: default
+      primary: black
+      accent: deep purple
+      toggle:
+        icon: material/weather-night
+        name: Switch to dark mode
+    - scheme: slate
+      primary: black
+      accent: deep purple
+      toggle:
+        icon: material/weather-sunny
+        name: Switch to light mode
+
+nav:
+  - Home: index.md
+  - Getting Started:
+      - getting-started/index.md
+      - Install Pooly: getting-started/install.md
+      - Make Your First Song: getting-started/first-song.md
+  - Concepts:
+      - concepts/index.md
+      - Clips, Patterns, and Scenes: concepts/clips-patterns-scenes.md
+      - Tracks: concepts/tracks.md
+      - Devices: concepts/devices.md
+  - Manual:
+      - manual/index.md
+      - Browser: manual/browser.md
+      - Arranger: manual/arranger.md
+      - Clip Launcher: manual/clip-launcher.md
+      - Mixer: manual/mixer.md
+      - Sampler: manual/sampler.md
+      - Synths: manual/synths.md
+      - Effects: manual/effects.md
+  - Workflows:
+      - workflows/index.md
+      - Make a Beat: workflows/make-a-beat.md
+      - Record a Sample: workflows/record-a-sample.md
+      - Perform Live: workflows/perform-live.md
+  - Reference:
+      - reference/index.md
+      - Shortcuts: reference/shortcuts.md
+      - Troubleshooting: reference/troubleshooting.md
+      - File Formats: reference/file-formats.md
+
+markdown_extensions:
+  - admonition
+  - attr_list
+  - md_in_html
+  - toc:
+      permalink: true
+  - pymdownx.details
+  - pymdownx.superfences
+  - pymdownx.tabbed:
+      alternate_style: true
+
+plugins:
+  - search
+  - glightbox
+  - git-revision-date-localized:
+      enable_creation_date: true
+      fallback_to_build_date: true
+      enable_git_follow: false
+
+extra:
+  social:
+    - icon: fontawesome/brands/discord
+      link: https://discord.gg/zbNVJYBtw7
+      name: Pooly on Discord
+    - icon: fontawesome/brands/patreon
+      link: https://patreon.com/godboat
+      name: Pooly on Patreon
+    - icon: fontawesome/brands/instagram
+      link: https://www.instagram.com/poolydaw
+      name: Pooly on Instagram
+    - icon: fontawesome/brands/youtube
+      link: https://www.youtube.com/@poolydaw
+      name: Pooly on YouTube
+    - icon: fontawesome/brands/threads
+      link: https://www.threads.net/@poolydaw
+      name: Pooly on Threads
+    - icon: simple/linktree
+      link: https://linktr.ee/poolydaw
+      name: Pooly Linktree
+
+extra_css:
+  - stylesheets/extra.css

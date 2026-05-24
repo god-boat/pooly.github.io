@@ -1,0 +1,21 @@
+.pooly-hero {
+	text-align: center;
+	padding: 1rem 0 0;
+}
+
+.pooly-hero .hero-image {
+	display: block;
+	max-width: min(100%, 36rem);
+	height: auto;
+	margin: 0 auto 1.5rem;
+	border-radius: 1rem;
+}
+
+.pooly-hero h1 {
+	font-size: clamp(2.5rem, 8vw, 4rem);
+	margin-bottom: 0.25rem;
+}
+
+.pooly-hero .md-button {
+	margin: 0.25rem;
+}
