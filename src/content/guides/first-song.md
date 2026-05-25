@@ -49,4 +49,4 @@ Make sure each track has a clip in the same row. Tap the **scene launcher** butt
 ## Next steps
 
 - [Load and play your own samples](/learn/loading-samples/)
-- [Clips, patterns, and scenes](/manual/concepts/clips-patterns-scenes/)
+- [Clips, patterns, and scenes](/manual/core-concepts/#19-clips-patterns-and-scenes)

@@ -38,4 +38,4 @@ Audio clips can follow your project's tempo depending on warp settings in the cl
 ## Next steps
 
 - [Build an instrument](/learn/building-an-instrument/)
-- [Audio patterns](/manual/concepts/audio-patterns/)
+- [Audio patterns](/manual/core-concepts/#112-audio-patterns)

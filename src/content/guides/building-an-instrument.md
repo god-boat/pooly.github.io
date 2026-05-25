@@ -43,5 +43,5 @@ Your tweaks live in the project—Pooly remembers them automatically. To reuse a
 ## Next steps
 
 - [Perform with scenes](/learn/performing-with-scenes/)
-- [Devices](/manual/concepts/devices/)
-- [Presets](/manual/concepts/presets/)
+- [Devices](/manual/core-concepts/#113-devices)
+- [Presets](/manual/core-concepts/#114-presets)

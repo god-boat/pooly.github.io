@@ -70,6 +70,6 @@ Tap a track header to select the track and enter Detail View for that track and 
 
 ## Related pages
 
-- [1.4 Clips, Patterns, and Scenes](/manual/concepts/clips-patterns-scenes/)
+- [1.9 Clips, Patterns, and Scenes](/manual/core-concepts/#19-clips-patterns-and-scenes)
 - [Perform with scenes](/learn/performing-with-scenes/)
 - [4 Arranger](/manual/views/arranger/)

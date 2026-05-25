@@ -58,5 +58,5 @@ Press **Play** in the footer. The timeline plays from the playhead forward, resp
 ## Related pages
 
 - [3 Clip Launcher](/manual/views/clip-launcher/)
-- [1.11 Arrangement and Launcher](/manual/concepts/arrangement-and-launcher/)
+- [1.5 Arrangement and Launcher](/manual/core-concepts/#15-arrangement-and-launcher)
 - [Export your song](/learn/exporting-a-song/)

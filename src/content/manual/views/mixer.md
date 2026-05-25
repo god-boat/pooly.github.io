@@ -47,6 +47,6 @@ The **MIDI** and **Audio** add buttons at the end of the strip row work the same
 
 ## Related pages
 
-- [1.5 Tracks](/manual/concepts/tracks/)
-- [1.3 Footer Bar](/manual/concepts/footer-bar/)
+- [1.7 Tracks](/manual/core-concepts/#17-tracks)
+- [1.3 Footer Bar](/manual/core-concepts/#13-footer-bar)
 - [3 Clip Launcher](/manual/views/clip-launcher/)

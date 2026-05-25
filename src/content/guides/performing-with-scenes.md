@@ -42,4 +42,4 @@ When you're ready for a fixed song structure, switch to the **Arrangement** view
 
 - [Export your finished song](/learn/exporting-a-song/)
 - [Clip Launcher](/manual/views/clip-launcher/)
-- [Arrangement and Launcher](/manual/concepts/arrangement-and-launcher/)
+- [Arrangement and Launcher](/manual/core-concepts/#15-arrangement-and-launcher)

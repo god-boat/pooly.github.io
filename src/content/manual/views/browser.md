@@ -46,6 +46,6 @@ Switch the browser to **Effects** mode to add reverb, delay, filter, and other p
 
 ## Related pages
 
-- [1.14 Presets](/manual/concepts/presets/)
+- [1.14 Presets](/manual/core-concepts/#114-presets)
 - [Load and play samples](/learn/loading-samples/)
-- [1.12 Detail View](/manual/concepts/detail-view/)
+- [1.6 Detail View](/manual/core-concepts/#16-detail-view)

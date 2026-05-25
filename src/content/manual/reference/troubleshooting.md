@@ -70,6 +70,6 @@ Join the [Pooly Discord](https://discord.gg/zbNVJYBtw7) and describe your issueâ
 
 ## Related pages
 
-- [1.1 Pooly Projects](/manual/concepts/projects/)
-- [1.17 Undo History](/manual/concepts/undo-history/)
+- [1.1 Pooly Projects](/manual/core-concepts/#11-pooly-projects)
+- [1.4 Undo History](/manual/core-concepts/#14-undo-history)
 - [5 Mixer](/manual/views/mixer/)
