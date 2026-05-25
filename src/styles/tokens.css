@@ -21,11 +21,17 @@
 	/* Borders */
 	--color-border: rgba(244, 251, 245, 0);
 	--color-border-strong: rgba(244, 251, 246, 0);
+	--color-media-border: rgba(120, 255, 170, 0.24);
 
 	/* Shadows */
 	--shadow-sm: 0 2px 8px rgba(18, 40, 25, 0.2);
 	--shadow-md: 0 8px 32px rgba(21, 36, 25, 0.24);
 	--shadow-lg: 0 24px 60px rgba(21, 40, 26, 0.34);
+	--shadow-media: 0 16px 48px rgba(4, 14, 10, 0.44);
+
+	/* Manual media */
+	--color-media-bg: rgba(9, 20, 12, 0.82);
+	--color-media-caption: rgba(244, 251, 244, 0.74);
 
 	/* Spacing */
 	--space-xs: 0.25rem;

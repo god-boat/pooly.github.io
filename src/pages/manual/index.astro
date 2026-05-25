@@ -25,6 +25,40 @@ const chapterNumbers = [...new Set(allManual.map(entry => getManualChapter(entry
 			<p class="manual-subtitle">Everything you need to know about Pooly.</p>
 		</header>
 
+		<section class="manual-focus">
+			<figure class="manual-media" data-wrap="right">
+				<img
+					src="/images/application-screenshots/detail.png"
+					alt="Pooly Clip Detail view showing voice controls and drum clip slots."
+					width="686"
+					height="1029"
+					loading="lazy"
+				/>
+				<figcaption>
+					Clip Detail on an instrument track: edit voice parameters and clip content in one place.
+				</figcaption>
+			</figure>
+			<h2>Detail View and Clip Detail</h2>
+			<p>
+				Clip Detail is where you edit note content, shape sounds, and manage per-clip controls.
+				If you are learning this part of Pooly, start with these sections:
+			</p>
+			<ul class="manual-focus-links">
+				<li>
+					<a href="/manual/core-concepts/#16-detail-view">1.6 Detail View</a> for the editing
+					model and panel layout.
+				</li>
+				<li>
+					<a href="/manual/views/clip-launcher/">3 Clip Launcher</a> for how clips open into
+					Detail View from the grid.
+				</li>
+				<li>
+					<a href="/manual/views/browser/">2 Browser</a> for how instrument and effect browsing
+					works inside Clip Detail.
+				</li>
+			</ul>
+		</section>
+
 		{chapterNumbers.map(chapterNumber => {
 			const entries = allManual.filter(
 				entry => getManualChapter(entry.data.number) === chapterNumber,
@@ -79,6 +113,39 @@ const chapterNumbers = [...new Set(allManual.map(entry => getManualChapter(entry
 
 	.manual-group {
 		margin-bottom: var(--space-3xl);
+	}
+
+	.manual-focus {
+		margin-bottom: var(--space-3xl);
+	}
+
+	.manual-focus::after {
+		content: "";
+		display: block;
+		clear: both;
+	}
+
+	.manual-focus h2 {
+		font-size: clamp(var(--text-xl), 3vw, var(--text-2xl));
+		margin-bottom: var(--space-sm);
+	}
+
+	.manual-focus p {
+		max-width: 46rem;
+		color: var(--color-text-soft);
+		text-wrap: pretty;
+		overflow-wrap: anywhere;
+	}
+
+	.manual-focus-links {
+		margin-top: var(--space-md);
+		padding-left: var(--space-xl);
+		max-width: 46rem;
+	}
+
+	.manual-focus-links li {
+		margin-bottom: var(--space-xs);
+		color: var(--color-text-soft);
 	}
 
 	.manual-group-header {

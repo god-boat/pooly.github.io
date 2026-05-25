@@ -14,6 +14,19 @@ A Pooly project is a complete song workspace saved as a `.pool` file. Everything
 
 The Projects screen shows every saved project as a card, pulled from your configured save location (internal app storage or a custom folder on your device). Tap a card to open the project. Each card also offers actions such as preview playback, rename, duplicate, delete, export, and open-in-folder. Use the **New Project** button in the footer to create a fresh song with default settings.
 
+<figure class="manual-media" data-wrap="right">
+	<img
+		src="/images/application-screenshots/project%20selection.png"
+		alt="Pooly project selection screen showing saved project cards."
+		width="817"
+		height="1303"
+		loading="lazy"
+	/>
+	<figcaption>
+		The Project Selection view is your library of saved songs and quick project actions.
+	</figcaption>
+</figure>
+
 Pooly tracks unsaved changes while you work and saves before exiting the application. If save on exit is disabled (via the application menu) pooly prompts you to save before discarding the projects changes. New projects are populated with a randomized track selection so you can begin creating immediately.
 
 ### 1.2 Header Bar
@@ -22,11 +35,37 @@ The header bar sits at the top of the Pooly window and gives you context about w
 
 In most editing views the header shows a **Back** button, a title, and the song avatar. The title is static on some screens (for example "Projects" or "Mixer") and dynamic on others: in Detail View it shows the current track or instrument name, and in the launcher or arranger it reflects your current selection. Tapping the song avatar opens Settings.
 
+<figure class="manual-media" data-wrap="left">
+	<img
+		src="/images/application-screenshots/header.png"
+		alt="Pooly header bar with back button, view title, and song avatar."
+		width="819"
+		height="162"
+		loading="lazy"
+	/>
+	<figcaption>
+		The header keeps navigation and context controls in one consistent place.
+	</figcaption>
+</figure>
+
 When you are inside a project, the back button usually returns to the previous view; from the Launcher or Arranger it switches to the Project Selection View and takes you back to the Projects screen. An **Main View** toggle switches between the Launcher and the Arrangement view, choosing horizontal or vertical layout based on device orientation.
 
 ### 1.3 Footer Bar
 
 The footer bar is Pooly's persistent control strip at the bottom of the window. Like the header, it is built dynamically: each view exposes a footer configuration that turns individual buttons on or off. This keeps the interface focused—Detail View shows pattern-editing tools, the Projects screen shows **New Project**, and the Launcher exposes the scene-launcher toggle—while shared controls stay in familiar places across views.
+
+<figure class="manual-media" data-wrap="right">
+	<img
+		src="/images/application-screenshots/footer.png"
+		alt="Pooly footer bar with transport and editing controls."
+		width="820"
+		height="231"
+		loading="lazy"
+	/>
+	<figcaption>
+		Footer controls change by view, while transport and core actions stay familiar.
+	</figcaption>
+</figure>
 
 The most common footer controls are **Play**, **Undo**, **Redo**, and **Mixer**. Play toggles transport for the current project. Undo and redo step through the edit history; buttons disable automatically when no action is available. Mixer opens Mixer View where you adjust per-track volume, pan, mute, and solo. In Detail View, additional footer buttons appear for pattern operations such as halving or doubling length, duplicating the pattern, and quantizing notes—these are disabled when you are on an empty track with no pattern content yet.
 
@@ -44,6 +83,19 @@ The history stack holds up to 40 steps. Rapid successive edits to the same param
 
 Pooly gives you two complementary views of the same project. The **Launcher** is a session-style matrix: columns are tracks, rows are scenes, and cells hold launcher clips you trigger in real time. It is the default working view when you open a project—ideal for trying ideas, launching scenes, and building sections before committing to a fixed timeline. Track headers run along the bottom; scene launch buttons sit in a column you can toggle from the footer.
 
+<figure class="manual-media" data-wrap="right">
+	<img
+		src="/images/application-screenshots/arranger%20%2B%20launcher.png"
+		alt="Pooly launcher and arranger views showing clip-based and timeline workflows."
+		width="1929"
+		height="1312"
+		loading="lazy"
+	/>
+	<figcaption>
+		Launcher and Arranger are two views of the same song: live grid performance and timeline structure.
+	</figcaption>
+</figure>
+
 The **Arranger** is a linear timeline view where clips sit at positions across horizontal (landscape) or vertical (portrait) layouts. You can switch between launcher and arrangement with the header arrangement button; portrait devices open the vertical arrangement, landscape opens the horizontal one. Resizing Poolys window can also change the arrangement layout if enabled in settings. The arrangement exposes a clip map with a draggable playhead, loop controls.
 
 Both views share the same underlying project model. Launcher clips and arranger clips are distinct clip kinds referencing the same pattern pool—placing material on the timeline does not destroy launcher slots, and duplicating or editing patterns can be done from either view. Menus in both surfaces offer clip operations such as edit, clone, duplicate pattern, rename, link management, and delete. A pattern dock in arrangement views gives quick access to the pattern library while editing the timeline.
@@ -51,6 +103,19 @@ Both views share the same underlying project model. Launcher clips and arranger 
 ### 1.6 Detail View
 
 Detail View is Pooly's deep editing view for a selected track, clip, and pattern. It opens when you edit clip content from the launcher or arrangement, and it adapts its layout to the track kind. On instrument tracks you get a piano roll, performance surface, and instrument parameter controls; on audio tracks the wave editor and audio core panel replace the note editor while sharing the same parameter and automation infrastructure.
+
+<figure class="manual-media" data-wrap="right">
+	<img
+		src="/images/application-screenshots/detail.png"
+		alt="Pooly Clip Detail view showing voice controls and drum clip slots."
+		width="686"
+		height="1029"
+		loading="lazy"
+	/>
+	<figcaption>
+		Clip Detail combines clip editing, voice controls, and instrument shaping in one screen.
+	</figcaption>
+</figure>
 
 The view is organized into panels with tabs for voices, modulators, filters, envelopes, samples, and audio effects. You can expand panels to fullscreen for focused editing. Selecting the header title on an instrument track opens the instrument browser, where you swap synth voices, samplers, or drum kits from the preset library. A parallel browser mode selects effects for a chosen device in the chain.
 
@@ -61,6 +126,19 @@ Detail View coordinates editing states: an active clip or an empty track with no
 ### 1.7 Tracks
 
 A track is a lane in your project that owns a device chain, mixer settings, and all clips routed through it. Every track has a persistent numeric ID, a user-visible name, a color, and a **kind** that determines what content it accepts: **Instrument** tracks host synthesizers, samplers, or drum racks and play MIDI patterns, while **Audio** tracks host audio patterns backed by recorded or imported files.
+
+<figure class="manual-media" data-wrap="left">
+	<img
+		src="/images/application-screenshots/tracks.png"
+		alt="Pooly track columns with clip slots and track labels in the launcher."
+		width="818"
+		height="1462"
+		loading="lazy"
+	/>
+	<figcaption>
+		Tracks define where sounds live and how clips route through instruments, effects, and the mixer.
+	</figcaption>
+</figure>
 
 Each track's sound path runs through its **device chain**—the canonical store for devices, mixer parameters, routing, automation, and view state. When you add an instrument, the track name can update automatically to match unless you have renamed it yourself.
 
