@@ -15,9 +15,24 @@ interface Props {
 	headings: Array<{ depth: number; slug: string; text: string }>;
 }
 
+interface ManualEntry {
+	id: string;
+	data: {
+		number: string;
+		title: string;
+	};
+}
+
 const { title, description, number, headings } = Astro.props;
 
-const allManual = (await getCollection("manual", ({ data }) => !data.draft))
+const allManual: ManualEntry[] = (await getCollection("manual", ({ data }) => !data.draft))
+	.map(entry => ({
+		id: entry.id,
+		data: {
+			number: String(entry.data.number),
+			title: String(entry.data.title),
+		},
+	}))
 	.sort((a, b) => compareManualNumbers(a.data.number, b.data.number));
 
 const chapterNumber = getManualChapter(number);
@@ -27,8 +42,46 @@ const currentIndex = allManual.findIndex(e => e.data.number === number);
 const prev = currentIndex > 0 ? allManual[currentIndex - 1] : null;
 const next = currentIndex < allManual.length - 1 ? allManual[currentIndex + 1] : null;
 
-const chapterNumbers = [...new Set(allManual.map(entry => getManualChapter(entry.data.number)))]
-	.sort((a, b) => a - b);
+const chapterNumbers: number[] = [
+	...new Set(allManual.map(entry => getManualChapter(entry.data.number))),
+].sort((a, b) => a - b);
+
+type ManualHeading = (typeof headings)[number];
+
+const pageHeadings: ManualHeading[] = headings.filter(
+	heading => heading.depth === 2 || heading.depth === 3,
+);
+const headingSections: Array<{
+	heading: ManualHeading;
+	children: ManualHeading[];
+	slugs: string[];
+}> = [];
+let currentHeadingSection: (typeof headingSections)[number] | null = null;
+
+for (const heading of pageHeadings) {
+	if (heading.depth === 2) {
+		currentHeadingSection = {
+			heading,
+			children: [],
+			slugs: [heading.slug],
+		};
+		headingSections.push(currentHeadingSection);
+		continue;
+	}
+
+	if (currentHeadingSection && currentHeadingSection.heading.depth === 2) {
+		currentHeadingSection.children.push(heading);
+		currentHeadingSection.slugs.push(heading.slug);
+		continue;
+	}
+
+	currentHeadingSection = {
+		heading,
+		children: [],
+		slugs: [heading.slug],
+	};
+	headingSections.push(currentHeadingSection);
+}
 ---
 
 <BaseLayout title={`${number} ${title}`} description={description}>
@@ -69,6 +122,48 @@ const chapterNumbers = [...new Set(allManual.map(entry => getManualChapter(entry
 												>
 													{label}
 												</a>
+												{entry.data.number === number && headingSections.length > 0 && (
+													<ul class="sidebar-subsections" data-manual-heading-nav>
+														{headingSections.map((section, index) => (
+															<li
+																class:list={[
+																	"sidebar-subsection",
+																	{ "is-expanded": index === 0 },
+																]}
+																data-manual-heading-section
+																data-heading-slugs={section.slugs.join(" ")}
+															>
+																<a
+																	href={`#${section.heading.slug}`}
+																	class:list={[
+																		"sidebar-sub-link",
+																		{ "sidebar-sub-link-parent": section.heading.depth === 2 },
+																	]}
+																	data-manual-heading-link
+																	data-heading-slug={section.heading.slug}
+																>
+																	{section.heading.text}
+																</a>
+																{section.children.length > 0 && (
+																	<ul class="sidebar-subtree">
+																		{section.children.map(child => (
+																			<li>
+																				<a
+																					href={`#${child.slug}`}
+																					class="sidebar-sub-link"
+																					data-manual-heading-link
+																					data-heading-slug={child.slug}
+																				>
+																					{child.text}
+																				</a>
+																			</li>
+																		))}
+																	</ul>
+																)}
+															</li>
+														))}
+													</ul>
+												)}
 											</li>
 										);
 									})}
@@ -110,23 +205,55 @@ const chapterNumbers = [...new Set(allManual.map(entry => getManualChapter(entry
 				)}
 			</nav>
 		</article>
-
-		{headings.length > 0 && (
-			<aside class="toc">
-				<h4 class="toc-title">On this page</h4>
-				<nav>
-					<ul class="toc-list">
-						{headings.filter(h => h.depth <= 3).map(h => (
-							<li class:list={[`toc-depth-${h.depth}`]}>
-								<a href={`#${h.slug}`} class="toc-link">{h.text}</a>
-							</li>
-						))}
-					</ul>
-				</nav>
-			</aside>
-		)}
 	</div>
 </BaseLayout>
+
+<script>
+	const headingNav = document.querySelector("[data-manual-heading-nav]");
+
+	if (headingNav instanceof HTMLElement) {
+		const sections = Array.from(
+			headingNav.querySelectorAll<HTMLElement>("[data-manual-heading-section]"),
+		);
+		const links = Array.from(
+			headingNav.querySelectorAll<HTMLAnchorElement>("[data-manual-heading-link]"),
+		);
+
+		const normalizeSlug = (hash: string): string =>
+			decodeURIComponent(hash).replace(/^#/, "");
+
+		const updateHeadingNavState = () => {
+			const activeSlug = normalizeSlug(window.location.hash);
+			let expandedSection: HTMLElement | null = null;
+
+			if (activeSlug.length > 0) {
+				expandedSection =
+					sections.find(section => {
+						const slugs = (section.dataset.headingSlugs ?? "")
+							.split(" ")
+							.filter(Boolean);
+						return slugs.includes(activeSlug);
+					}) ?? null;
+			}
+
+			if (!expandedSection && sections.length > 0) {
+				expandedSection = sections[0];
+			}
+
+			for (const section of sections) {
+				section.classList.toggle("is-expanded", section === expandedSection);
+			}
+
+			for (const link of links) {
+				const isActive = activeSlug.length > 0 && link.dataset.headingSlug === activeSlug;
+				link.classList.toggle("active", isActive);
+			}
+		};
+
+		updateHeadingNavState();
+		window.addEventListener("hashchange", updateHeadingNavState);
+	}
+</script>
 
 <style>
 	.manual-page {
@@ -213,6 +340,58 @@ const chapterNumbers = [...new Set(allManual.map(entry => getManualChapter(entry
 	}
 
 	.sidebar-link.active {
+		color: var(--color-accent);
+		background: var(--color-accent-soft);
+	}
+
+	.sidebar-subsections {
+		list-style: none;
+		display: flex;
+		flex-direction: column;
+		gap: 2px;
+		margin-top: var(--space-xs);
+		padding-left: var(--space-md);
+	}
+
+	.sidebar-subsection {
+		display: flex;
+		flex-direction: column;
+		gap: 2px;
+	}
+
+	.sidebar-subtree {
+		list-style: none;
+		display: none;
+		flex-direction: column;
+		gap: 2px;
+		padding-left: var(--space-md);
+	}
+
+	.sidebar-subsection.is-expanded .sidebar-subtree {
+		display: flex;
+	}
+
+	.sidebar-sub-link {
+		display: block;
+		padding: 2px var(--space-xs);
+		border-radius: var(--radius-sm);
+		color: var(--color-text-muted);
+		font-size: var(--text-xs);
+		line-height: 1.4;
+		transition: all var(--duration-fast) var(--ease-out);
+	}
+
+	.sidebar-sub-link-parent {
+		color: var(--color-text-soft);
+		font-weight: 600;
+	}
+
+	.sidebar-sub-link:hover {
+		color: var(--color-text);
+		background: var(--color-bg-surface);
+	}
+
+	.sidebar-sub-link.active {
 		color: var(--color-accent);
 		background: var(--color-accent-soft);
 	}
@@ -322,42 +501,6 @@ const chapterNumbers = [...new Set(allManual.map(entry => getManualChapter(entry
 		font-weight: 600;
 	}
 
-	.toc {
-		display: none;
-	}
-
-	.toc-title {
-		font-size: var(--text-xs);
-		font-weight: 700;
-		text-transform: uppercase;
-		letter-spacing: 0.1em;
-		color: var(--color-text-muted);
-		margin-bottom: var(--space-md);
-	}
-
-	.toc-list {
-		list-style: none;
-		display: flex;
-		flex-direction: column;
-		gap: var(--space-xs);
-	}
-
-	.toc-link {
-		display: block;
-		font-size: var(--text-sm);
-		color: var(--color-text-muted);
-		padding: 2px 0;
-		transition: color var(--duration-fast) var(--ease-out);
-	}
-
-	.toc-link:hover {
-		color: var(--color-text);
-	}
-
-	.toc-depth-3 {
-		padding-left: var(--space-md);
-	}
-
 	@media (min-width: 64rem) {
 		.manual-page {
 			grid-template-columns: 15rem 1fr;
@@ -395,15 +538,8 @@ const chapterNumbers = [...new Set(allManual.map(entry => getManualChapter(entry
 
 	@media (min-width: 80rem) {
 		.manual-page {
-			grid-template-columns: 15rem 1fr 12rem;
-		}
-
-		.toc {
-			display: block;
-			position: sticky;
-			top: 4rem;
-			max-height: calc(100svh - 5rem);
-			overflow-y: auto;
+			grid-template-columns: 16rem 1fr;
+			gap: var(--space-3xl);
 		}
 	}
 </style>
