@@ -1,6 +1,6 @@
 export const manualChapters: Record<number, string> = {
 	1: "Core Concepts",
-	2: "Working with the Browser",
+	2: "Browser",
 	3: "Clip Launcher",
 	4: "Arranger",
 	5: "Mixer",
