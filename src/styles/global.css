@@ -99,7 +99,7 @@ pre code {
 
 *:hover,
 *:active {
-	scrollbar-color: rgba(199, 220, 255, 0.2) transparent;
+	scrollbar-color: var(--color-text-muted) transparent;
 }
 
 ::-webkit-scrollbar {
@@ -119,9 +119,9 @@ pre code {
 
 *:hover::-webkit-scrollbar-thumb,
 *:active::-webkit-scrollbar-thumb {
-	background: rgba(199, 220, 255, 0.2);
+	background: var(--color-text-muted);
 }
 
 *:hover::-webkit-scrollbar-thumb:hover {
-	background: rgba(199, 220, 255, 0.35);
+	background: var(--color-text-muted);
 }

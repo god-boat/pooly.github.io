@@ -1,31 +1,31 @@
 :root {
 	/* Backgrounds */
 	--color-bg: #05070b;
-	--color-bg-raised: rgba(7, 11, 17, 0.56);
-	--color-bg-surface: rgba(199, 220, 255, 0.06);
-	--color-bg-surface-hover: rgba(199, 220, 255, 0.12);
-	--color-bg-glass: rgba(199, 220, 255, 0.08);
-	--color-bg-glass-strong: rgba(199, 220, 255, 0.16);
+	--color-bg-raised: rgba(7, 17, 9, 0.56);
+	--color-bg-surface: rgba(199, 255, 205, 0.06);
+	--color-bg-surface-hover: rgba(199, 255, 200, 0.12);
+	--color-bg-glass: rgba(200, 255, 199, 0.08);
+	--color-bg-glass-strong: rgba(199, 255, 211, 0.16);
 
 	/* Text */
-	--color-text: #f4f7fb;
-	--color-text-soft: rgba(244, 247, 251, 0.72);
-	--color-text-muted: rgba(244, 247, 251, 0.44);
+	--color-text: #f4fbf4;
+	--color-text-soft: rgba(244, 251, 244, 0.72);
+	--color-text-muted: rgba(244, 251, 244, 0.44);
 
 	/* Accent */
-	--color-accent: #78b5ff;
-	--color-accent-hover: #9ccaff;
-	--color-accent-soft: rgba(120, 181, 255, 0.16);
-	--color-accent-glow: rgba(120, 181, 255, 0.24);
+	--color-accent: #78ffa3;
+	--color-accent-hover: #9cffb0;
+	--color-accent-soft: rgba(120, 255, 167, 0.16);
+	--color-accent-glow: rgba(120, 255, 170, 0.24);
 
 	/* Borders */
-	--color-border: rgba(244, 247, 251, 0);
-	--color-border-strong: rgba(244, 247, 251, 0);
+	--color-border: rgba(244, 251, 245, 0);
+	--color-border-strong: rgba(244, 251, 246, 0);
 
 	/* Shadows */
-	--shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.2);
-	--shadow-md: 0 8px 32px rgba(0, 0, 0, 0.24);
-	--shadow-lg: 0 24px 60px rgba(0, 0, 0, 0.34);
+	--shadow-sm: 0 2px 8px rgba(18, 40, 25, 0.2);
+	--shadow-md: 0 8px 32px rgba(21, 36, 25, 0.24);
+	--shadow-lg: 0 24px 60px rgba(21, 40, 26, 0.34);
 
 	/* Spacing */
 	--space-xs: 0.25rem;
