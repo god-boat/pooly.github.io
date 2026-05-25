@@ -1,15 +1,16 @@
 ---
 title: Clip Launcher
 description: The main performance and creation view.
+number: "3"
 section: views
 order: 20
 ---
 
-## When to use the Clip Launcher
+## 3.1 When to use the Clip Launcher
 
 Use the Clip Launcher when you want to create clips, launch scenes, or perform your music. This is the default view when you open a project.
 
-## Layout
+## 3.2 Layout
 
 The Clip Launcher is a grid:
 
@@ -19,7 +20,7 @@ The Clip Launcher is a grid:
 
 Track headers run along the top. Scene launch buttons are on the right.
 
-## Working with clips
+## 3.3 Working with clips
 
 ### Create a clip
 
@@ -37,7 +38,7 @@ Double-tap a clip to open it in the piano roll for editing.
 
 Tap a playing clip to stop it, or launch a different clip in the same track.
 
-## Working with scenes
+## 3.4 Working with scenes
 
 ### Launch a scene
 
@@ -47,7 +48,7 @@ Tap the scene button on the right side of a row. All clips in that row start tog
 
 Scenes transition on bar boundaries. The previous clips stop and the new ones start seamlessly.
 
-## Tips
+## 3.5 Tips
 
 - Color your clips to visually organize sections
 - Use empty slots to create breaks in specific tracks
@@ -55,6 +56,6 @@ Scenes transition on bar boundaries. The previous clips stop and the new ones st
 
 ## Related pages
 
-- [Clips, Patterns, and Scenes](/manual/concepts/clips-patterns-scenes/)
+- [1.1 Clips, Patterns, and Scenes](/manual/concepts/clips-patterns-scenes/)
 - [Perform with scenes](/learn/performing-with-scenes/)
-- [Arranger](/manual/views/arranger/)
+- [4 Arranger](/manual/views/arranger/)

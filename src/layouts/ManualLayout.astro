@@ -1,39 +1,37 @@
 ---
 import BaseLayout from "./BaseLayout.astro";
 import { getCollection } from "astro:content";
+import {
+	compareManualNumbers,
+	formatManualLabel,
+	getManualChapter,
+	manualChapters,
+} from "../lib/manual-nav";
 
 interface Props {
 	title: string;
 	description?: string;
-	section: string;
+	number: string;
 	headings: Array<{ depth: number; slug: string; text: string }>;
 }
 
-const { title, description, section, headings } = Astro.props;
+const { title, description, number, headings } = Astro.props;
 
 const allManual = (await getCollection("manual", ({ data }) => !data.draft))
-	.sort((a, b) => {
-		const sectionOrder = ["concepts", "views", "instruments", "reference"];
-		const sa = sectionOrder.indexOf(a.data.section);
-		const sb = sectionOrder.indexOf(b.data.section);
-		if (sa !== sb) return sa - sb;
-		return a.data.order - b.data.order;
-	});
+	.sort((a, b) => compareManualNumbers(a.data.number, b.data.number));
 
-const sectionOrder = ["concepts", "views", "instruments", "reference"];
-const sectionLabels: Record<string, string> = {
-	concepts: "Core Concepts",
-	views: "Views",
-	instruments: "Instruments",
-	reference: "Reference",
-};
+const chapterNumber = getManualChapter(number);
+const chapterTitle = manualChapters[chapterNumber];
 
-const currentIndex = allManual.findIndex(e => e.data.title === title);
+const currentIndex = allManual.findIndex(e => e.data.number === number);
 const prev = currentIndex > 0 ? allManual[currentIndex - 1] : null;
 const next = currentIndex < allManual.length - 1 ? allManual[currentIndex + 1] : null;
+
+const chapterNumbers = [...new Set(allManual.map(entry => getManualChapter(entry.data.number)))]
+	.sort((a, b) => a - b);
 ---
 
-<BaseLayout title={title} description={description}>
+<BaseLayout title={`${number} ${title}`} description={description}>
 	<div class="manual-page">
 		<aside class="manual-sidebar">
 			<details class="sidebar-drawer" open>
@@ -42,23 +40,38 @@ const next = currentIndex < allManual.length - 1 ? allManual[currentIndex + 1] :
 					<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
 				</summary>
 				<nav class="sidebar-nav" aria-label="Manual navigation">
-					{sectionOrder.map(sec => {
-						const entries = allManual.filter(e => e.data.section === sec);
+					{chapterNumbers.map(chapter => {
+						const entries = allManual.filter(
+							entry => getManualChapter(entry.data.number) === chapter,
+						);
 						if (entries.length === 0) return null;
+
 						return (
 							<div class="sidebar-section">
-								<h4 class="sidebar-heading">{sectionLabels[sec]}</h4>
+								<h4 class="sidebar-heading">{chapter}. {manualChapters[chapter]}</h4>
 								<ul class="sidebar-list">
-									{entries.map(entry => (
-										<li>
-											<a
-												href={`/manual/${entry.id}/`}
-												class:list={["sidebar-link", { active: entry.data.title === title }]}
-											>
-												{entry.data.title}
-											</a>
-										</li>
-									))}
+									{entries.map(entry => {
+										const isSinglePageChapter =
+											entries.length === 1 &&
+											entry.data.number === String(chapter);
+										const label = isSinglePageChapter
+											? `${entry.data.number} ${manualChapters[chapter]}`
+											: formatManualLabel(entry.data.number, entry.data.title);
+
+										return (
+											<li>
+												<a
+													href={`/manual/${entry.id}/`}
+													class:list={[
+														"sidebar-link",
+														{ active: entry.data.number === number },
+													]}
+												>
+													{label}
+												</a>
+											</li>
+										);
+									})}
 								</ul>
 							</div>
 						);
@@ -69,8 +82,8 @@ const next = currentIndex < allManual.length - 1 ? allManual[currentIndex + 1] :
 
 		<article class="manual-article">
 			<header class="article-header">
-				<p class="article-section-label">{sectionLabels[section]}</p>
-				<h1>{title}</h1>
+				<p class="article-section-label">{chapterNumber}. {chapterTitle}</p>
+				<h1>{number} {title}</h1>
 				{description && <p class="article-lead">{description}</p>}
 			</header>
 
@@ -79,16 +92,20 @@ const next = currentIndex < allManual.length - 1 ? allManual[currentIndex + 1] :
 			</div>
 
 			<nav class="article-nav" aria-label="Previous and next pages">
-		{prev && (
-			<a href={`/manual/${prev.id}/`} class="article-nav-link prev">
+				{prev && (
+					<a href={`/manual/${prev.id}/`} class="article-nav-link prev">
 						<span class="nav-label">&larr; Previous</span>
-						<span class="nav-title">{prev.data.title}</span>
+						<span class="nav-title">
+							{formatManualLabel(prev.data.number, prev.data.title)}
+						</span>
 					</a>
 				)}
-		{next && (
-			<a href={`/manual/${next.id}/`} class="article-nav-link next">
+				{next && (
+					<a href={`/manual/${next.id}/`} class="article-nav-link next">
 						<span class="nav-label">Next &rarr;</span>
-						<span class="nav-title">{next.data.title}</span>
+						<span class="nav-title">
+							{formatManualLabel(next.data.number, next.data.title)}
+						</span>
 					</a>
 				)}
 			</nav>

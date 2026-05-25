@@ -1,15 +1,18 @@
 ---
 interface Props {
+	number: string;
 	title: string;
 	description?: string;
 	href: string;
+	showTitle?: boolean;
 }
 
-const { title, description, href } = Astro.props;
+const { number, title, description, href, showTitle = true } = Astro.props;
+const displayTitle = showTitle ? `${number} ${title}` : number;
 ---
 
 <a href={href} class="manual-card">
-	<h4 class="manual-card-title">{title}</h4>
+	<h4 class="manual-card-title">{displayTitle}</h4>
 	{description && <p class="manual-card-desc">{description}</p>}
 	<span class="manual-card-arrow" aria-hidden="true">&rarr;</span>
 </a>

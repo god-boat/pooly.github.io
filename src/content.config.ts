@@ -7,6 +7,7 @@ const manual = defineCollection({
 	schema: z.object({
 		title: z.string(),
 		description: z.string().optional(),
+		number: z.string().regex(/^\d+(\.\d+)*$/),
 		section: z.enum(["concepts", "views", "instruments", "reference"]),
 		order: z.number().default(999),
 		draft: z.boolean().default(false),

@@ -1,18 +1,19 @@
 ---
 title: Devices
 description: Instruments and effects that shape your sound.
+number: "1.2"
 section: concepts
-order: 30
+order: 20
 ---
 
-## What devices are
+## 1.2.1 What devices are
 
 A device is anything that generates or processes sound in Pooly. There are two kinds:
 
 - **Instruments** — generate sound from note input (synths, samplers, drum kits)
 - **Effects** — process audio (reverb, delay, filter, compression)
 
-## Instrument devices
+## 1.2.2 Instrument devices
 
 Each track has one instrument device. This is what turns your note patterns into audio.
 
@@ -22,7 +23,7 @@ Available instruments:
 - **FM Synth** — frequency modulation synthesis with multiple operators
 - **Drum Kit** — multi-sample percussion instrument with per-pad controls
 
-## Effect devices
+## 1.2.3 Effect devices
 
 Effects are added to a track's effect chain and process the audio after the instrument.
 
@@ -33,7 +34,7 @@ Available effects include:
 - **Filter** — shapes frequency content
 - **Distortion** — adds grit and harmonics
 
-## Device chain
+## 1.2.4 Device chain
 
 Audio flows through the device chain in order:
 
@@ -42,7 +43,7 @@ Audio flows through the device chain in order:
 3. Track volume and pan are applied
 4. Audio goes to the master bus
 
-## Tips
+## 1.2.5 Tips
 
 - You can reorder effects by dragging them in the chain
 - Bypass an effect by tapping its power button
@@ -50,5 +51,5 @@ Audio flows through the device chain in order:
 
 ## Related pages
 
-- [Tracks](/manual/concepts/tracks/)
+- [1.4 Tracks](/manual/concepts/tracks/)
 - [Build an instrument](/learn/building-an-instrument/)

@@ -1,11 +1,12 @@
 ---
 title: Troubleshooting
 description: Solutions for common issues.
+number: "8.1"
 section: reference
 order: 10
 ---
 
-## No sound
+## 8.1.1 No sound
 
 If you're not hearing anything:
 
@@ -15,7 +16,7 @@ If you're not hearing anything:
 4. Check that your clip contains notes
 5. Try restarting playback
 
-## Audio glitches or crackling
+## 8.1.2 Audio glitches or crackling
 
 Audio issues can happen when the device is under heavy load:
 
@@ -24,7 +25,7 @@ Audio issues can happen when the device is under heavy load:
 - Lower the audio quality in Settings if needed
 - Restart the app
 
-## Clips won't launch
+## 8.1.3 Clips won't launch
 
 If clips don't respond when you tap them:
 
@@ -32,7 +33,7 @@ If clips don't respond when you tap them:
 - Check that the clip isn't empty
 - Try stopping all clips and starting fresh
 
-## Project won't open
+## 8.1.4 Project won't open
 
 If a project fails to load:
 
@@ -40,7 +41,7 @@ If a project fails to load:
 - Try restarting the app
 - If the problem persists, check for app updates
 
-## App crashes
+## 8.1.5 App crashes
 
 If Pooly crashes:
 
@@ -48,11 +49,11 @@ If Pooly crashes:
 - Clear the app cache in your device settings
 - Report the crash on [Discord](https://discord.gg/zbNVJYBtw7) with steps to reproduce
 
-## Still stuck?
+## 8.1.6 Still stuck?
 
 Join the [Pooly Discord](https://discord.gg/zbNVJYBtw7) and describe your issue. The community and developers can help.
 
 ## Related pages
 
-- [Devices](/manual/concepts/devices/)
-- [Tracks](/manual/concepts/tracks/)
+- [1.2 Devices](/manual/concepts/devices/)
+- [1.4 Tracks](/manual/concepts/tracks/)
