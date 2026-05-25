@@ -1,55 +1,19 @@
 ---
-title: Projects
-description: How Pooly organizes and saves your work.
-number: "1.3"
+title: Pooly Projects
+description: How Pooly stores, opens, and manages your songs.
+number: "1.1"
 section: concepts
-order: 30
+order: 10
 ---
 
-## 1.3.1 What a project is
+A Pooly project is a complete song workspace saved as a `.pool` file. Everything that defines your music lives inside it: tracks and their device chains, patterns, clips in the launcher and arrangement, scenes, mixer settings, tempo, swing, and project key and scale. When you open a project, Pooly loads the full song model and returns you to the main editing view you were using last.
 
-A project contains everything about your song:
+The Projects screen is your home base. It shows every saved project as a card in a responsive grid, pulled from your configured save location (internal app storage or a custom folder on your device). Tap a card to open the project. Each card also offers actions such as preview playback, rename, duplicate, delete, export, and open-in-folder. Use the **New Project** button in the footer to create a fresh song with default settings.
 
-- Tracks and their instruments
-- Clips and patterns
-- Scenes
-- Arrangement
-- Mixer settings
-- Tempo and time signature
-
-## 1.3.2 Creating a project
-
-From the home screen, tap **New Project**. Choose a name and tap Create.
-
-A new project starts with default settings:
-
-- 120 BPM
-- 4/4 time signature
-- One empty track
-
-## 1.3.3 Saving
-
-Pooly saves automatically as you work. You can also manually save from the menu.
-
-Projects are stored on your device in Pooly's internal storage.
-
-## 1.3.4 Opening projects
-
-The home screen shows all your projects as cards. Tap one to open it.
-
-Long-press a project card for options:
-
-- **Rename**
-- **Duplicate**
-- **Delete**
-- **Export**
-
-## 1.3.5 Tips
-
-- Duplicate a project before making big changes — easy to revert
-- Use descriptive names so you can find projects later
+Pooly tracks unsaved changes while you work and prompts you before discarding them when leaving a project. New projects can be auto-provisioned with a starter layout so you can begin adding tracks immediately. Save location preferences are respected globally—changing where projects are stored refreshes the project list automatically.
 
 ## Related pages
 
-- [1.1 Clips, Patterns, and Scenes](/manual/concepts/clips-patterns-scenes/)
-- [Export your song](/learn/exporting-a-song/)
+- [1.2 Header Bar](/manual/concepts/header-bar/)
+- [1.3 Footer Bar](/manual/concepts/footer-bar/)
+- [1.13 Project Scale and Key](/manual/concepts/project-scale-and-key/)

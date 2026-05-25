@@ -1,46 +1,19 @@
 ---
 title: Tracks
-description: How tracks organize instruments and audio in your project.
-number: "1.4"
+description: Vertical lanes that carry instruments, devices, and clips.
+number: "1.5"
 section: concepts
-order: 40
+order: 50
 ---
 
-## 1.4.1 What tracks are
+A track is a vertical lane in your project that owns a device chain, mixer settings, and all clips routed through it. Every track has a persistent numeric ID, a user-visible name, a color, and a **kind** that determines what content it accepts: **Instrument** tracks host synthesizers, samplers, or drum racks and play MIDI patterns, while **Audio** tracks host audio patterns backed by recorded or imported files.
 
-A track is a vertical lane in the clip launcher that holds clips for one instrument. Each track has its own instrument, volume, pan, and effects chain.
+Each track's sound path runs through its **device chain**—the canonical store for devices, mixer parameters, routing, automation, and view state. Volume, pan, mute, and solo are read from the chain's mixer dictionary; mute and solo changes go through the track device chain service so the engine and UI stay in sync. When you add an instrument, the track name can update automatically to match unless you have renamed it yourself.
 
-## 1.4.2 Track types
-
-Pooly has two main track types:
-
-- **Instrument tracks** — hold clips with note data, connected to a synthesizer or sampler
-- **Drum tracks** — specialized for drum kits with per-pad note mapping
-
-## 1.4.3 Working with tracks
-
-### Adding a track
-
-Tap the **+** button at the right edge of the clip launcher to create a new track. Choose an instrument type and preset.
-
-### Track controls
-
-Each track header shows:
-
-- **Name** — tap to rename
-- **Instrument** — tap to open the instrument editor
-- **Volume** — drag the fader
-- **Mute / Solo** — tap the M or S buttons
-
-### Reordering tracks
-
-Drag a track header left or right to reorder it in the clip launcher.
-
-### Deleting a track
-
-Long-press the track header and choose **Delete** from the context menu.
+In the Clip Launcher and Mixer, tracks appear as columns or channel strips with headers showing name, color, and context actions such as stop, duplicate, move, and delete. You add tracks with dedicated **MIDI** and **Audio** buttons at the edge of the launcher or mixer. Reordering tracks updates the grid and mixer together so clip slots and channel order remain aligned.
 
 ## Related pages
 
-- [1.1 Clips, Patterns, and Scenes](/manual/concepts/clips-patterns-scenes/)
-- [1.2 Devices](/manual/concepts/devices/)
+- [1.6 Audio and MIDI](/manual/concepts/audio-and-midi/)
+- [1.10 Devices](/manual/concepts/devices/)
+- [1.11 Arrangement and Launcher](/manual/concepts/arrangement-and-launcher/)
