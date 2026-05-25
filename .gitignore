@@ -1,4 +1,14 @@
+# dependencies
 node_modules/
+
+# Astro build output
 dist/
 .astro/
+
+# Pagefind output, if generated outside dist
+pagefind/
+
+# environment / local
+.env
+.env.*
 .DS_Store
