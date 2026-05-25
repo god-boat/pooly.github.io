@@ -8,51 +8,45 @@ estimatedTime: 10 min
 
 ## What you'll do
 
-You'll create a short song using a drum pattern, a bass line, and a melody — all from Pooly's built-in sounds.
+You'll build a short loop with drums, bass, and a melody using Pooly's built-in sounds. No files to import—just playing pads and a little drawing in the editor.
 
 ## Step 1: Create a new project
 
-Tap **New Project** from the home screen. Give it a name — something like "My First Beat."
+From the **Projects** screen, tap **New Project** in the footer. Name it something like "My Epic Beat."
 
-A new project starts with one empty track.
+Pooly opens the Launcher—the grid where you'll build and play your ideas.
 
-## Step 2: Add a drum track
+## Step 2: Program a beat
 
-Tap the **+** button to add a new track. Choose **Drum Kit** as the instrument type.
+Tap an **empty clip slot** in the first row. Pooly creates a clip and opens **Detail View** for editing.
 
-You'll see an empty clip slot. Tap it to create a new pattern.
+Use the **piano roll** to draw notes, or switch to the **performance pads** and capture a live performance—great for finger drumming. Try a simple pattern:
 
-## Step 3: Program a beat
+- Kick on beats 1 and 3
+- Snare on beats 2 and 4
+- Hi-hat on every eighth note
 
-The piano roll opens with drum pads on the left. Try this basic pattern:
+Tap **Play** in the footer to hear your loop. Tap the back arrow to return to the launcher when you're happy.
 
-- **Kick** on beats 1 and 3
-- **Snare** on beats 2 and 4
-- **Hi-hat** on every eighth note
+## Step 3: Add a bass line
 
-Tap cells in the grid to place notes. Press play to hear your loop.
+Tap an empty slot in the bass MIDI track. Draw a simple bass line that follows your kick—short notes on the root work well for a first try.
 
-## Step 4: Add a bass line
+## Step 4: Add a melody
 
-Go back to the clip launcher. Add another track with a bass instrument.
+Tap an empty slot in the melody MIDI track. Sketch a melody over your beat. Keep it short—four bars is plenty for a first song.
 
-Create a new clip and draw in a simple bass line that follows your kick pattern.
+## Step 5: Launch everything together
 
-## Step 5: Add a melody
-
-Add one more track with a synth instrument. Create a clip and experiment with a melody over your beat.
-
-## Step 6: Launch scenes
-
-Switch to scene view. You can launch all three clips together as a scene. Try muting and unmuting tracks to create variations.
+Make sure each track has a clip in the same row. Tap the **scene launcher** button in the footer to show the scene buttons beside the grid, then tap the scene button for that row. All clips in the row start together. If nothing plays, press **Play** first—or turn on auto-play in Settings so clips start transport when you tap them.
 
 ## Tips
 
-- Keep your first song simple — four bars is plenty
-- Use the built-in presets to find sounds you like
-- Save your project often
+- Tap an empty slot to create and edit; **long-press** an existing clip and choose **Edit** to reopen it
+- Keep patterns to 1, 2, or 4 bars while learning
+- Use the **Mixer** button to balance levels once all tracks are playing
 
 ## Next steps
 
-- [Load and use your own samples](/learn/loading-samples/)
-- [Understand clips, patterns, and scenes](/manual/concepts/clips-patterns-scenes/)
+- [Load and play your own samples](/learn/loading-samples/)
+- [Clips, patterns, and scenes](/manual/concepts/clips-patterns-scenes/)

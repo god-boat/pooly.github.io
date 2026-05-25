@@ -1,6 +1,6 @@
 ---
 title: Load and play samples
-description: Import audio files and use them in your instruments.
+description: Bring your own audio into a Pooly project.
 order: 20
 difficulty: beginner
 estimatedTime: 5 min
@@ -8,35 +8,34 @@ estimatedTime: 5 min
 
 ## What you'll do
 
-You'll learn how to load audio files from your device and use them as instruments in your project.
+You'll add an audio track and load a WAV file from your device, then play it back in your project.
 
-## Step 1: Open the browser
+## Step 1: Add an audio track
 
-Tap the **Browser** button to open the file browser. This is where you find sounds, presets, and samples.
+Open a project and go to the Launcher. Tap the **Audio** add-track button at the right edge of the grid. Pooly creates a new audio track and opens Detail View so you can load a file.
 
-## Step 2: Find your files
+## Step 2: Load your file
 
-Navigate to the folder where your audio files are stored. Pooly supports WAV and OGG formats.
+In Detail View you'll see the **wave editor**. Tap **Load Sample** and pick a file from your device. Pooly supports **WAV** files.
 
-Tap a file to preview it. Tap and hold to see more options.
+Your audio appears as a waveform. Press **Play** to hear it. If the clip is longer than you need, you can trim the visible region later by adjusting the clip's start and end in the editor.
 
-## Step 3: Load into a sampler
+## Step 3: Place it in the launcher
 
-Drag a sample onto an empty track, or tap **Load** to create a new sampler instrument with your sample.
+Tap the back arrow to return to the Clip Launcher. Your audio clip sits in the slot you chose. Tap it to launch playback, or include it in a scene with your other tracks.
 
-The sampler maps your audio file across the keyboard automatically.
+To load a different file into the same slot, open the clip again from the launcher (**long-press → Edit**) and use the load control in the wave editor.
 
-## Step 4: Play your sample
+## Step 4: Fit it to your song
 
-Open the piano roll or use the on-screen keyboard to play your sample at different pitches.
+Audio clips can follow your project's tempo depending on warp settings in the clip controls. For loops, try the repitch, texture, or tones warp modes until the loop sits cleanly on the grid.
 
 ## Tips
 
-- Short, clean samples work best for melodic instruments
-- Use one-shots for drum kits
-- Try layering multiple samples for richer sounds
+- Clean, short samples work best when you're starting out
+- One-shot hits are ideal for layering on a drum track
 
 ## Next steps
 
-- [Build a custom instrument](/learn/building-an-instrument/)
-- [Learn about the Browser](/manual/views/browser/)
+- [Build an instrument](/learn/building-an-instrument/)
+- [Audio patterns](/manual/concepts/audio-patterns/)

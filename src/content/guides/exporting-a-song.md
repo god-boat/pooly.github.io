@@ -8,36 +8,38 @@ estimatedTime: 5 min
 
 ## What you'll do
 
-You'll render your song to an audio file and share it from your device.
+You'll turn your project into a file you can share—most often a WAV audio file.
 
-## Step 1: Review your arrangement
+## Step 1: Decide what to export
 
-Open the arranger view and make sure your song has a clear beginning and end. Set the loop region to cover the full song.
+For a full-song audio file, build your arrangement on the timeline so the song has a clear start and end. The export dialog lets you choose which **bars** to render—set the range to cover your entire song.
 
-## Step 2: Open export settings
+You can also export **MIDI**, **MML**, or **XM** if you want to move notes into another app. WAV is the usual choice for listening and sharing.
 
-Tap the menu and select **Export**. You'll see options for:
+## Step 2: Open export
 
-- **Format** — WAV (highest quality) or OGG (smaller files)
-- **Quality** — sample rate and bit depth
+Tap the **song avatar** in the header to open **Settings**. On the **Project** tab, tap **Export**. An export dialog appears with format and bar-range options.
+
+Playback stops while you configure export—this keeps the render accurate.
 
 ## Step 3: Render
 
-Tap **Export** to start rendering. Pooly will play through your entire arrangement and write the audio file.
+Choose **WAV** (or another format), confirm the bar range, and tap export. Pooly asks where to save the file on your device then renders the song offline—no need to sit through real-time playback—and saves the file.
 
-This may take a moment depending on song length and effects.
+Rendering time depends on song length and how many tracks and effects you used.
 
 ## Step 4: Share
 
-Once rendering completes, use your device's share menu to send the file — to messaging apps, cloud storage, or social media.
+Open the saved file from your device's files app or share it directly to messaging, cloud storage, or social apps. Listen on headphones before sending to catch level or clipping issues.
 
 ## Tips
 
-- Export WAV for further editing in other apps
-- Export OGG for quick sharing
-- Listen back on headphones before sharing to catch any issues
+- Export **WAV** when quality matters most
+- Check the bar range if your file comes out shorter or longer than expected
+- Balance levels in the **Mixer** before exporting
 
 ## Next steps
 
 - [Make your first song](/learn/first-song/)
+- [Arranger](/manual/views/arranger/)
 - [Troubleshooting](/manual/reference/troubleshooting/)

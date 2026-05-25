@@ -1,6 +1,6 @@
 ---
 title: Build an instrument
-description: Design a custom instrument using Pooly's sound engines.
+description: Shape a sound using presets, parameters, and effects.
 order: 30
 difficulty: intermediate
 estimatedTime: 15 min
@@ -8,48 +8,40 @@ estimatedTime: 15 min
 
 ## What you'll do
 
-You'll create a custom instrument from one of Pooly's built-in sound engines, shape it with envelopes and effects, and save it as a preset.
+You'll start from a factory preset, tweak it to your taste, and add effects.
 
-## Step 1: Choose a sound engine
+## Step 1: Pick a starting sound
 
-Create a new track and pick an instrument type:
+Open Clip Detail on any MIDI track (tap an empty launcher slot, **long-press a clip → Edit** double tap a clip, or select a tracks header). Select the **track name** at the top of the window to open the sound browser.
 
-- **Sampler** — plays audio files
-- **FM Synth** — classic FM synthesis
-- **Drum Kit** — multi-sample percussion
+Browse by category—**Keys**, **Bass**, **Pads**, **Leads**, **Drums**, and more—or use search to find something close to what you want. Tap a preset to load it on the track.
 
-Each engine has its own character. FM is great for bells, keys, and bass. Sampler is versatile. Drum Kit is built for beats.
+## Step 2: Shape the tone
 
-## Step 2: Shape the sound
+Clip Detail shows parameter tabs for the current instrument—operators, filters, envelopes, and more depending on the sound type. Small moves go a long way:
 
-Open the instrument editor by tapping the instrument name in the track header.
+- **Attack** controls how quickly the sound fades in
+- **Release** controls how it fades out after you let go
+- **Filter** tabs brighten or darken the tone
 
-Adjust parameters like:
-
-- **Attack** — how quickly the sound starts
-- **Decay** — how it fades from peak to sustain
-- **Sustain** — the level while the note is held
-- **Release** — how it fades after releasing
+Use the performance surface or piano roll to audition changes while you adjust.
 
 ## Step 3: Add effects
 
-Tap the effects section to add processing:
+In Detail View switch to the track effects tab. Add a reverb for space, a delay for echoes, or a filter to sculpt the tone further. Effects process the sound after the instrument—think of them as pedals on a guitar.
 
-- Reverb for space
-- Delay for echoes
-- Filter for tone shaping
+Reorder or bypass effects from the device chain panel if you want to compare before and after.
 
-## Step 4: Save as a preset
+## Step 4: Save your work
 
-When you're happy with your sound, tap **Save Preset**. Give it a name and it will appear in the Browser for future projects.
+Your tweaks live in the project—Pooly remembers them automatically. To reuse a sound elsewhere, save the preset via the Instruments core panel. If you maintain a folder of user presets on your device, they appear under **USER** in the browser.
 
 ## Tips
 
-- Start from a preset and modify it — faster than building from scratch
-- Small changes to FM ratios create dramatic sound differences
-- Use effects subtly — a little goes a long way on mobile speakers
+- Start from a preset and nudge a few knobs rather than building from zero
 
 ## Next steps
 
 - [Perform with scenes](/learn/performing-with-scenes/)
-- [Learn about devices](/manual/concepts/devices/)
+- [Devices](/manual/concepts/devices/)
+- [Presets](/manual/concepts/presets/)

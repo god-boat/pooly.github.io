@@ -1,6 +1,6 @@
 ---
 title: Perform with scenes
-description: Use scenes to launch and mix clips in real time.
+description: Launch groups of clips and mix your song in real time.
 order: 40
 difficulty: beginner
 estimatedTime: 8 min
@@ -8,43 +8,38 @@ estimatedTime: 8 min
 
 ## What you'll do
 
-You'll learn how to use Pooly's scene system to perform your music live by launching groups of clips together.
+You'll use scenes to trigger whole rows of clips at once—like switching between a verse and a chorus during a live jam.
 
-## Step 1: Set up your clips
+## Step 1: Fill a row with clips
 
-Make sure you have at least two or three tracks with clips. Each row in the clip launcher represents a scene.
+In the Clip Launcher, each **horizontal row** is a scene. Put one clip per track in the same row. Empty slots in that row simply stay silent when you launch the scene.
 
-## Step 2: Understand scenes
+## Step 2: Show the scene launcher
 
-A **scene** is a horizontal row of clips. When you launch a scene, all clips in that row start playing together.
-
-This lets you quickly switch between sections of your song — verse, chorus, break.
+Tap the **scene launcher** button in the footer to reveal the numbered scene buttons beside the grid.
 
 ## Step 3: Launch a scene
 
-Tap the scene launch button on the right side of a row. All clips in that row will start on the next bar.
+Press **Play** if transport is not already running (unless you enabled auto-play on clip trigger in Settings). Tap the scene button for the row you want. Every clip in that row starts together.
 
-The currently playing clips stop and the new ones take over.
+Build additional rows for different sections—intro in row 1, groove in row 2, breakdown in row 3—and switch between them by launching different scenes.
 
-## Step 4: Create variations
+## Step 4: Mix while you play
 
-Try these techniques:
+You don't have to launch whole scenes every time. Select individual clips to trigger just one track. Open the **Mixer** to mute, solo, or ride faders live. Muting the drums for one scene row while keeping bass and keys is an easy way to create a breakdown.
 
-- **Mute tracks** to thin out the arrangement
-- **Solo a track** to isolate one element
-- **Launch individual clips** to mix and match across scenes
+## Step 5: Build a timeline later
 
-## Step 5: Record your performance
-
-Tap the record button while performing. Pooly captures your scene launches and creates an arrangement from your performance.
+When you're ready for a fixed song structure, switch to the **Arrangement** view and place clips on the timeline bar by bar. Scenes are great for jamming and trying ideas; the arranger is where you lay out the final version.
 
 ## Tips
 
-- Keep clip lengths consistent (4 or 8 bars) for smooth transitions
-- Use empty clip slots to create "silence" for a track in specific scenes
-- Practice your transitions before recording
+- Keep clip lengths similar (4 or 8 bars) if you want scenes to feel cohesive, try varying the lengths to create a more dynamic performance.
+- Leave a slot empty in a row when you want silence on that track
+- Color tracks in the mixer or launcher so you can spot them quickly
 
 ## Next steps
 
 - [Export your finished song](/learn/exporting-a-song/)
-- [Learn about the Clip Launcher](/manual/views/clip-launcher/)
+- [Clip Launcher](/manual/views/clip-launcher/)
+- [Arrangement and Launcher](/manual/concepts/arrangement-and-launcher/)

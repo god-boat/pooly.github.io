@@ -1,6 +1,6 @@
 ---
 title: Arranger
-description: Arrange clips into a complete song timeline.
+description: Build your song on a timeline from left to right.
 number: "4"
 section: views
 order: 30
@@ -8,59 +8,55 @@ order: 30
 
 ## 4.1 When to use the Arranger
 
-Use the Arranger when you want to lay out your clips on a timeline to create a complete song structure.
+Use the Arranger when your ideas need a fixed order—a verse that always comes before a chorus, a DJ mix with timed drops, or a song you're exporting bar by bar. The Launcher is for jamming; the Arranger is for structure.
 
-## 4.2 Layout
+## 4.2 Opening the Arranger
+
+Tap the **Arrangement** button in the header. Pooly opens a horizontal timeline on wide screens and a vertical timeline in portrait—use the orientation control in the header to switch layouts.
+
+## 4.3 Layout
 
 The Arranger shows:
 
-- **Tracks** as horizontal lanes
-- **Time** flowing left to right
-- **Clips** as colored blocks on the timeline
-- **Playhead** showing the current position
+- **Tracks** as lanes stacked vertically (horizontal layout) or side by side (vertical layout)
+- **Time** flowing along the timeline.
+- **Clips** as colored blocks positioned on the grid
+- A **playhead** you can drag to audition any moment
 
-## 4.3 Adding clips to the arrangement
+A **pattern dock** can sit beside the timeline—toggle it from the footer—to browse patterns while you place clips.
 
-There are two ways to build an arrangement:
+## 4.4 Adding clips to the timeline
 
-### Record from the Clip Launcher
+Double tap an empty area on a track lane to create a new arranger clip at that bar.
 
-Press record in the Clip Launcher view and perform your song. Scene launches and clip triggers are captured and placed on the timeline automatically.
+Patterns you edited in Detail View are the same content arranger clips reference—editing linked clips updates every copy.
 
-### Draw directly
+## 4.5 Editing clips
 
-Switch to the Arranger view and draw clips directly onto the timeline. Tap an empty area to create a clip, or drag existing clips from the Clip Launcher.
+### 4.5.1 Move and resize
 
-## 4.4 Editing the arrangement
+Select a clip and drag it to move it in time or to another track. Drag its edges to change how much of the pattern plays.
 
-### Move clips
+### 4.5.2 Long-press menu
 
-Drag a clip to reposition it on the timeline or move it to a different track.
+Select a clip for **Edit**, **Clone Clip**, **Duplicate Pattern**, **Rename Clip**, link options, and **Delete**. Choose **Edit** to open Detail View.
 
-### Resize clips
+### 4.5.3 Loop the arrangement
 
-Drag the edges of a clip to change its length.
+Use the loop toggle to repeat a section while you work. Set loop bounds so playback stays focused on the bars you're editing.
 
-### Split and join
+## 4.6 Playback
 
-Long-press a clip for options to split it at the playhead or join adjacent clips.
+Press **Play** in the footer. The timeline plays from the playhead forward, respecting loop settings. Drag the playhead handle to scrub before you play.
 
-### Delete
+## 4.7 Tips
 
-Select a clip and tap delete, or drag it off the timeline.
-
-## 4.5 Playback
-
-The Arranger plays from left to right. Set loop markers to repeat a section while working.
-
-## 4.6 Tips
-
-- Build your arrangement from scenes first, then fine-tune in the Arranger
-- Use the Arranger for final song structure — verse, chorus, bridge
-- Zoom in for detailed edits, zoom out for the big picture
+- Sketch sections in the launcher first, then copy the idea to the timeline
+- Zoom the timeline for detailed edits; zoom out to see the whole song
+- Set export bar ranges in Settings to match what you built here
 
 ## Related pages
 
 - [3 Clip Launcher](/manual/views/clip-launcher/)
-- [1.1 Clips, Patterns, and Scenes](/manual/concepts/clips-patterns-scenes/)
+- [1.11 Arrangement and Launcher](/manual/concepts/arrangement-and-launcher/)
 - [Export your song](/learn/exporting-a-song/)
