@@ -1,0 +1,54 @@
+---
+interface Props {
+	images: string[];
+	class?: string;
+}
+
+const { images, class: className } = Astro.props;
+
+const rotations = [-6, 3, -2, 5];
+const offsets = [
+	{ x: -8, y: 4 },
+	{ x: 12, y: -6 },
+	{ x: -4, y: 10 },
+	{ x: 6, y: -2 },
+];
+---
+
+<div class:list={["image-stack", className]}>
+	{images.map((src, i) => (
+		<div
+			class="stack-item"
+			style={`--rotate: ${rotations[i % rotations.length]}deg; --tx: ${offsets[i % offsets.length].x}px; --ty: ${offsets[i % offsets.length].y}px;`}
+		>
+			<img src={src} alt="" loading="lazy" />
+		</div>
+	))}
+</div>
+
+<style>
+	.image-stack {
+		position: relative;
+		width: 100%;
+		aspect-ratio: 4 / 3;
+	}
+
+	.stack-item {
+		position: absolute;
+		inset: 0;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		transform: rotate(var(--rotate)) translate(var(--tx), var(--ty));
+		transition: transform var(--duration-normal) var(--ease-out);
+	}
+
+	.stack-item img {
+		width: 85%;
+		height: 85%;
+		object-fit: cover;
+		border-radius: var(--radius-md);
+		box-shadow: var(--shadow-md);
+		border: 1px solid rgba(244, 247, 251, 0.08);
+	}
+</style>

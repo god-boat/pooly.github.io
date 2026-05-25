@@ -1,0 +1,33 @@
+---
+interface Props {
+	class?: string;
+}
+
+const { class: className } = Astro.props;
+---
+
+<section class:list={["gradient-section", className]}>
+	<div class="gradient-section-inner">
+		<slot />
+	</div>
+</section>
+
+<style>
+	.gradient-section {
+		position: relative;
+		padding: var(--space-4xl) var(--space-md);
+		background: linear-gradient(
+			180deg,
+			transparent 0%,
+			rgba(34, 197, 94, 0.12) 20%,
+			rgba(34, 197, 94, 0.25) 50%,
+			rgba(34, 197, 94, 0.12) 80%,
+			transparent 100%
+		);
+	}
+
+	.gradient-section-inner {
+		max-width: var(--content-max);
+		margin: 0 auto;
+	}
+</style>

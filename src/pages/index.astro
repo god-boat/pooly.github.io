@@ -2,6 +2,16 @@
 import BaseLayout from "../layouts/BaseLayout.astro";
 import FeatureCard from "../components/FeatureCard.astro";
 import PageSection from "../components/PageSection.astro";
+import GradientSection from "../components/GradientSection.astro";
+
+const socialLinks = [
+	{ label: "Linktree", href: "https://linktr.ee/poolydaw" },
+	{ label: "Discord", href: "https://discord.gg/zbNVJYBtw7" },
+	{ label: "Threads", href: "https://www.threads.net/@poolydaw" },
+	{ label: "Patreon", href: "https://patreon.com/godboat" },
+	{ label: "Instagram", href: "https://www.instagram.com/poolydaw" },
+	{ label: "YouTube", href: "https://www.youtube.com/@poolydaw" },
+];
 ---
 
 <BaseLayout
@@ -23,14 +33,17 @@ import PageSection from "../components/PageSection.astro";
 				A powerful DAW for capturing ideas, designing sounds,
 				and arranging songs, on any device.
 			</p>
-			<div class="hero-actions">
-				<a href="/learn/" class="btn btn-primary">Start learning</a>
-				<a href="/manual/" class="btn btn-secondary">Read the manual</a>
-			</div>
+			<nav class="social-links" aria-label="Pooly DAW social links">
+				{socialLinks.map(link => (
+					<a class="social-link" href={link.href} target="_blank" rel="noopener noreferrer">
+						{link.label}
+					</a>
+				))}
+			</nav>
 		</div>
 	</section>
 
-	<PageSection>
+	<GradientSection>
 		<div class="section-header">
 			<h2>Everything you need to make music</h2>
 			<p class="section-lead">
@@ -43,24 +56,28 @@ import PageSection from "../components/PageSection.astro";
 				icon="\u26A1"
 				title="Capture ideas"
 				description="Clips and patterns let you sketch musical ideas quickly. Perform rhythms, play melodies, and build from small pieces."
+				images={["/images/placeholders/screen-1.svg", "/images/placeholders/screen-2.svg", "/images/placeholders/screen-3.svg"]}
 			/>
 			<FeatureCard
 				icon="\u{1F39B}\uFE0F"
 				title="Perform live"
 				description="Launch scenes, play pads, and perform your music in real time. Every session is a performance."
+				images={["/images/placeholders/screen-2.svg", "/images/placeholders/screen-4.svg", "/images/placeholders/screen-1.svg", "/images/placeholders/screen-3.svg"]}
 			/>
 			<FeatureCard
 				icon="\u{1F3B9}"
 				title="Build sounds"
 				description="Synthesize instruments from FM patches, samplers, and drum kits. Over 650 built-in voices to start from."
+				images={["/images/placeholders/screen-3.svg", "/images/placeholders/screen-1.svg", "/images/placeholders/screen-4.svg"]}
 			/>
 			<FeatureCard
 				icon="\u{1F4F1}"
 				title="Arrange anywhere"
 				description="Full arrangement view to compose complete songs at the park or in the studio."
+				images={["/images/placeholders/screen-4.svg", "/images/placeholders/screen-2.svg", "/images/placeholders/screen-3.svg", "/images/placeholders/screen-1.svg"]}
 			/>
 		</div>
-	</PageSection>
+	</GradientSection>
 
 	<PageSection class="cta-section">
 		<div class="cta-content">
@@ -165,50 +182,46 @@ import PageSection from "../components/PageSection.astro";
 		margin: 0 auto var(--space-2xl);
 	}
 
-	.hero-actions {
-		display: flex;
-		gap: var(--space-md);
-		justify-content: center;
-		flex-wrap: wrap;
+	.social-links {
+		display: grid;
+		grid-template-columns: repeat(2, minmax(0, 1fr));
+		gap: 0.25rem;
+		width: 100%;
 	}
 
-	.btn {
-		display: inline-flex;
+	.social-link {
+		display: flex;
 		align-items: center;
 		justify-content: center;
-		padding: var(--space-md) var(--space-xl);
-		border-radius: var(--radius-md);
-		font-family: var(--font-display);
-		font-size: var(--text-sm);
-		font-weight: 600;
-		text-decoration: none;
-		transition: all var(--duration-normal) var(--ease-out);
-		min-height: 48px;
-	}
-
-	.btn-primary {
-		background: var(--color-text);
-		color: var(--color-bg);
-	}
-
-	.btn-primary:hover {
-		transform: translateY(-2px);
-		box-shadow: 0 8px 24px rgba(244, 247, 251, 0.2);
-		color: var(--color-bg);
-	}
-
-	.btn-secondary {
-		background: var(--color-bg-glass-strong);
-		color: var(--color-text);
+		min-height: 3.25rem;
+		padding: 0.85rem 1rem;
+		border: none;
+		border-radius: 0.5rem;
+		background-color: rgba(199, 220, 255, 0.32);
 		backdrop-filter: blur(20px);
 		-webkit-backdrop-filter: blur(20px);
-		border: 1px solid var(--color-border-strong);
+		box-shadow: var(--shadow-lg);
+		text-decoration: none;
+		text-transform: lowercase;
+		font-size: 0.72rem;
+		font-weight: 200;
+		letter-spacing: 0.16em;
+		color: var(--color-text);
+		transition:
+			transform 180ms ease,
+			background-color 180ms ease;
 	}
 
-	.btn-secondary:hover {
-		background: var(--color-bg-surface-hover);
+	.social-link:hover,
+	.social-link:focus-visible {
+		background-color: rgba(62, 91, 139, 0.32);
 		transform: translateY(-2px);
 		color: var(--color-text);
+	}
+
+	.social-link:focus-visible {
+		outline: 2px solid rgba(244, 247, 251, 0.75);
+		outline-offset: 3px;
 	}
 
 	.section-header {
@@ -289,6 +302,16 @@ import PageSection from "../components/PageSection.astro";
 
 		.cta-cards {
 			grid-template-columns: repeat(3, 1fr);
+		}
+
+		.social-links {
+			grid-template-columns: repeat(3, minmax(0, 1fr));
+		}
+	}
+
+	@media (min-width: 64rem) {
+		.social-links {
+			grid-template-columns: repeat(6, minmax(0, 1fr));
 		}
 	}
 </style>
