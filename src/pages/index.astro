@@ -21,25 +21,6 @@ const socialLinks = [
 >
 	<section class="hero">
 		<div class="hero-bg"></div>
-		<div class="hero-content">
-			<TapeLabel rotate="-1.5deg">Field Studio</TapeLabel>
-			<h1>Make music before<br />the idea disappears.</h1>
-			<p class="hero-subtitle">
-				Pooly is a touch-first music workstation for sketching,
-				sampling, performing, and arranging on phones, tablets, and desktop.
-			</p>
-			<nav class="social-links" aria-label="Pooly links">
-				{socialLinks.map(link => (
-					<a
-						class="social-link"
-						href={link.href}
-						{...(link.internal ? {} : { target: "_blank", rel: "noopener noreferrer" })}
-					>
-						{link.label}
-					</a>
-				))}
-			</nav>
-		</div>
 
 		<div class="hero-device">
 			<div class="hero-device-frame">
@@ -57,13 +38,34 @@ const socialLinks = [
 			<HandNote class="device-note device-note-b">clips & patterns ↓</HandNote>
 
 			<div class="project-card">
-				<span class="project-card-title">my-song-02.pooly</span>
-				<span class="project-card-meta">4 tracks · 120 bpm</span>
+				<span class="project-card-title">my-song-02.pool</span>
+				<span class="project-card-meta">12 tracks · 202 bpm</span>
 			</div>
 		</div>
 
-		<HandNote class="note note-a">Sketch, loop, build.</HandNote>
-		<HandNote class="note note-b">Take it anywhere →</HandNote>
+		<div class="hero-content">
+			<TapeLabel rotate="-1.5deg" class="hero-tape">Field Studio Edition</TapeLabel>
+			<HandNote class="hero-tagline">Sketch, loop, build.</HandNote>
+			<h1>Make music before<br />the idea disappears.</h1>
+			<p class="hero-subtitle">
+				Pooly is a touch-first music workstation for sketching,
+				sampling, performing, and arranging on phones, tablets, and desktop.
+			</p>
+			<div class="hero-links-group">
+				<HandNote class="hero-take-anywhere">Take it anywhere ↓</HandNote>
+				<nav class="social-links" aria-label="Pooly links">
+					{socialLinks.map(link => (
+						<a
+							class="social-link"
+							href={link.href}
+							{...(link.internal ? {} : { target: "_blank", rel: "noopener noreferrer" })}
+						>
+							{link.label}
+						</a>
+					))}
+				</nav>
+			</div>
+		</div>
 	</section>
 
 	<div class="features-stack">
@@ -71,8 +73,8 @@ const socialLinks = [
 			number="01"
 			title="Built for the first 30 seconds of an idea"
 			body="Capture, sketch, and loop in moments. Clips, patterns, and variations — fast."
-			image="/images/placeholders/screen-1.svg"
-			imageAlt="Pooly pattern editor"
+			image="/images/application-screenshots/launcher%20+%20detail.png"
+			imageAlt="Pooly clip launcher and instrument detail"
 		>
 			<HandNote class="artifact artifact-01">catch it before<br/>it disappears →</HandNote>
 		</FeatureBlock>
@@ -81,19 +83,19 @@ const socialLinks = [
 			number="02"
 			title="Playable, not just editable"
 			body="Scenes, mutes, and macros put your song in your hands. Less spreadsheet, more instrument."
-			image="/images/placeholders/screen-2.svg"
-			imageAlt="Pooly performance view"
+			image="/images/application-screenshots/arranger%20+%20launcher.png"
+			imageAlt="Pooly arranger and clip launcher"
 			reverse
 		>
-			<TapeLabel rotate="3deg" class="artifact artifact-02" color="warm">Live mode</TapeLabel>
+			<TapeLabel rotate="3deg" class="artifact artifact-02" color="warm">Live performance mode</TapeLabel>
 		</FeatureBlock>
 
 		<FeatureBlock
 			number="03"
 			title="A small studio of instruments"
 			body="FM synths, samplers, expressive kits, and everyday sounds — over 650 built-in voices to start from."
-			image="/images/placeholders/screen-3.svg"
-			imageAlt="Pooly instruments"
+			image="/images/application-screenshots/detail.png"
+			imageAlt="Pooly instrument detail view"
 		>
 			<Sticker rotate="6deg" color="var(--color-blue)" class="artifact artifact-03">650+<br/>voices</Sticker>
 		</FeatureBlock>
@@ -102,8 +104,8 @@ const socialLinks = [
 			number="04"
 			title="Finish the idea"
 			body="Arrange, refine, and build your song all in one place. Turn sketches into songs without moving to a desktop."
-			image="/images/placeholders/screen-4.svg"
-			imageAlt="Pooly arrangement view"
+			image="/images/application-screenshots/tracks.png"
+			imageAlt="Pooly tracks and arrangement view"
 			reverse
 		>
 			<HandNote class="artifact artifact-04">sketch → song</HandNote>
@@ -152,13 +154,15 @@ const socialLinks = [
 	.hero-bg {
 		position: absolute;
 		inset: 0;
-		z-index: -1;
+		z-index: 0;
 		background:
 			radial-gradient(ellipse 80% 60% at 50% 40%, rgba(201, 185, 143, 0.06), transparent 70%),
 			linear-gradient(to bottom, transparent 70%, var(--color-bg));
 	}
 
 	.hero-content {
+		position: relative;
+		z-index: 2;
 		display: flex;
 		flex-direction: column;
 		gap: var(--space-lg);
@@ -179,11 +183,52 @@ const socialLinks = [
 		max-width: 32rem;
 	}
 
+	/* ── Hero inline hand notes ── */
+
+	.hero-content :global(.hero-tagline) {
+		align-self: flex-start;
+		font-size: 1.2rem;
+		color: var(--color-note);
+		margin-left: 0.25rem;
+		transform: rotate(-2deg);
+	}
+
+	.hero-links-group {
+		display: flex;
+		flex-direction: column;
+		gap: 0.5rem;
+		max-width: 28rem;
+	}
+
+	.hero-links-group :global(.hero-take-anywhere) {
+		align-self: flex-start;
+		font-size: 1.05rem;
+		color: var(--color-note);
+		margin-left: 0.75rem;
+		transform: rotate(-1.5deg);
+	}
+
+	/* ── Hero tape (Field Studio) ── */
+
+	.hero-content :global(.hero-tape) {
+		align-self: flex-start;
+		position: relative;
+		z-index: 3;
+		margin-bottom: -1.4rem;
+	}
+
 	/* ── Hero device with collage objects ── */
 
 	.hero-device {
-		display: none;
-		position: relative;
+		position: absolute;
+		top: 50%;
+		right: -28%;
+		width: 95%;
+		max-width: 720px;
+		z-index: 1;
+		transform: translateY(-50%);
+		opacity: 0.42;
+		pointer-events: none;
 	}
 
 	.hero-device-frame {
@@ -196,26 +241,34 @@ const socialLinks = [
 		box-shadow: var(--shadow-lg);
 	}
 
+	/* Hide collage objects on narrow where image is a faded backdrop */
+	.device-tape,
+	.device-sticker,
+	.device-note,
+	.project-card {
+		display: none;
+	}
+
 	.device-tape {
 		position: absolute;
-		z-index: 2;
+		z-index: 4;
 	}
 
 	.device-tape-a {
-		bottom: -0.5rem;
-		left: 8%;
+		bottom: 6%;
+		left: 14%;
 	}
 
 	.device-sticker {
 		position: absolute;
-		z-index: 2;
-		top: -1.5rem;
-		right: 3%;
+		z-index: 4;
+		top: 1.5rem;
+		right: 8%;
 	}
 
 	.device-note {
 		position: absolute;
-		z-index: 2;
+		z-index: 4;
 	}
 
 	.device-note-a {
@@ -230,10 +283,9 @@ const socialLinks = [
 
 	.project-card {
 		position: absolute;
-		z-index: 2;
+		z-index: 4;
 		top: -1.2rem;
 		left: 5%;
-		display: flex;
 		flex-direction: column;
 		gap: 2px;
 		padding: 0.4rem 0.65rem;
@@ -256,13 +308,6 @@ const socialLinks = [
 		font-size: 0.58rem;
 		color: var(--color-text-muted);
 		letter-spacing: 0.04em;
-	}
-
-	/* ── Hero hand notes ── */
-
-	.note {
-		position: absolute;
-		display: none;
 	}
 
 	/* ── Social links ── */
@@ -317,21 +362,31 @@ const socialLinks = [
 		}
 
 		.hero-device {
+			position: relative;
+			top: auto;
+			right: auto;
+			width: auto;
+			max-width: none;
+			transform: none;
+			opacity: 1;
+			pointer-events: auto;
+			grid-column: 2;
+			grid-row: 1;
+		}
+
+		.hero-content {
+			grid-column: 1;
+			grid-row: 1;
+		}
+
+		.device-tape,
+		.device-sticker,
+		.device-note {
 			display: block;
 		}
 
-		.note {
-			display: block;
-		}
-
-		.note-a {
-			top: 16%;
-			right: 42%;
-		}
-
-		.note-b {
-			bottom: 18%;
-			right: 2%;
+		.project-card {
+			display: flex;
 		}
 
 		.social-links {
@@ -362,24 +417,28 @@ const socialLinks = [
 	}
 
 	.features-stack :global(.artifact-01) {
-		bottom: 0.5rem;
-		right: 1rem;
+		bottom: 2.5rem;
+		right: 2rem;
+		z-index: 3;
 	}
 
 	.features-stack :global(.artifact-02) {
-		top: -0.8rem;
-		right: 10%;
+		top: 1.5rem;
+		right: 6%;
+		z-index: 3;
 	}
 
 	.features-stack :global(.artifact-03) {
-		bottom: -1rem;
-		left: -1.5rem;
+		bottom: 1.5rem;
+		left: 1rem;
+		z-index: 3;
 	}
 
 	.features-stack :global(.artifact-04) {
-		top: 0.5rem;
-		left: 1rem;
+		top: 2rem;
+		left: 2rem;
 		font-size: 1.1rem;
+		z-index: 3;
 	}
 
 	/* ── CTA ── */

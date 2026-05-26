@@ -20,6 +20,7 @@ body {
 		linear-gradient(var(--color-grid-line) 1px, transparent 1px),
 		linear-gradient(90deg, var(--color-grid-line) 1px, transparent 1px);
 	background-size: var(--grid-size) var(--grid-size);
+	background-attachment: fixed;
 	color: var(--color-text);
 	font-family: var(--font-body);
 	font-size: var(--text-base);
