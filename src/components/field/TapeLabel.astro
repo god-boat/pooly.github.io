@@ -9,49 +9,78 @@ const { rotate = "-2deg", class: className, color = "default" } = Astro.props;
 ---
 
 <span class:list={["tape-label", `tape-${color}`, className]} style={`--rotate:${rotate}`}>
-	<svg class="tape-edge tape-left" viewBox="0 0 8 40" preserveAspectRatio="none" aria-hidden="true">
-		<path d="M8 0 L8 40 L3 39.2 Q0 35 1 30 Q3 26 0 22 Q-1 18 2 14 Q3 10 1 6 Q0 3 3 0.8 Z" />
-	</svg>
-
-	<span class="tape-inner">
-		<slot />
+	<span class="tape-bg" aria-hidden="true">
+		<svg class="tape-edge tape-left" viewBox="0 0 8 40" preserveAspectRatio="none">
+			<path d="M8 0 L8 40 L3 39.2 Q0 35 1 30 Q3 26 0 22 Q-1 18 2 14 Q3 10 1 6 Q0 3 3 0.8 Z" />
+		</svg>
+		<span class="tape-fill"></span>
+		<svg class="tape-edge tape-right" viewBox="0 0 8 40" preserveAspectRatio="none">
+			<path d="M0 0 L0 40 L5 39.4 Q8 36 6 31 Q4 27 7 23 Q9 19 6 15 Q4 11 7 7 Q8 3 5 0.6 Z" />
+		</svg>
 	</span>
 
-	<svg class="tape-edge tape-right" viewBox="0 0 8 40" preserveAspectRatio="none" aria-hidden="true">
-		<path d="M0 0 L0 40 L5 39.4 Q8 36 6 31 Q4 27 7 23 Q9 19 6 15 Q4 11 7 7 Q8 3 5 0.6 Z" />
-	</svg>
+	<span class="tape-content">
+		<slot />
+	</span>
 </span>
 
 <style>
 	.tape-label {
-		--tape-color: rgba(207, 190, 143, 0.88);
+		--tape-color: rgb(207, 190, 143);
+		--tape-opacity: 0.88;
 
+		position: relative;
 		display: inline-flex;
-		align-items: stretch;
 		transform: rotate(var(--rotate));
 		filter: drop-shadow(0 3px 8px rgba(0, 0, 0, 0.3));
 	}
 
 	.tape-light {
-		--tape-color: rgba(222, 212, 185, 0.72);
+		--tape-color: rgb(222, 212, 185);
+		--tape-opacity: 0.72;
 	}
 
 	.tape-warm {
-		--tape-color: rgba(200, 170, 110, 0.9);
+		--tape-color: rgb(200, 170, 110);
+		--tape-opacity: 0.9;
+	}
+
+	.tape-bg {
+		position: absolute;
+		inset: 0;
+		display: flex;
+		align-items: stretch;
+		opacity: var(--tape-opacity);
+		z-index: 0;
+		pointer-events: none;
 	}
 
 	.tape-edge {
 		display: block;
 		width: 8px;
-		flex-shrink: 0;
+		flex: 0 0 8px;
 		fill: var(--tape-color);
 	}
 
-	.tape-inner {
+	.tape-left {
+		margin-right: -1px;
+	}
+
+	.tape-right {
+		margin-left: -1px;
+	}
+
+	.tape-fill {
+		flex: 1;
+		background: var(--tape-color);
+	}
+
+	.tape-content {
+		position: relative;
+		z-index: 1;
 		display: inline-flex;
 		align-items: center;
 		padding: 0.35rem 1.4rem;
-		background: var(--tape-color);
 		color: #1b1710;
 		font-size: 0.74rem;
 		font-weight: 700;
