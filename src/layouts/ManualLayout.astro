@@ -99,19 +99,73 @@ for (const heading of pageHeadings) {
 						);
 						if (entries.length === 0) return null;
 
+						const isSinglePageChapter =
+							entries.length === 1 &&
+							entries[0].data.number === String(chapter);
+
+						const renderHeadingSections = () => (
+							headingSections.length > 0 && (
+								<ul class="sidebar-subsections" data-manual-heading-nav>
+									{headingSections.map((section, index) => (
+										<li
+											class:list={[
+												"sidebar-subsection",
+												{ "is-expanded": index === 0 },
+											]}
+											data-manual-heading-section
+											data-heading-slugs={section.slugs.join(" ")}
+										>
+											<a
+												href={`#${section.heading.slug}`}
+												class:list={[
+													"sidebar-sub-link",
+													{ "sidebar-sub-link-parent": section.heading.depth === 2 },
+												]}
+												data-manual-heading-link
+												data-heading-slug={section.heading.slug}
+											>
+												{section.heading.text}
+											</a>
+											{section.children.length > 0 && (
+												<ul class="sidebar-subtree">
+													{section.children.map(child => (
+														<li>
+															<a
+																href={`#${child.slug}`}
+																class="sidebar-sub-link"
+																data-manual-heading-link
+																data-heading-slug={child.slug}
+															>
+																{child.text}
+															</a>
+														</li>
+													))}
+												</ul>
+											)}
+										</li>
+									))}
+								</ul>
+							)
+						);
+
+						const headEntry = entries[0];
+						const isHeadActive = headEntry.data.number === number;
+
 						return (
 							<div class="sidebar-section">
-								<h4 class="sidebar-heading">{chapter}. {manualChapters[chapter]}</h4>
-								<ul class="sidebar-list">
-									{entries.map(entry => {
-										const isSinglePageChapter =
-											entries.length === 1 &&
-											entry.data.number === String(chapter);
-										const label = isSinglePageChapter
-											? `${entry.data.number} ${manualChapters[chapter]}`
-											: formatManualLabel(entry.data.number, entry.data.title);
-
-										return (
+								<a
+									href={`/manual/${headEntry.id}/`}
+									class:list={[
+										"sidebar-heading sidebar-heading-link",
+										{ active: isHeadActive },
+									]}
+								>
+									{chapter}. {manualChapters[chapter]}
+								</a>
+								{isHeadActive && renderHeadingSections()}
+								{!isSinglePageChapter && (
+									<ul class="sidebar-list">
+										{entries.slice(1).map(entry => (
 											<li>
 												<a
 													href={`/manual/${entry.id}/`}
@@ -120,54 +174,13 @@ for (const heading of pageHeadings) {
 														{ active: entry.data.number === number },
 													]}
 												>
-													{label}
+													{formatManualLabel(entry.data.number, entry.data.title)}
 												</a>
-												{entry.data.number === number && headingSections.length > 0 && (
-													<ul class="sidebar-subsections" data-manual-heading-nav>
-														{headingSections.map((section, index) => (
-															<li
-																class:list={[
-																	"sidebar-subsection",
-																	{ "is-expanded": index === 0 },
-																]}
-																data-manual-heading-section
-																data-heading-slugs={section.slugs.join(" ")}
-															>
-																<a
-																	href={`#${section.heading.slug}`}
-																	class:list={[
-																		"sidebar-sub-link",
-																		{ "sidebar-sub-link-parent": section.heading.depth === 2 },
-																	]}
-																	data-manual-heading-link
-																	data-heading-slug={section.heading.slug}
-																>
-																	{section.heading.text}
-																</a>
-																{section.children.length > 0 && (
-																	<ul class="sidebar-subtree">
-																		{section.children.map(child => (
-																			<li>
-																				<a
-																					href={`#${child.slug}`}
-																					class="sidebar-sub-link"
-																					data-manual-heading-link
-																					data-heading-slug={child.slug}
-																				>
-																					{child.text}
-																				</a>
-																			</li>
-																		))}
-																	</ul>
-																)}
-															</li>
-														))}
-													</ul>
-												)}
+												{entry.data.number === number && renderHeadingSections()}
 											</li>
-										);
-									})}
-								</ul>
+										))}
+									</ul>
+								)}
 							</div>
 						);
 					})}
@@ -400,6 +413,24 @@ for (const heading of pageHeadings) {
 		letter-spacing: 0.1em;
 		color: var(--color-text-muted);
 		margin-bottom: var(--space-sm);
+	}
+
+	.sidebar-heading-link {
+		display: block;
+		padding: var(--space-xs) var(--space-sm);
+		border-radius: var(--radius-sm);
+		margin-bottom: 0;
+		transition: all var(--duration-fast) var(--ease-out);
+	}
+
+	.sidebar-heading-link:hover {
+		color: var(--color-text);
+		background: var(--color-bg-surface);
+	}
+
+	.sidebar-heading-link.active {
+		color: var(--color-accent);
+		background: var(--color-accent-soft);
 	}
 
 	.sidebar-list {
