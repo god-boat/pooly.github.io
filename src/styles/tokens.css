@@ -1,37 +1,53 @@
 :root {
+	/* ── Field Studio palette ── */
+
 	/* Backgrounds */
-	--color-bg: #05070b;
-	--color-bg-raised: rgba(7, 17, 9, 0.56);
-	--color-bg-surface: rgba(199, 255, 205, 0.06);
-	--color-bg-surface-hover: rgba(199, 255, 200, 0.12);
-	--color-bg-glass: rgba(200, 255, 199, 0.08);
-	--color-bg-glass-strong: rgba(199, 255, 211, 0.16);
+	--color-bg: #11110f;
+	--color-bg-raised: #191916;
+	--color-bg-surface: rgba(242, 238, 228, 0.06);
+	--color-bg-surface-hover: rgba(242, 238, 228, 0.10);
+	--color-bg-glass: rgba(242, 238, 228, 0.05);
+	--color-bg-glass-strong: rgba(242, 238, 228, 0.10);
+	--color-paper: #191916;
+	--color-paper-soft: #20201c;
 
 	/* Text */
-	--color-text: #f4fbf4;
-	--color-text-soft: rgba(244, 251, 244, 0.72);
-	--color-text-muted: rgba(244, 251, 244, 0.44);
+	--color-text: #f2eee4;
+	--color-text-soft: rgba(242, 238, 228, 0.72);
+	--color-text-muted: rgba(242, 238, 228, 0.44);
 
 	/* Accent */
-	--color-accent: #78ffa3;
-	--color-accent-hover: #9cffb0;
-	--color-accent-soft: rgba(120, 255, 167, 0.16);
-	--color-accent-glow: rgba(120, 255, 170, 0.24);
+	--color-accent: #c9b98f;
+	--color-accent-hover: #ddd0ab;
+	--color-accent-soft: rgba(201, 185, 143, 0.16);
+	--color-accent-glow: rgba(201, 185, 143, 0.24);
+
+	/* Field Studio colors */
+	--color-blue: #4e6f9e;
+	--color-clay: #b87543;
+	--color-olive: #9a9b62;
+	--color-tape: #c9b98f;
+	--color-note: #e2d0a2;
+
+	/* Grid */
+	--color-grid-line: rgba(242, 238, 228, 0.055);
+	--color-grid-line-strong: rgba(242, 238, 228, 0.08);
+	--grid-size: 28px;
 
 	/* Borders */
-	--color-border: rgba(244, 251, 245, 0);
-	--color-border-strong: rgba(244, 251, 246, 0);
-	--color-media-border: rgba(120, 255, 170, 0.24);
+	--color-border: rgba(242, 238, 228, 0.10);
+	--color-border-strong: rgba(242, 238, 228, 0.18);
+	--color-media-border: rgba(201, 185, 143, 0.24);
 
 	/* Shadows */
-	--shadow-sm: 0 2px 8px rgba(18, 40, 25, 0.2);
-	--shadow-md: 0 8px 32px rgba(21, 36, 25, 0.24);
-	--shadow-lg: 0 24px 60px rgba(21, 40, 26, 0.34);
-	--shadow-media: 0 16px 48px rgba(4, 14, 10, 0.44);
+	--shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.2);
+	--shadow-md: 0 8px 32px rgba(0, 0, 0, 0.24);
+	--shadow-lg: 0 16px 50px rgba(0, 0, 0, 0.35);
+	--shadow-media: 0 16px 48px rgba(0, 0, 0, 0.44);
 
 	/* Manual media */
-	--color-media-bg: rgba(9, 20, 12, 0.82);
-	--color-media-caption: rgba(244, 251, 244, 0.74);
+	--color-media-bg: rgba(8, 8, 7, 0.82);
+	--color-media-caption: rgba(242, 238, 228, 0.74);
 
 	/* Spacing */
 	--space-xs: 0.25rem;
@@ -46,6 +62,7 @@
 	/* Typography */
 	--font-display: "Unbounded", sans-serif;
 	--font-body: "Inter", system-ui, -apple-system, sans-serif;
+	--font-hand: "Kalam", "Comic Sans MS", cursive;
 
 	/* Font sizes */
 	--text-xs: 0.75rem;
@@ -63,6 +80,7 @@
 	--radius-md: 0.75rem;
 	--radius-lg: 1rem;
 	--radius-xl: 1.5rem;
+	--radius-2xl: 1.75rem;
 
 	/* Layout */
 	--content-max: 72rem;

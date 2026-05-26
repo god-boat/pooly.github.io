@@ -1,0 +1,27 @@
+---
+interface Props {
+	rotate?: string;
+	class?: string;
+}
+
+const { rotate = "-2deg", class: className } = Astro.props;
+---
+
+<span class:list={["tape-label", className]} style={`--rotate:${rotate}`}>
+	<slot />
+</span>
+
+<style>
+	.tape-label {
+		display: inline-block;
+		padding: 0.35rem 0.75rem;
+		background: rgba(207, 190, 143, 0.9);
+		color: #1b1710;
+		font-size: 0.78rem;
+		font-weight: 600;
+		letter-spacing: 0.06em;
+		text-transform: uppercase;
+		transform: rotate(var(--rotate));
+		box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+	}
+</style>

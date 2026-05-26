@@ -275,7 +275,6 @@ for (const heading of pageHeadings) {
 		const computeActiveSlugFromScroll = (): string => {
 			if (slugs.length === 0) return "";
 
-			// Treat a heading as "current" once its top has crossed the offset line.
 			const offset = Math.max(96, window.innerHeight * 0.2);
 			let activeSlug = slugs[0];
 
@@ -290,8 +289,6 @@ for (const heading of pageHeadings) {
 				}
 			}
 
-			// At the very bottom of the page, force-activate the last heading
-			// in case its top never crosses the offset line.
 			const nearBottom =
 				window.innerHeight + window.scrollY >=
 				document.documentElement.scrollHeight - 4;
@@ -319,7 +316,6 @@ for (const heading of pageHeadings) {
 			window.requestAnimationFrame(updateFromScroll);
 		};
 
-		// Initial state: derive from hash if present, otherwise from scroll.
 		const initialHash = decodeURIComponent(window.location.hash).replace(/^#/, "");
 		if (initialHash && headingElements.has(initialHash)) {
 			lastSlug = initialHash;
@@ -331,8 +327,6 @@ for (const heading of pageHeadings) {
 		window.addEventListener("scroll", onScroll, { passive: true });
 		window.addEventListener("resize", onScroll, { passive: true });
 
-		// When the user clicks an in-page link, honor that selection immediately
-		// rather than waiting for the browser's scroll to settle.
 		for (const link of links) {
 			link.addEventListener("click", () => {
 				const slug = link.dataset.headingSlug ?? "";
@@ -375,7 +369,7 @@ for (const heading of pageHeadings) {
 	.sidebar-drawer {
 		border: 1px solid var(--color-border);
 		border-radius: var(--radius-md);
-		background: var(--color-bg-glass);
+		background: var(--color-paper);
 	}
 
 	.sidebar-toggle {
@@ -588,8 +582,9 @@ for (const heading of pageHeadings) {
 		flex-direction: column;
 		gap: var(--space-xs);
 		padding: var(--space-lg);
-		border-radius: var(--radius-md);
+		border-radius: var(--radius-lg);
 		border: 1px solid var(--color-border);
+		background: var(--color-paper);
 		color: var(--color-text);
 		text-decoration: none;
 		transition: all var(--duration-fast) var(--ease-out);
@@ -597,7 +592,7 @@ for (const heading of pageHeadings) {
 
 	.article-nav-link:hover {
 		border-color: var(--color-border-strong);
-		background: var(--color-bg-surface);
+		background: var(--color-paper-soft);
 		color: var(--color-text);
 	}
 
