@@ -22,7 +22,7 @@ const socialLinks = [
 	<section class="hero">
 		<div class="hero-bg"></div>
 		<div class="hero-content">
-			<TapeLabel rotate="-1deg">Portable Studio</TapeLabel>
+			<TapeLabel rotate="-1.5deg">Field Studio</TapeLabel>
 			<h1>Make music before<br />the idea disappears.</h1>
 			<p class="hero-subtitle">
 				Pooly is a touch-first music workstation for sketching,
@@ -40,16 +40,30 @@ const socialLinks = [
 				))}
 			</nav>
 		</div>
+
 		<div class="hero-device">
-			<img
-				src="/images/brand/poolyHero01.png"
-				alt="Pooly clip launcher"
-				width="800"
-				height="600"
-			/>
+			<div class="hero-device-frame">
+				<img
+					src="/images/brand/poolyHero01.png"
+					alt="Pooly clip launcher"
+					width="800"
+					height="600"
+				/>
+			</div>
+
+			<TapeLabel rotate="2deg" class="device-tape device-tape-a" color="light">Clip Launcher</TapeLabel>
+			<Sticker rotate="-7deg" color="var(--color-olive)" class="device-sticker">Made on<br/>the bus</Sticker>
+			<HandNote class="device-note device-note-a">← scenes</HandNote>
+			<HandNote class="device-note device-note-b">clips & patterns ↓</HandNote>
+
+			<div class="project-card">
+				<span class="project-card-title">my-song-02.pooly</span>
+				<span class="project-card-meta">4 tracks · 120 bpm</span>
+			</div>
 		</div>
+
 		<HandNote class="note note-a">Sketch, loop, build.</HandNote>
-		<HandNote class="note note-b">Take it anywhere.</HandNote>
+		<HandNote class="note note-b">Take it anywhere →</HandNote>
 	</section>
 
 	<div class="features-stack">
@@ -59,7 +73,9 @@ const socialLinks = [
 			body="Capture, sketch, and loop in moments. Clips, patterns, and variations — fast."
 			image="/images/placeholders/screen-1.svg"
 			imageAlt="Pooly pattern editor"
-		/>
+		>
+			<HandNote class="artifact artifact-01">catch it before<br/>it disappears →</HandNote>
+		</FeatureBlock>
 
 		<FeatureBlock
 			number="02"
@@ -68,7 +84,9 @@ const socialLinks = [
 			image="/images/placeholders/screen-2.svg"
 			imageAlt="Pooly performance view"
 			reverse
-		/>
+		>
+			<TapeLabel rotate="3deg" class="artifact artifact-02" color="warm">Live mode</TapeLabel>
+		</FeatureBlock>
 
 		<FeatureBlock
 			number="03"
@@ -76,7 +94,9 @@ const socialLinks = [
 			body="FM synths, samplers, expressive kits, and everyday sounds — over 650 built-in voices to start from."
 			image="/images/placeholders/screen-3.svg"
 			imageAlt="Pooly instruments"
-		/>
+		>
+			<Sticker rotate="6deg" color="var(--color-blue)" class="artifact artifact-03">650+<br/>voices</Sticker>
+		</FeatureBlock>
 
 		<FeatureBlock
 			number="04"
@@ -85,15 +105,17 @@ const socialLinks = [
 			image="/images/placeholders/screen-4.svg"
 			imageAlt="Pooly arrangement view"
 			reverse
-		/>
+		>
+			<HandNote class="artifact artifact-04">sketch → song</HandNote>
+		</FeatureBlock>
 	</div>
 
 	<section class="cta-section">
-		<Sticker color="var(--color-clay)" rotate="-4deg" class="cta-sticker">Touch-first<br />DAW</Sticker>
+		<Sticker color="var(--color-clay)" rotate="-6deg" class="cta-sticker">Start messy.<br/>Make it<br/>better.</Sticker>
 		<div class="cta-content">
-			<h2>Ready to start creating?</h2>
+			<h2>Join early access</h2>
 			<p class="cta-lead">
-				Explore guides, read the manual, or join the community.
+				Help shape a music app built for ideas in motion.
 			</p>
 			<div class="cta-cards">
 				<a href="/learn/" class="cta-card">
@@ -157,20 +179,93 @@ const socialLinks = [
 		max-width: 32rem;
 	}
 
+	/* ── Hero device with collage objects ── */
+
 	.hero-device {
 		display: none;
+		position: relative;
 	}
 
-	.hero-device img {
+	.hero-device-frame {
+		transform: rotate(-2deg);
+	}
+
+	.hero-device-frame img {
 		width: 100%;
 		border-radius: var(--radius-xl);
 		box-shadow: var(--shadow-lg);
 	}
 
+	.device-tape {
+		position: absolute;
+		z-index: 2;
+	}
+
+	.device-tape-a {
+		bottom: -0.5rem;
+		left: 8%;
+	}
+
+	.device-sticker {
+		position: absolute;
+		z-index: 2;
+		top: -1.5rem;
+		right: 3%;
+	}
+
+	.device-note {
+		position: absolute;
+		z-index: 2;
+	}
+
+	.device-note-a {
+		top: 28%;
+		left: -3rem;
+	}
+
+	.device-note-b {
+		bottom: 22%;
+		right: -2rem;
+	}
+
+	.project-card {
+		position: absolute;
+		z-index: 2;
+		top: -1.2rem;
+		left: 5%;
+		display: flex;
+		flex-direction: column;
+		gap: 2px;
+		padding: 0.4rem 0.65rem;
+		background: var(--color-paper);
+		border: 1px solid var(--color-border-strong);
+		border-radius: var(--radius-sm);
+		transform: rotate(1deg);
+		box-shadow: var(--shadow-md);
+	}
+
+	.project-card-title {
+		font-family: var(--font-body);
+		font-size: 0.68rem;
+		font-weight: 600;
+		color: var(--color-text);
+		letter-spacing: 0.02em;
+	}
+
+	.project-card-meta {
+		font-size: 0.58rem;
+		color: var(--color-text-muted);
+		letter-spacing: 0.04em;
+	}
+
+	/* ── Hero hand notes ── */
+
 	.note {
 		position: absolute;
 		display: none;
 	}
+
+	/* ── Social links ── */
 
 	.social-links {
 		display: grid;
@@ -223,7 +318,6 @@ const socialLinks = [
 
 		.hero-device {
 			display: block;
-			transform: rotate(-2deg);
 		}
 
 		.note {
@@ -231,13 +325,13 @@ const socialLinks = [
 		}
 
 		.note-a {
-			top: 18%;
-			right: 38%;
+			top: 16%;
+			right: 42%;
 		}
 
 		.note-b {
-			top: 34%;
-			right: 4%;
+			bottom: 18%;
+			right: 2%;
 		}
 
 		.social-links {
@@ -262,6 +356,32 @@ const socialLinks = [
 		padding: var(--space-3xl) var(--space-md);
 	}
 
+	/* Per-section artifact positioning */
+	.features-stack :global(.artifact) {
+		pointer-events: none;
+	}
+
+	.features-stack :global(.artifact-01) {
+		bottom: 0.5rem;
+		right: 1rem;
+	}
+
+	.features-stack :global(.artifact-02) {
+		top: -0.8rem;
+		right: 10%;
+	}
+
+	.features-stack :global(.artifact-03) {
+		bottom: -1rem;
+		left: -1.5rem;
+	}
+
+	.features-stack :global(.artifact-04) {
+		top: 0.5rem;
+		left: 1rem;
+		font-size: 1.1rem;
+	}
+
 	/* ── CTA ── */
 
 	.cta-section {
@@ -275,7 +395,7 @@ const socialLinks = [
 	.cta-sticker {
 		position: absolute;
 		top: var(--space-xl);
-		right: var(--space-xl);
+		right: var(--space-2xl);
 		display: none;
 	}
 
