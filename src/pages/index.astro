@@ -34,8 +34,8 @@ const socialLinks = [
 
 			<TapeLabel rotate="2deg" class="device-tape device-tape-a" color="light">Clip Launcher</TapeLabel>
 			<Sticker rotate="-7deg" color="var(--color-olive)" class="device-sticker">Made on<br/>the bus</Sticker>
-			<HandNote class="device-note device-note-a">← scenes</HandNote>
-			<HandNote class="device-note device-note-b">clips & patterns ↓</HandNote>
+			<HandNote class="device-note device-note-a">^ scenes</HandNote>
+			<HandNote class="device-note device-note-b">clips & patterns</HandNote>
 
 			<div class="project-card">
 				<span class="project-card-title">my-song-02.pool</span>
@@ -44,15 +44,15 @@ const socialLinks = [
 		</div>
 
 		<div class="hero-content">
-			<TapeLabel rotate="-1.5deg" class="hero-tape">Field Studio Edition</TapeLabel>
-			<HandNote class="hero-tagline">Sketch, loop, build.</HandNote>
+			<TapeLabel rotate="-9.5deg" class="hero-tape">  Field Studio  </TapeLabel>
+			<!-- <HandNote class="hero-tagline">Sketch, loop, build.</HandNote> -->
 			<h1>Make music before<br />the idea disappears.</h1>
 			<p class="hero-subtitle">
 				Pooly is a touch-first music workstation for sketching,
 				sampling, performing, and arranging on phones, tablets, and desktop.
 			</p>
 			<div class="hero-links-group">
-				<HandNote class="hero-take-anywhere">Take it anywhere ↓</HandNote>
+				<HandNote class="hero-take-anywhere">take it anywhere →</HandNote>
 				<nav class="social-links" aria-label="Pooly links">
 					{socialLinks.map(link => (
 						<a
@@ -73,10 +73,10 @@ const socialLinks = [
 			number="01"
 			title="Built for the first 30 seconds of an idea"
 			body="Capture, sketch, and loop in moments. Clips, patterns, and variations — fast."
-			image="/images/application-screenshots/launcher%20+%20detail.png"
+			image="/images/application-screenshots/tracks.png"
 			imageAlt="Pooly clip launcher and instrument detail"
 		>
-			<HandNote class="artifact artifact-01">catch it before<br/>it disappears →</HandNote>
+			<HandNote class="artifact artifact-01">catch it before it disappears ♪</HandNote>
 		</FeatureBlock>
 
 		<FeatureBlock
@@ -87,24 +87,24 @@ const socialLinks = [
 			imageAlt="Pooly arranger and clip launcher"
 			reverse
 		>
-			<TapeLabel rotate="3deg" class="artifact artifact-02" color="warm">Live performance mode</TapeLabel>
+			<TapeLabel rotate="3deg" class="artifact artifact-02" color="warm">  live performance  </TapeLabel>
 		</FeatureBlock>
 
 		<FeatureBlock
 			number="03"
 			title="A small studio of instruments"
-			body="FM synths, samplers, expressive kits, and everyday sounds — over 650 built-in voices to start from."
+			body="FM synths, samplers, expressive kits, and everyday sounds — over 550 built-in voices to start from."
 			image="/images/application-screenshots/detail.png"
 			imageAlt="Pooly instrument detail view"
 		>
-			<Sticker rotate="6deg" color="var(--color-blue)" class="artifact artifact-03">650+<br/>voices</Sticker>
+			<Sticker rotate="6deg" color="var(--color-blue)" class="artifact artifact-03">550+<br/>voices</Sticker>
 		</FeatureBlock>
 
 		<FeatureBlock
 			number="04"
 			title="Finish the idea"
 			body="Arrange, refine, and build your song all in one place. Turn sketches into songs without moving to a desktop."
-			image="/images/application-screenshots/tracks.png"
+			image="/images/application-screenshots/launcher%20+%20detail.png"
 			imageAlt="Pooly tracks and arrangement view"
 			reverse
 		>
@@ -118,6 +118,7 @@ const socialLinks = [
 			<h2>Join early access</h2>
 			<p class="cta-lead">
 				Help shape a music app built for ideas in motion.
+				<br/>COMING SOON
 			</p>
 			<div class="cta-cards">
 				<a href="/learn/" class="cta-card">
@@ -142,7 +143,7 @@ const socialLinks = [
 
 	.hero {
 		position: relative;
-		overflow: hidden;
+		overflow: visible;
 		display: grid;
 		grid-template-columns: 1fr;
 		gap: var(--space-2xl);
