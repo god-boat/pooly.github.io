@@ -1,0 +1,119 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+---
+
+<BaseLayout
+	title="Detail View"
+	description="Clip Detail is where you edit note content, shape sounds, and manage per-clip controls."
+>
+	<div class="detail-page">
+		<header class="detail-header">
+			<p class="detail-section-label">Manual</p>
+			<h1>Detail View and Clip Detail</h1>
+			<p class="detail-lead">
+				Clip Detail is where you edit note content, shape sounds, and manage per-clip controls.
+			</p>
+		</header>
+
+		<section class="detail-section">
+			<figure class="manual-media" data-wrap="right">
+				<img
+					src="/images/application-screenshots/detail.png"
+					alt="Pooly Clip Detail view showing voice controls and drum clip slots."
+					width="686"
+					height="1029"
+					loading="lazy"
+				/>
+				<figcaption>
+					Clip Detail on an instrument track: edit voice parameters and clip content in one place.
+				</figcaption>
+			</figure>
+			<p>
+				If you are learning this part of Pooly, start with these sections:
+			</p>
+			<ul class="detail-links">
+				<li>
+					<a href="/manual/core-concepts/#16-detail-view">1.6 Detail View</a> for the editing
+					model and panel layout.
+				</li>
+				<li>
+					<a href="/manual/views/clip-launcher/">3 Clip Launcher</a> for how clips open into
+					Detail View from the grid.
+				</li>
+				<li>
+					<a href="/manual/views/browser/">2 Browser</a> for how instrument and effect browsing
+					works inside Clip Detail.
+				</li>
+			</ul>
+		</section>
+
+		<p class="back-link"><a href="/manual/">&larr; Back to Manual</a></p>
+	</div>
+</BaseLayout>
+
+<style>
+	.detail-page {
+		max-width: var(--content-max);
+		margin: 0 auto;
+		padding: var(--space-2xl) var(--space-md);
+	}
+
+	.detail-header {
+		margin-bottom: var(--space-2xl);
+	}
+
+	.detail-section-label {
+		font-size: var(--text-xs);
+		font-weight: 600;
+		text-transform: uppercase;
+		letter-spacing: 0.1em;
+		color: var(--color-accent);
+		margin-bottom: var(--space-sm);
+	}
+
+	.detail-header h1 {
+		font-size: clamp(var(--text-2xl), 5vw, var(--text-3xl));
+		margin-bottom: var(--space-md);
+	}
+
+	.detail-lead {
+		font-size: var(--text-lg);
+		color: var(--color-text-soft);
+		line-height: 1.6;
+	}
+
+	.detail-section {
+		line-height: 1.7;
+	}
+
+	.detail-section::after {
+		content: "";
+		display: block;
+		clear: both;
+	}
+
+	.detail-section p {
+		max-width: 46rem;
+		color: var(--color-text-soft);
+		text-wrap: pretty;
+		overflow-wrap: anywhere;
+	}
+
+	.detail-links {
+		margin-top: var(--space-md);
+		padding-left: var(--space-xl);
+		max-width: 46rem;
+	}
+
+	.detail-links li {
+		margin-bottom: var(--space-xs);
+		color: var(--color-text-soft);
+	}
+
+	.back-link {
+		margin-top: var(--space-3xl);
+		padding-top: var(--space-xl);
+		border-top: 1px solid var(--color-border);
+		font-size: var(--text-sm);
+	}
+</style>

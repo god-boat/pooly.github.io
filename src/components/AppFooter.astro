@@ -8,7 +8,7 @@ const links = [
 	{
 		label: "Patreon",
 		href: "https://patreon.com/godboat",
-		icon: `<svg viewBox="0 0 24 24" fill="currentColor"><path d="M14.82 2.41c-3.96 0-7.17 3.21-7.17 7.17 0 3.95 3.21 7.17 7.17 7.17 3.95 0 7.17-3.22 7.17-7.17 0-3.96-3.22-7.17-7.17-7.17zM2.01 21.6h3.02V2.41H2.01V21.6z"/></svg>`,
+		icon: `<svg viewBox="0 0 24 24" fill="currentColor"><path d="M0 .48v23.04h4.219V.489H0zm15.384 0c-4.767 0-8.644 3.88-8.644 8.65 0 4.755 3.877 8.623 8.644 8.623 4.754 0 8.616-3.868 8.616-8.623C24 4.36 20.138.48 15.384.48z"/></svg>`,
 	},
 	{
 		label: "Threads",
@@ -28,7 +28,7 @@ const links = [
 	{
 		label: "Linktree",
 		href: "https://linktr.ee/poolydaw",
-		icon: `<svg viewBox="0 0 24 24" fill="currentColor"><path d="M7.953 15.066l-.038-4.166h-2.86v-2.1h2.86l-.039-2.251L9.505 5.2l1.628 1.349-.038 2.251h2.86v2.1h-2.86l-.038 4.166H7.953zm3.104 3.934h-2.1V24h2.1v-5zm0-12.78h-2.1V0h2.1v6.22z"/></svg>`,
+		icon: `<svg viewBox="0 0 24 24" fill="currentColor"><path d="M13.736 5.853l3.84-4.046 2.787 2.683-4.05 3.916h5.687v3.842h-5.687l4.05 4.046-2.787 2.685-5.534-5.62-5.532 5.62-2.788-2.685 4.05-4.046H2.001V8.406h5.687l-4.05-3.916L6.426 1.807l3.842 4.046V0h3.468v5.853zM10.268 14.815h3.468V24h-3.468v-9.185z"/></svg>`,
 	},
 ];
 ---
@@ -42,9 +42,14 @@ const links = [
 				</a>
 			))}
 		</nav>
-		<p class="footer-copy">
-			&copy; {new Date().getFullYear()} Pooly
-		</p>
+		<img
+			class="footer-mark"
+			src="/images/brand/pooly_icon_windows_2.png"
+			alt="Pooly"
+			width="64"
+			height="64"
+			loading="lazy"
+		/>
 	</div>
 </footer>
 
@@ -87,8 +92,10 @@ const links = [
 		color: var(--color-text);
 	}
 
-	.footer-copy {
-		color: var(--color-text-muted);
-		font-size: var(--text-xs);
+	.footer-mark {
+		width: 2rem;
+		height: 2rem;
+		object-fit: contain;
+		opacity: 0.7;
 	}
 </style>

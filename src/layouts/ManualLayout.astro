@@ -219,20 +219,29 @@ for (const heading of pageHeadings) {
 			headingNav.querySelectorAll<HTMLAnchorElement>("[data-manual-heading-link]"),
 		);
 
-		const normalizeSlug = (hash: string): string =>
-			decodeURIComponent(hash).replace(/^#/, "");
+		const slugs: string[] = [];
+		const headingElements = new Map<string, HTMLElement>();
 
-		const updateHeadingNavState = () => {
-			const activeSlug = normalizeSlug(window.location.hash);
+		for (const link of links) {
+			const slug = link.dataset.headingSlug ?? "";
+			if (!slug || headingElements.has(slug)) continue;
+			const target = document.getElementById(slug);
+			if (target instanceof HTMLElement) {
+				slugs.push(slug);
+				headingElements.set(slug, target);
+			}
+		}
+
+		const applyActiveSlug = (activeSlug: string) => {
 			let expandedSection: HTMLElement | null = null;
 
 			if (activeSlug.length > 0) {
 				expandedSection =
 					sections.find(section => {
-						const slugs = (section.dataset.headingSlugs ?? "")
+						const sectionSlugs = (section.dataset.headingSlugs ?? "")
 							.split(" ")
 							.filter(Boolean);
-						return slugs.includes(activeSlug);
+						return sectionSlugs.includes(activeSlug);
 					}) ?? null;
 			}
 
@@ -250,8 +259,83 @@ for (const heading of pageHeadings) {
 			}
 		};
 
-		updateHeadingNavState();
-		window.addEventListener("hashchange", updateHeadingNavState);
+		const computeActiveSlugFromScroll = (): string => {
+			if (slugs.length === 0) return "";
+
+			// Treat a heading as "current" once its top has crossed the offset line.
+			const offset = Math.max(96, window.innerHeight * 0.2);
+			let activeSlug = slugs[0];
+
+			for (const slug of slugs) {
+				const el = headingElements.get(slug);
+				if (!el) continue;
+				const top = el.getBoundingClientRect().top;
+				if (top - offset <= 0) {
+					activeSlug = slug;
+				} else {
+					break;
+				}
+			}
+
+			// At the very bottom of the page, force-activate the last heading
+			// in case its top never crosses the offset line.
+			const nearBottom =
+				window.innerHeight + window.scrollY >=
+				document.documentElement.scrollHeight - 4;
+			if (nearBottom) {
+				activeSlug = slugs[slugs.length - 1];
+			}
+
+			return activeSlug;
+		};
+
+		let lastSlug = "";
+		let ticking = false;
+
+		const updateFromScroll = () => {
+			ticking = false;
+			const slug = computeActiveSlugFromScroll();
+			if (slug === lastSlug) return;
+			lastSlug = slug;
+			applyActiveSlug(slug);
+		};
+
+		const onScroll = () => {
+			if (ticking) return;
+			ticking = true;
+			window.requestAnimationFrame(updateFromScroll);
+		};
+
+		// Initial state: derive from hash if present, otherwise from scroll.
+		const initialHash = decodeURIComponent(window.location.hash).replace(/^#/, "");
+		if (initialHash && headingElements.has(initialHash)) {
+			lastSlug = initialHash;
+			applyActiveSlug(initialHash);
+		} else {
+			updateFromScroll();
+		}
+
+		window.addEventListener("scroll", onScroll, { passive: true });
+		window.addEventListener("resize", onScroll, { passive: true });
+
+		// When the user clicks an in-page link, honor that selection immediately
+		// rather than waiting for the browser's scroll to settle.
+		for (const link of links) {
+			link.addEventListener("click", () => {
+				const slug = link.dataset.headingSlug ?? "";
+				if (!slug) return;
+				lastSlug = slug;
+				applyActiveSlug(slug);
+			});
+		}
+
+		window.addEventListener("hashchange", () => {
+			const slug = decodeURIComponent(window.location.hash).replace(/^#/, "");
+			if (slug && headingElements.has(slug)) {
+				lastSlug = slug;
+				applyActiveSlug(slug);
+			}
+		});
 	}
 </script>
 

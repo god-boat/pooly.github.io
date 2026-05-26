@@ -5,7 +5,7 @@ import PageSection from "../components/PageSection.astro";
 import GradientSection from "../components/GradientSection.astro";
 
 const socialLinks = [
-	{ label: "Manual", href: "https://pooly.studio/manual" },
+	{ label: "Manual", href: "/manual/", internal: true },
 	{ label: "Discord", href: "https://discord.gg/zbNVJYBtw7" },
 	{ label: "Threads", href: "https://www.threads.net/@poolydaw" },
 	{ label: "Patreon", href: "https://patreon.com/godboat" },
@@ -35,7 +35,11 @@ const socialLinks = [
 			</p>
 			<nav class="social-links" aria-label="Pooly DAW social links">
 				{socialLinks.map(link => (
-					<a class="social-link" href={link.href} target="_blank" rel="noopener noreferrer">
+					<a
+						class="social-link"
+						href={link.href}
+						{...(link.internal ? {} : { target: "_blank", rel: "noopener noreferrer" })}
+					>
 						{link.label}
 					</a>
 				))}
