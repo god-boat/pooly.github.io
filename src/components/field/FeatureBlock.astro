@@ -1,0 +1,85 @@
+---
+import ScreenshotCard from "./ScreenshotCard.astro";
+
+interface Props {
+	number: string;
+	title: string;
+	body: string;
+	image?: string;
+	imageAlt?: string;
+	reverse?: boolean;
+}
+
+const {
+	number,
+	title,
+	body,
+	image,
+	imageAlt = "Pooly screenshot",
+	reverse = false,
+} = Astro.props;
+---
+
+<section class:list={["feature-block", "grid-panel", { reverse }]}>
+	<div class="feature-copy">
+		<span class="section-number">{number}</span>
+		<h2>{title}</h2>
+		<p>{body}</p>
+		<slot />
+	</div>
+
+	{image && (
+		<ScreenshotCard src={image} alt={imageAlt} />
+	)}
+</section>
+
+<style>
+	.feature-block {
+		position: relative;
+		display: grid;
+		grid-template-columns: 1fr;
+		gap: clamp(1.5rem, 4vw, 3rem);
+		padding: clamp(1.5rem, 4vw, 3rem);
+	}
+
+	.feature-copy {
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		gap: var(--space-sm);
+	}
+
+	.section-number {
+		font-family: var(--font-display);
+		font-size: var(--text-4xl);
+		font-weight: 800;
+		color: var(--color-text-muted);
+		line-height: 1;
+		opacity: 0.5;
+	}
+
+	.feature-copy h2 {
+		font-size: clamp(var(--text-xl), 3vw, var(--text-2xl));
+	}
+
+	.feature-copy p {
+		color: var(--color-text-soft);
+		line-height: 1.6;
+		max-width: 28rem;
+	}
+
+	@media (min-width: 52rem) {
+		.feature-block {
+			grid-template-columns: 0.85fr 1.4fr;
+			padding: clamp(2rem, 4vw, 4rem);
+		}
+
+		.feature-block.reverse {
+			grid-template-columns: 1.4fr 0.85fr;
+		}
+
+		.feature-block.reverse .feature-copy {
+			order: 2;
+		}
+	}
+</style>

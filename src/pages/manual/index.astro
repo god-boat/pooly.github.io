@@ -1,6 +1,7 @@
 ---
 import BaseLayout from "../../layouts/BaseLayout.astro";
 import ManualCard from "../../components/ManualCard.astro";
+import TapeLabel from "../../components/field/TapeLabel.astro";
 import { getCollection } from "astro:content";
 import {
 	compareManualNumbers,
@@ -21,6 +22,7 @@ const chapterNumbers = [...new Set(allManual.map(entry => getManualChapter(entry
 >
 	<div class="manual-index">
 		<header class="manual-header">
+			<TapeLabel rotate="-1deg">Reference</TapeLabel>
 			<h1>Manual</h1>
 			<p class="manual-subtitle">Everything you need to know about Pooly.</p>
 		</header>
@@ -66,10 +68,14 @@ const chapterNumbers = [...new Set(allManual.map(entry => getManualChapter(entry
 	.manual-header {
 		text-align: center;
 		margin-bottom: var(--space-3xl);
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		gap: var(--space-md);
 	}
 
 	.manual-header h1 {
-		margin-bottom: var(--space-sm);
+		margin-bottom: 0;
 	}
 
 	.manual-subtitle {

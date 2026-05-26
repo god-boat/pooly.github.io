@@ -1,6 +1,7 @@
 ---
 import BaseLayout from "../../layouts/BaseLayout.astro";
 import GuideCard from "../../components/GuideCard.astro";
+import TapeLabel from "../../components/field/TapeLabel.astro";
 import { getCollection } from "astro:content";
 
 const guides = (await getCollection("guides", ({ data }) => !data.draft))
@@ -13,6 +14,7 @@ const guides = (await getCollection("guides", ({ data }) => !data.draft))
 >
 	<div class="learn-page">
 		<header class="learn-header">
+			<TapeLabel rotate="1deg">Guides</TapeLabel>
 			<h1>Learn Pooly</h1>
 			<p class="learn-subtitle">What are you trying to do?</p>
 		</header>
@@ -41,10 +43,14 @@ const guides = (await getCollection("guides", ({ data }) => !data.draft))
 	.learn-header {
 		text-align: center;
 		margin-bottom: var(--space-3xl);
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		gap: var(--space-md);
 	}
 
 	.learn-header h1 {
-		margin-bottom: var(--space-sm);
+		margin-bottom: 0;
 	}
 
 	.learn-subtitle {

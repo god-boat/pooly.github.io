@@ -1,0 +1,37 @@
+---
+interface Props {
+	color?: string;
+	rotate?: string;
+	class?: string;
+}
+
+const {
+	color = "var(--color-clay)",
+	rotate = "-5deg",
+	class: className,
+} = Astro.props;
+---
+
+<span class:list={["sticker", className]} style={`--sticker-bg:${color}; --rotate:${rotate}`}>
+	<slot />
+</span>
+
+<style>
+	.sticker {
+		display: inline-grid;
+		place-items: center;
+		width: 86px;
+		height: 86px;
+		border-radius: 999px;
+		background: var(--sticker-bg);
+		color: #1b120c;
+		font-weight: 800;
+		text-align: center;
+		font-size: 0.72rem;
+		line-height: 1.2;
+		text-transform: uppercase;
+		transform: rotate(var(--rotate));
+		box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+		padding: 0.5rem;
+	}
+</style>
