@@ -13,126 +13,25 @@ const {
 ---
 
 <span class:list={["sticker", className]} style={`--sticker-bg:${color}; --rotate:${rotate}`}>
-	<span class="sticker-content">
-		<slot />
-	</span>
+	<slot />
 </span>
 
 <style>
 	.sticker {
-		position: relative;
-		isolation: isolate;
 		display: inline-grid;
 		place-items: center;
 		width: 86px;
 		height: 86px;
 		border-radius: 999px;
-		padding: 0.6rem;
-
-		background:
-			radial-gradient(circle at 28% 22%, rgba(255, 255, 255, 0.28), transparent 34%),
-			linear-gradient(135deg, rgba(255, 255, 255, 0.16), transparent 45%),
-			var(--sticker-bg);
-
+		background: var(--sticker-bg);
 		color: #1b120c;
 		font-weight: 800;
 		text-align: center;
 		font-size: 0.72rem;
 		line-height: 1.2;
 		text-transform: uppercase;
-
-		border: 5px solid #fff6df;
 		transform: rotate(var(--rotate));
-
-		box-shadow:
-			0 1px 0 rgba(255, 255, 255, 0.65) inset,
-			0 -2px 5px rgba(54, 32, 18, 0.16) inset,
-			0 8px 12px rgba(31, 20, 12, 0.18),
-			0 18px 32px rgba(0, 0, 0, 0.24);
-
-		overflow: visible;
-	}
-
-	/* Sticker print / paper grain */
-	.sticker::before {
-		content: "";
-		position: absolute;
-		inset: -1px;
-		border-radius: inherit;
-		pointer-events: none;
-		z-index: 1;
-
-		background:
-			repeating-radial-gradient(
-				circle at 30% 25%,
-				rgba(255, 255, 255, 0.16) 0 1px,
-				transparent 1px 4px
-			),
-			repeating-linear-gradient(
-				-18deg,
-				rgba(255, 255, 255, 0.08) 0 1px,
-				transparent 1px 7px
-			);
-
-		mix-blend-mode: soft-light;
-		opacity: 0.45;
-	}
-
-	/* Curled-up sticker edge */
-	.sticker::after {
-		content: "";
-		position: absolute;
-		right: -3px;
-		bottom: 7px;
-		width: 28px;
-		height: 22px;
-		z-index: 3;
-		pointer-events: none;
-
-		background:
-			linear-gradient(
-				135deg,
-				#fff8e9 0%,
-				#fff1cf 42%,
-				color-mix(in srgb, var(--sticker-bg), #ffffff 28%) 44%,
-				color-mix(in srgb, var(--sticker-bg), #5a321e 14%) 100%
-			);
-
-		border-radius: 4px 15px 999px 10px;
-		border-left: 2px solid rgba(80, 46, 28, 0.16);
-		border-top: 1px solid rgba(255, 255, 255, 0.8);
-
-		transform: rotate(-22deg) skewX(-9deg);
-		transform-origin: 100% 100%;
-
-		box-shadow:
-			-5px 5px 8px rgba(0, 0, 0, 0.22),
-			-1px 1px 0 rgba(255, 255, 255, 0.8) inset,
-			2px -2px 5px rgba(70, 42, 24, 0.14) inset;
-	}
-
-	.sticker-content {
-		position: relative;
-		z-index: 2;
-		display: inline-block;
-		max-width: 100%;
-	}
-
-	/* Irregular worn paper edge */
-	.sticker-content::before {
-		content: "";
-		position: absolute;
-		inset: -18px;
-		z-index: -1;
-		border-radius: 999px;
-		pointer-events: none;
-
-		background:
-			radial-gradient(circle at 16% 24%, transparent 0 3px, rgba(90, 58, 34, 0.2) 3.5px, transparent 5px),
-			radial-gradient(circle at 84% 32%, transparent 0 2px, rgba(90, 58, 34, 0.18) 2.5px, transparent 4px),
-			radial-gradient(circle at 64% 92%, transparent 0 3px, rgba(90, 58, 34, 0.16) 3.5px, transparent 5px),
-			radial-gradient(circle at 28% 88%, transparent 0 2px, rgba(90, 58, 34, 0.14) 2.5px, transparent 4px);
-
-		opacity: 0.85;
+		box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+		padding: 0.5rem;
 	}
 </style>
