@@ -5,8 +5,8 @@ const pathname = Astro.url.pathname;
 <header class="header">
 	<div class="header-inner">
 		<a href="/" class="header-brand">
-			<img src="/images/brand/pooly logo 3d H.png" alt="" class="header-logo" width="60" height="60" />
-			<!-- <span class="header-title">pooly</span> -->
+			<img src="/images/brand/pooly mascot 3d fall.png" alt="" class="header-logo" width="0" height="60" />
+			<span class="header-title">Pooly</span>
 		</a>
 
 		<nav class="header-nav">
@@ -46,7 +46,7 @@ const pathname = Astro.url.pathname;
 	.header-brand {
 		display: flex;
 		align-items: center;
-		gap: var(--space-sm);
+		gap: 0;
 		color: var(--color-text);
 		text-decoration: none;
 	}
@@ -56,17 +56,16 @@ const pathname = Astro.url.pathname;
 	}
 
 	.header-logo {
-		width: 100px;
+		width: 60px;
 		height: 42px;
 		object-fit: contain;
 	}
 
 	.header-title {
 		font-family: var(--font-display);
-		font-size: var(--text-sm);
-		font-weight: 600;
-		letter-spacing: 0.05em;
-		text-transform: lowercase;
+		font-size: var(--text-lg);
+		font-weight: 300;
+		letter-spacing: 0.00em;
 	}
 
 	.header-nav {
