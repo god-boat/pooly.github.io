@@ -4,9 +4,10 @@ export const manualChapters: Record<number, string> = {
 	3: "Launcher",
 	4: "Arranger",
 	5: "Mixer",
-	6: "Piano Roll",
-	7: "Instruments",
-	8: "Reference",
+	6: "Detail View",
+	7: "Piano Roll",
+	8: "Instruments",
+	9: "Reference",
 };
 
 export function parseManualNumber(value: string): number[] {
