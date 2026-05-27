@@ -1,12 +1,12 @@
 ---
 title: Troubleshooting
 description: Fixes for common problems while using Pooly.
-number: "9.1"
+number: "9"
 section: reference
 order: 10
 ---
 
-## 9.1.1 No sound
+## 9.1 No sound
 
 If you're not hearing anything, work through these checks:
 
@@ -16,7 +16,7 @@ If you're not hearing anything, work through these checks:
 4. Confirm the clip has content—an empty pattern or unloaded audio file stays silent
 5. On the **Driver** settings tab, confirm an output device is selected
 
-## 9.1.2 Audio glitches or crackling
+## 9.2 Audio glitches or crackling
 
 Crackling usually means the device is struggling to keep up:
 
@@ -25,7 +25,7 @@ Crackling usually means the device is struggling to keep up:
 - Reduce the number of active tracks and effects while testing
 - Restart Pooly after changing audio settings
 
-## 9.1.3 Clips won't launch
+## 9.3 Clips won't launch
 
 If tapping a clip does nothing:
 
@@ -34,7 +34,7 @@ If tapping a clip does nothing:
 - Try **Stop** on the track from a long-press menu, then launch again
 - Launch a **scene** button to trigger a whole row at once as a test
 
-## 9.1.4 Can't open or save a project
+## 9.4 Can't open or save a project
 
 If a project fails to load or save:
 
@@ -43,7 +43,7 @@ If a project fails to load or save:
 - Restart the app and try again
 - Update Pooly if a newer version is available
 
-## 9.1.5 Export problems
+## 9.5 Export problems
 
 If export fails or the file sounds wrong:
 
@@ -52,11 +52,11 @@ If export fails or the file sounds wrong:
 - Balance levels in the **Mixer** before exporting to avoid clipping
 - For WAV export, pick a valid save location when prompted
 
-## 9.1.6 Undo went too far
+## 9.6 Undo went too far
 
 Use **Redo** in the footer to step forward again. Pooly keeps a limited history—if you've made many edits since the change you want, you may need to reapply it manually. Duplicate a project from the Projects screen before risky experiments, or restore from project backups.
 
-## 9.1.7 App crashes
+## 9.7 App crashes
 
 If Pooly closes unexpectedly:
 
@@ -64,7 +64,7 @@ If Pooly closes unexpectedly:
 - Note what you were doing and share steps on [Discord](https://discord.gg/zbNVJYBtw7) so the team can investigate
 - Try reopening the project—Pooly saves as you work, and keep backups of your important `.pool` files
 
-## 9.1.8 Still stuck?
+## 9.8 Still stuck?
 
 Join the [Pooly Discord](https://discord.gg/zbNVJYBtw7) and describe your issue—what device you're on, what you tapped, and what you expected. Screenshots help.
 
