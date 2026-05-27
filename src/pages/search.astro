@@ -21,19 +21,19 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 	}
 </style>
 
+<link rel="stylesheet" href="/pagefind/pagefind-ui.css" />
+<script is:inline src="/pagefind/pagefind-ui.js"></script>
 <script is:inline>
-	(async function loadPagefind() {
-		const link = document.createElement("link");
-		link.rel = "stylesheet";
-		link.href = "/pagefind/pagefind-ui.css";
-		document.head.appendChild(link);
-
-		const pagefind = await import("/pagefind/pagefind-ui.js");
-		new pagefind.PagefindUI({
+	window.addEventListener("DOMContentLoaded", () => {
+		if (typeof window.PagefindUI !== "function") {
+			console.error("[search] PagefindUI not loaded — check /pagefind/pagefind-ui.js");
+			return;
+		}
+		new window.PagefindUI({
 			element: "#search",
 			showSubResults: true,
 		});
-	})();
+	});
 </script>
 
 <style is:global>
