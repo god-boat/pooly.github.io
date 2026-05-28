@@ -2,6 +2,7 @@
 import BaseLayout from "../../layouts/BaseLayout.astro";
 import ManualCard from "../../components/ManualCard.astro";
 import TapeLabel from "../../components/field/TapeLabel.astro";
+import Doodle from "../../components/field/Doodle.astro";
 import { getCollection } from "astro:content";
 import {
 	compareManualNumbers,
@@ -21,13 +22,16 @@ const chapterNumbers = [...new Set(allManual.map(entry => getManualChapter(entry
 	description="The Pooly reference manual. Everything about clips, views, instruments, and more."
 >
 	<div class="manual-index">
+		<Doodle name="cat" class="manual-doodle-cat" color="var(--color-accent)" width="170px" rotate="-6deg" opacity="0.55" alt="" />
 		<header class="manual-header">
 			<TapeLabel rotate="-1deg">Reference</TapeLabel>
 			<h1>Manual</h1>
 			<p class="manual-subtitle">Everything you need to know about Pooly.</p>
+			<Doodle name="no_music" class="manual-doodle-nomusic" color="var(--color-clay)" width="140px" rotate="9deg" opacity="0.5" alt="" />
 		</header>
 
 		<div class="manual-cards">
+			<Doodle name="notes" class="manual-doodle-notes" color="var(--color-note)" width="180px" rotate="-3deg" opacity="0.45" alt="" />
 			{chapterNumbers.map(chapterNumber => {
 				const entries = allManual.filter(
 					entry => getManualChapter(entry.data.number) === chapterNumber,
@@ -54,6 +58,15 @@ const chapterNumbers = [...new Set(allManual.map(entry => getManualChapter(entry
 		max-width: var(--content-max);
 		margin: 0 auto;
 		padding: var(--space-2xl) var(--space-md);
+		position: relative;
+	}
+
+	.manual-index :global(.manual-doodle-cat) {
+		position: absolute;
+		top: 0.5rem;
+		left: -1rem;
+		z-index: 1;
+		display: none;
 	}
 
 	.manual-header {
@@ -63,6 +76,35 @@ const chapterNumbers = [...new Set(allManual.map(entry => getManualChapter(entry
 		flex-direction: column;
 		align-items: center;
 		gap: var(--space-md);
+		position: relative;
+	}
+
+	.manual-header :global(.manual-doodle-nomusic) {
+		position: absolute;
+		top: -0.5rem;
+		right: 6%;
+		z-index: 1;
+		display: none;
+	}
+
+	.manual-cards {
+		position: relative;
+	}
+
+	.manual-cards :global(.manual-doodle-notes) {
+		position: absolute;
+		bottom: -3rem;
+		left: 40%;
+		z-index: 2;
+		display: none;
+	}
+
+	@media (min-width: 52rem) {
+		.manual-index :global(.manual-doodle-cat),
+		.manual-header :global(.manual-doodle-nomusic),
+		.manual-cards :global(.manual-doodle-notes) {
+			display: inline-block;
+		}
 	}
 
 	.manual-header h1 {

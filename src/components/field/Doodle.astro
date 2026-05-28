@@ -1,0 +1,54 @@
+---
+interface Props {
+	name: string;
+	color?: string;
+	width?: string;
+	rotate?: string;
+	opacity?: string;
+	flip?: boolean;
+	class?: string;
+	alt?: string;
+}
+
+const {
+	name,
+	color = "var(--color-note)",
+	width = "180px",
+	rotate = "0deg",
+	opacity = "0.85",
+	flip = false,
+	class: className,
+	alt = "",
+} = Astro.props;
+
+const src = `/images/drawings/draw_${name}.PNG`;
+const scaleX = flip ? -1 : 1;
+---
+
+<span
+	class:list={["doodle", className]}
+	role={alt ? "img" : "presentation"}
+	aria-label={alt || undefined}
+	style={`--doodle-src:url('${src}'); --doodle-color:${color}; --doodle-width:${width}; --doodle-rotate:${rotate}; --doodle-opacity:${opacity}; --doodle-scale-x:${scaleX};`}
+></span>
+
+<style>
+	.doodle {
+		display: inline-block;
+		width: var(--doodle-width);
+		aspect-ratio: 1 / 1;
+		background-color: var(--doodle-color);
+		opacity: var(--doodle-opacity);
+		-webkit-mask-image: var(--doodle-src);
+		mask-image: var(--doodle-src);
+		-webkit-mask-repeat: no-repeat;
+		mask-repeat: no-repeat;
+		-webkit-mask-position: center;
+		mask-position: center;
+		-webkit-mask-size: contain;
+		mask-size: contain;
+		transform: rotate(var(--doodle-rotate)) scaleX(var(--doodle-scale-x));
+		pointer-events: none;
+		user-select: none;
+	}
+</style>

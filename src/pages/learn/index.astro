@@ -2,6 +2,7 @@
 import BaseLayout from "../../layouts/BaseLayout.astro";
 import GuideCard from "../../components/GuideCard.astro";
 import TapeLabel from "../../components/field/TapeLabel.astro";
+import Doodle from "../../components/field/Doodle.astro";
 import { getCollection } from "astro:content";
 
 const guides = (await getCollection("guides", ({ data }) => !data.draft))
@@ -14,12 +15,15 @@ const guides = (await getCollection("guides", ({ data }) => !data.draft))
 >
 	<div class="learn-page">
 		<header class="learn-header">
+			<Doodle name="bird" class="learn-doodle-bird" color="var(--color-blue)" width="180px" rotate="-8deg" opacity="0.55" alt="" />
 			<TapeLabel rotate="1deg">Guides</TapeLabel>
 			<h1>Learn Pooly</h1>
 			<p class="learn-subtitle">What are you trying to do?</p>
+			<Doodle name="note" class="learn-doodle-note" color="var(--color-note)" width="110px" rotate="12deg" opacity="0.7" alt="" />
 		</header>
 
 		<div class="guides-grid">
+			<Doodle name="turtle" class="learn-doodle-turtle" color="var(--color-olive)" width="200px" rotate="-4deg" opacity="0.55" alt="" />
 			{guides.map(guide => (
 				<GuideCard
 					title={guide.data.title}
@@ -38,6 +42,7 @@ const guides = (await getCollection("guides", ({ data }) => !data.draft))
 		max-width: var(--content-max);
 		margin: 0 auto;
 		padding: var(--space-2xl) var(--space-md);
+		position: relative;
 	}
 
 	.learn-header {
@@ -47,6 +52,43 @@ const guides = (await getCollection("guides", ({ data }) => !data.draft))
 		flex-direction: column;
 		align-items: center;
 		gap: var(--space-md);
+		position: relative;
+	}
+
+	.learn-header :global(.learn-doodle-bird) {
+		position: absolute;
+		top: -1rem;
+		right: 8%;
+		z-index: 1;
+		display: none;
+	}
+
+	.learn-header :global(.learn-doodle-note) {
+		position: absolute;
+		bottom: -1.5rem;
+		left: 12%;
+		z-index: 1;
+		display: none;
+	}
+
+	.guides-grid {
+		position: relative;
+	}
+
+	.guides-grid :global(.learn-doodle-turtle) {
+		position: absolute;
+		bottom: -3rem;
+		right: -1rem;
+		z-index: 2;
+		display: none;
+	}
+
+	@media (min-width: 52rem) {
+		.learn-header :global(.learn-doodle-bird),
+		.learn-header :global(.learn-doodle-note),
+		.guides-grid :global(.learn-doodle-turtle) {
+			display: inline-block;
+		}
 	}
 
 	.learn-header h1 {
