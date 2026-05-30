@@ -1,0 +1,273 @@
+---
+import "../styles/global.css";
+import { socials } from "../data/socials";
+---
+
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<title>Pooly — Flyer</title>
+		<meta name="description" content="Pooly – a playful, mobile-first music app." />
+		<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+		<link rel="preconnect" href="https://fonts.googleapis.com" />
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+		<link
+			href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Unbounded:wght@400;500;600;700;800&display=swap"
+			rel="stylesheet"
+		/>
+	</head>
+	<body class="flyer-body">
+		<div class="flyer">
+			<!-- Logo lockup -->
+			<header class="flyer-header">
+				<div class="flyer-logo-container">
+					<img
+						class="flyer-logo"
+						src="/images/brand/pooly stacked 3d.png"
+						alt="Pooly"
+					/>
+					<p class="flyer-logo-text">Pooly</p>
+				</div>
+				<p class="flyer-tagline">your field studio for whenever, wherever.</p>
+			</header>
+
+			<!-- Main content area -->
+			<div class="flyer-content">
+				<!-- Screenshot -->
+				<div class="flyer-screenshot-wrap">
+					<img
+						class="flyer-screenshot"
+						src="/images/application-screenshots/varrange + detail.png"
+						alt="Pooly app screenshot"
+						width="480"
+					/>
+				</div>
+
+				<!-- QR -->
+				<div class="flyer-qr-block">
+					<img
+						class="flyer-qr"
+						src="/images/brand/qr-pooly-studio.svg"
+						alt="QR code – pooly.studio"
+						width="140"
+						height="140"
+					/>
+					<span class="flyer-qr-label">pooly.studio</span>
+				</div>
+			</div>
+
+			<!-- Socials -->
+			<footer class="flyer-socials">
+				{socials.map(link => (
+					<a href={link.href} class="flyer-social" target="_blank" rel="noopener noreferrer">
+						<span class="flyer-social-icon" set:html={link.icon} />
+						<span class="flyer-social-handle">{link.handle}</span>
+					</a>
+				))}
+			</footer>
+		</div>
+	</body>
+</html>
+
+<style>
+	.flyer-body {
+		margin: 0;
+		padding: 0;
+		min-height: 100dvh;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		background: var(--color-bg);
+		color: var(--color-text);
+		font-family: var(--font-body);
+	}
+
+	.flyer {
+		width: 100%;
+		max-width: 700px;
+		min-height: 100dvh;
+		padding: var(--space-2xl) var(--space-lg);
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		justify-content: center;
+		gap: var(--space-2xl);
+		box-sizing: border-box;
+	}
+
+	/* Header / Logo */
+	.flyer-header {
+		text-align: center;
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		gap: var(--space-sm);
+	}
+
+	.flyer-logo-container {
+		display: flex;
+		align-items: center;
+		gap: var(0);
+	}
+
+	.flyer-logo {
+		width: min(80vw, 120px);
+		height: auto;
+		object-fit: contain;
+	}
+
+	.flyer-logo-text {
+		font-family: var(--font-display);
+		font-size: 60px;
+		font-weight: 300;
+		color: var(--color-text);
+	}
+
+	.flyer-tagline {
+		margin: 0;
+		font-family: var(--font-display);
+		font-size: var(--text-lg);
+		font-weight: 300;
+		color: var(--color-text-soft);
+		letter-spacing: -0.01em;
+	}
+
+	/* Content grid */
+	.flyer-content {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		gap: var(--space-l);
+		width: 100%;
+	}
+
+	.flyer-screenshot-wrap {
+		flex: 1;
+		display: flex;
+		justify-content: center;
+	}
+
+	.flyer-screenshot {
+		width: 100%;
+		max-width: 420px;
+		height: auto;
+		border-radius: var(--radius-lg);
+		box-shadow: var(--shadow-screenshot);
+		border: 1px solid var(--color-border);
+	}
+
+	.flyer-qr-block {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		gap: var(--space-xs);
+		flex-shrink: 0;
+	}
+
+	.flyer-qr {
+		width: 200px;
+		height: 200px;
+		border-radius: var(--radius-md);
+		filter: invert(1);
+	}
+
+	.flyer-qr-label {
+		font-family: var(--font-display);
+		font-size: var(--text-sm);
+		font-weight: 600;
+		color: var(--color-text-soft);
+	}
+
+	/* Social links */
+	.flyer-socials {
+		display: flex;
+		flex-wrap: wrap;
+		justify-content: center;
+		gap: var(--space-sm) var(--space-lg);
+	}
+
+	.flyer-social {
+		display: flex;
+		align-items: center;
+		gap: var(--space-xs);
+		color: var(--color-text-muted);
+		text-decoration: none;
+		font-size: var(--text-sm);
+		transition: color var(--duration-fast) var(--ease-out);
+	}
+
+	.flyer-social:hover {
+		color: var(--color-accent);
+	}
+
+	.flyer-social-icon :global(svg) {
+		width: 1rem;
+		height: 1rem;
+		display: block;
+	}
+
+	.flyer-social-handle {
+		white-space: nowrap;
+	}
+
+	/* Responsive: stack on narrow screens */
+	@media (max-width: 560px) {
+		.flyer-content {
+			flex-direction: column;
+		}
+
+		.flyer-screenshot {
+			max-width: 300px;
+		}
+	}
+
+	/* ─── Print styles: light background for paper ─── */
+	@media print {
+
+		.flyer-header {
+			color: #1a1a1a;
+		}
+
+		.flyer-body {
+			background: #fff;
+			color: #1a1a1a;
+		}
+
+		.flyer {
+			min-height: auto;
+			padding: 0.5cm;
+			gap: 1.5em;
+		}
+
+		.flyer-logo-text {
+			color: #1a1a1a;
+		}
+
+		.flyer-tagline {
+			color: #444;
+		}
+
+		.flyer-qr {
+			filter: none;
+		}
+
+		.flyer-qr-label {
+			color: #333;
+		}
+
+		.flyer-screenshot {
+			box-shadow: none;
+			border: 1px solid #ddd;
+		}
+
+		.flyer-social {
+			color: #333;
+		}
+
+		.flyer-social-icon :global(svg) {
+			fill: #333;
+		}
+	}
+</style>
