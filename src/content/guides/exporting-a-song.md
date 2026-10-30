@@ -12,19 +12,19 @@ You'll turn your project into a file you can share—most often a WAV audio file
 
 ## Step 1: Decide what to export
 
-For a full-song audio file, build your arrangement on the timeline so the song has a clear start and end. The export dialog lets you choose which **bars** to render—set the range to cover your entire song.
+Export renders your **Arranger** timeline, so build your arrangement there first and give the song a clear start and end. The export dialog lets you choose which **bars** to render—it starts out covering your whole timeline.
 
-You can also export **MIDI**, **MML**, or **XM** if you want to move notes into another app. WAV is the usual choice for listening and sharing.
+You can also export **MIDI** if you want to move your notes into another app. WAV is the usual choice for listening and sharing.
 
 ## Step 2: Open export
 
-Tap the **song avatar** in the header to open **Settings**. On the **Project** tab, tap **Export**. An export dialog appears with format and bar-range options.
+Tap the **song avatar** in the header to open **Settings**. On the **Project** tab, tap **Export**. An export dialog appears with file type and bar-range options.
 
-Playback stops while you configure export—this keeps the render accurate.
+Playback stops while you set up the export.
 
 ## Step 3: Render
 
-Choose **WAV** (or another format), confirm the bar range, and tap export. Pooly asks where to save the file on your device then renders the song offline—no need to sit through real-time playback—and saves the file.
+Choose **WAV** (or **MIDI**), confirm the bar range, and tap **Export**. Pooly asks where to save the file, then renders the song and saves it. Editing is paused until it finishes.
 
 Rendering time depends on song length and how many tracks and effects you used.
 

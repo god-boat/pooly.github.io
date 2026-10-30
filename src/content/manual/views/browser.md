@@ -1,6 +1,6 @@
 ---
 title: Browser
-description: Find instruments, effects, and your own sounds.
+description: Find instruments, effects, samples, and your own sounds.
 number: "2"
 section: views
 order: 10
@@ -8,44 +8,53 @@ order: 10
 
 ## 2.1 When to use the Browser
 
-Use the Browser when you want to change a track's instrument, add an effect, or load one of your own preset files. It is not a separate screen you open from the home page—it appears as a full-screen overlay inside **Clip Detail** when you browse for sounds.
+Use the Browser when you want to change a track's instrument, add an effect, load a sample, or find one of your own sounds. It works on whichever track you have selected.
 
 ## 2.2 Opening the Browser
 
-On a MIDI track, tap the **track name** in the header while Clip Detail is open. The instrument browser overlay appears. To pick an effect for a device already on the track, open the browser in **Effects** mode from Clip Detail's effects panel.
+Tap the **Browser** button in the header. On a phone the Browser fills the screen; on a tablet it slides in beside your work; on a large screen it can stay open in its own pane. In Detail View on a phone, you can also tap the track name in the header to jump straight to it.
 
-## 2.3 Browsing instruments
+## 2.3 Finding sounds
 
-### 2.3.1 Categories
+### 2.3.1 Tabs
 
-Built-in sounds are grouped by type:
+Tabs along the Browser sort everything by type:
 
-- Keys, Bass, Pads, Leads, and other melodic categories
-- Drums and percussion
-- A **USER** section for presets and samples you've added to your device
+- **Browse** — everything in one place
+- **Recents** and **Favorites** — sounds you've used lately and sounds you've hearted
+- **Instruments** and **Drums** — synths, sampled instruments, and drum kits
+- **FX** — audio effects
+- **Samples** — audio files
+- **Chord Sets** — chord collections for the performance pads
 
-Tap a category to see subcategories, then tap a preset to load it on the current track.
+Tap into categories to narrow things down; the breadcrumbs at the top take you back out.
 
 ### 2.3.2 Search
 
-Use the search bar to find presets by name. Results update as you type. Tap a result to load it immediately.
+Use the search bar to find presets by name. Results update as you type.
 
-### 2.3.3 User content
+### 2.3.3 Sources
 
-If you keep preset or sample files in Pooly's user folders, they appear under **USER**. Tap a user item to load it the same way as a factory preset.
+The source picker filters results to **Core** (Pooly's built-in library), **User** (presets you've saved), **Linked** (folders you've linked), or **All**.
 
-## 2.4 Browsing effects
+## 2.4 Loading a sound
 
-Switch the browser to **Effects** mode to add reverb, delay, filter, and other processors to a device in the chain. Tap an effect to insert it; adjust its settings in Clip Detail after loading.
+Tap a result to select it, then tap it again or press **Load** to put it on the selected track. Press **Preview** to hear a sound before you commit. Tap the heart on any result to add it to Favorites.
 
-## 2.5 Tips
+Loading an effect adds it to the end of the track's effect chain. If you have an effect selected in Detail View, loading another effect replaces it. With a drum pad selected, an instrument loads onto just that pad.
 
-- Tap the track name again or use back navigation to close the browser without changing anything
-- Preview by playing the piano roll or pads after loading a new sound
+## 2.5 Linked folders
+
+Link a folder of your own samples or presets and it shows up in the Browser alongside the built-in library. Use the linked folders button to add or manage folders.
+
+## 2.6 Tips
+
+- Select a track first—the **Load** button stays disabled until there's a track to load onto
+- Play the pads or piano roll right after loading to hear the new sound in context
 - Start from a preset close to your goal, then tweak parameters
 
 ## Related pages
 
-- [1.14 Presets](/manual/core-concepts/#114-presets)
+- [1.16 Presets](/manual/core-concepts/#116-presets)
 - [Load and play samples](/learn/loading-samples/)
-- [1.6 Detail View](/manual/core-concepts/#16-detail-view)
+- [1.8 Detail View](/manual/core-concepts/#18-detail-view)

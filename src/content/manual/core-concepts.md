@@ -10,9 +10,9 @@ order: 10
 
 ### 1.1 Pooly Projects
 
-A Pooly project is a complete song workspace saved as a `.pool` file. Everything that defines your music lives inside it: tracks and their device chains, patterns, clips in the launcher and arrangement, scenes, mixer settings, tempo, and project key and scale. When you open a project, Pooly loads the full song and returns you to the main editing view you were using last.
+A Pooly project is a complete song workspace saved as a `.pool` file. Everything that defines your music lives inside it: tracks and their devices, patterns, clips in the launcher and arrangement, scenes, mixer settings, tempo, and project key and scale. When you open a project, Pooly loads the full song and drops you back into your workspace.
 
-The Projects screen shows every saved project as a card, pulled from your configured save location (internal app storage or a custom folder on your device). Tap a card to open the project. Each card also offers actions such as preview playback, rename, duplicate, delete, export, and open-in-folder. Use the **New Project** button in the footer to create a fresh song with default settings.
+The **Pools** screen shows every saved project as a card, pulled from your save location (internal app storage or a custom folder on your device). Tap a card to open the project, or tap its play button to preview the song without opening it. Each card's options button offers **Rename**, **Duplicate**, **Export**, **Open Folder**, and **Delete**. Use the **New Project** button in the footer to start a fresh song.
 
 <figure class="manual-media" data-wrap="right">
 	<img
@@ -23,22 +23,22 @@ The Projects screen shows every saved project as a card, pulled from your config
 		loading="lazy"
 	/>
 	<figcaption>
-		The Project Selection view is your library of saved songs and quick project actions.
+		The Pools screen is your library of saved songs and quick project actions.
 	</figcaption>
 </figure>
 
-Pooly tracks unsaved changes while you work and saves before exiting the application. If save on exit is disabled (via the application menu) pooly prompts you to save before discarding the projects changes. New projects are populated with a randomized track selection so you can begin creating immediately.
+New projects come with four tracks—drums, bass, chords, and a melody—each loaded with a randomly picked sound so you can start creating immediately. Pooly autosaves while you work and can also save when you leave a project, quit the app, or switch away from it; choose which in Settings under **App → Save Behavior**. If saving on exit is turned off, Pooly asks before discarding your changes. If Pooly closes unexpectedly, it offers to restore the autosaved copy the next time you open the project.
 
 ### 1.2 Header Bar
 
-The header bar sits at the top of the Pooly window and gives you context about where you are and quick access to global controls. Its contents change depending on the active view.
+The header bar sits at the top of the Pooly window and gives you context about where you are and quick access to global controls.
 
-In most editing views the header shows a **Back** button, a title, and the song avatar. The title is static on some screens (for example "Projects" or "Mixer") and dynamic on others: in Detail View it shows the current track or instrument name, and in the launcher or arranger it reflects your current selection. Tapping the song avatar opens Settings.
+The title shows the song name. On phones, where one view fills the screen, it shows the current track and instrument while you're in Detail View—tap it to open the Browser and swap the sound. Next to the title, tapping the song avatar opens Settings.
 
 <figure class="manual-media" data-wrap="left">
 	<img
 		src="/images/application-screenshots/header.png"
-		alt="Pooly header bar with back button, view title, and song avatar."
+		alt="Pooly header bar with navigation buttons, and song avatar."
 		width="819"
 		height="162"
 		loading="lazy"
@@ -48,12 +48,17 @@ In most editing views the header shows a **Back** button, a title, and the song 
 	</figcaption>
 </figure>
 
-When you are inside a project, the back button usually returns to the previous view; from the Launcher or Arranger it switches to the Project Selection View and takes you back to the Projects screen. An **Main View** toggle switches between the Launcher and the Arrangement view, choosing horizontal or vertical layout based on device orientation.
+The rest of the header is navigation:
+
+- **Back** steps back to the previous view on phones, or closes a full-screen view such as Settings
+- **Projects** saves and leaves the song, returning you to the Pools screen
+- **Launcher / Arrangement** swaps between the two composition views
+- **Layout** picks a workspace layout (see [1.4 Layouts](#14-layouts))
+- **Browser** and **Device Graph** open those views
 
 ### 1.3 Footer Bar
 
-The footer bar is Pooly's persistent control strip at the bottom of the window. Like the header, it is built dynamically: each view exposes a footer configuration that turns individual buttons on or off. This keeps the interface focused—Detail View shows pattern-editing tools, the Projects screen shows **New Project**, and the Launcher exposes the scene-launcher toggle—while shared controls stay in familiar places across views.
-
+The footer bar is Pooly's persistent control strip at the bottom of the window. Transport controls persist while every visible view adds its own buttons.
 <figure class="manual-media" data-wrap="right">
 	<img
 		src="/images/application-screenshots/footer.png"
@@ -67,21 +72,46 @@ The footer bar is Pooly's persistent control strip at the bottom of the window. 
 	</figcaption>
 </figure>
 
-The most common footer controls are **Play**, **Undo**, **Redo**, and **Mixer**. Play toggles transport for the current project. Undo and redo step through the edit history; buttons disable automatically when no action is available. Mixer opens Mixer View where you adjust per-track volume, pan, mute, and solo. In Detail View, additional footer buttons appear for pattern operations such as halving or doubling length, duplicating the pattern, and quantizing notes—these are disabled when you are on an empty track with no pattern content yet.
+The most common footer controls are **Play**, **Undo**, **Redo**, **Mixer**, and **Launcher**. Play toggles transport for the current project. Undo and redo step through the edit history and disable themselves when there's nothing to step to. Mixer opens the Mixer, and Launcher brings you back to the clip grid.
 
-Other footer buttons appear contextually. The **Main View** toggle (also available in the header) switches between launcher and timeline views. A **Pattern Dock** button toggles the arrangement pattern dock in horizontal or vertical arrangement layouts. **Pad Options** opens performance-pad settings in Detail View. On the Projects screen, the footer is simplified to creation and navigation affordances rather than transport controls.
+Other buttons appear when their view is visible. Detail View adds **Double**, **Quantize**, and **Duplicate** for pattern editing, plus **Pad Options** while the performance pads are showing. The Arranger adds a **Pattern Dock** toggle. On the Pools screen the footer is simply **New Project**. When you capture a live performance, a capture bar slides up from the footer (see [1.19 MIDI and Automation Capture](#119-midi-and-automation-capture)).
 
-### 1.4 Undo History
+### 1.4 Layouts
 
-Pooly records your edits in a structured undo history. Each undo step is a **state change** grouping one or more reversible actions.
+Pooly arranges its views to fit your screen. On a phone, one view fills the screen at a time. On a tablet, two views sit side by side, with extra views sharing a tabbed pane. On a desktop or large window, Pooly can show three or more views at once. Resize the window and Pooly reflows to match, keeping your place.
 
-The footer **Undo** and **Redo** buttons are available in most editing views. They enable and disable automatically based on whether history exists in the respective direction. Pressing undo reverts the most recent committed change; redo replays a change you stepped back over. A notice popup briefly describes what happened, using the operation label stored with that history entry (for example "Duplicate Pattern" or a parameter-specific description).
+Use the **Layout** button in the header to choose what you see together:
 
-The history stack holds up to 40 steps. Rapid successive edits to the same parameter can **accumulate** into a single undo step when they occur within a short time window, so dragging a slider does not consume the entire history. Starting a new edit after undo clears the redo branch—the future stack is discarded.
+- **Default** — the launcher and Detail View, with the Browser alongside
+- **Studio** — the launcher and Detail View
+- **Arrangement + Detail** — the Arranger timeline beside Detail View
+- **Launcher + Mixer** — the clip grid beside the Mixer
+- **Sound Design** — Detail View in focus, with the launcher, Device Graph, and Mixer around it
 
-### 1.5 Arrangement and Launcher
+On larger screens you can drag the boundary between two panes to resize them. Pooly remembers your sizes.
 
-Pooly gives you two complementary views of the same project. The **Launcher** is a session-style matrix: columns are tracks, rows are scenes, and cells hold launcher clips you trigger in real time. It is the default working view when you open a project—ideal for trying ideas, launching scenes, and building sections before committing to a fixed timeline. Track headers run along the bottom; scene launch buttons sit in a column you can toggle from the footer.
+### 1.5 Settings
+
+Tap the song avatar in the header to open Settings. It floats over your workspace and has four tabs:
+
+- **Project** — tempo, swing, key and scale, the project image, metronome and count-in, **Export**, and MIDI file import
+- **App** — save location, autoplay on clip trigger, the scene launcher, save behavior, zoom, fullscreen, and the time axis direction of the launcher, arranger, and Detail View
+- **Theme** — colors, palettes, corners, borders, and icons
+- **Driver** — audio buffer size, input and output devices, and MIDI and Bluetooth MIDI connections
+
+Close Settings with its close button.
+
+### 1.6 Undo History
+
+Pooly records your edits in an undo history. Each undo step groups one or more changes into a single action.
+
+The footer **Undo** and **Redo** buttons are available in most editing views. Pressing undo reverts the most recent change; redo replays a change you stepped back over. A short notice tells you what was undone or redone.
+
+The history holds up to 40 steps. Quick, repeated tweaks to the same control are grouped into one step, so dragging a slider doesn't use up your whole history. Making a new edit after undoing clears anything you could have redone.
+
+### 1.7 Arrangement and Launcher
+
+Pooly gives you two complementary views of the same project. The **Launcher** is a session-style grid: tracks run one way, scenes the other, and each cell holds a clip you trigger in real time. It's the starting view when you open a project.
 
 <figure class="manual-media" data-wrap="right">
 	<img
@@ -96,13 +126,13 @@ Pooly gives you two complementary views of the same project. The **Launcher** is
 	</figcaption>
 </figure>
 
-The **Arranger** is a linear timeline view where clips sit at positions across horizontal (landscape) or vertical (portrait) layouts. You can switch between launcher and arrangement with the header arrangement button; portrait devices open the vertical arrangement, landscape opens the horizontal one. Resizing Poolys window can also change the arrangement layout if enabled in settings. The arrangement exposes a clip map with a draggable playhead, loop controls.
+The **Arranger** is a linear timeline where clips sit at positions in time. Switch between launcher and arrangement with the **Launcher / Arrangement** button in the header. Time can run left to right or top to bottom; by default it follows your device's orientation, and you can set the direction for each view in Settings under **App → Time Axis Orientation**. The arrangement has a draggable playhead and loop controls.
 
-Both views share the same underlying project model. Launcher clips and arranger clips are distinct clip kinds referencing the same pattern pool—placing material on the timeline does not destroy launcher slots, and duplicating or editing patterns can be done from either view. Menus in both surfaces offer clip operations such as edit, clone, duplicate pattern, rename, link management, and delete. A pattern dock in arrangement views gives quick access to the pattern library while editing the timeline.
+Both views share the same project. Launcher clips and arranger clips are separate, but they can play the same patterns. Long-press a clip in either view for options such as edit, clone, duplicate, rename, linked editing, and delete. A pattern dock in the Arranger gives quick access to your patterns while editing the timeline.
 
-### 1.6 Detail View
+### 1.8 Detail View
 
-Detail View is Pooly's deep editing view for a selected track, clip, and pattern. It opens when you edit clip content from the launcher or arrangement, and it adapts its layout to the track kind. On instrument tracks you get a piano roll, performance surface, and instrument parameter controls; on audio tracks the wave editor and audio core panel replace the note editor while sharing the same parameter and automation infrastructure.
+Detail View is Pooly's deep editing view for a selected track and clip. It opens when you edit a clip from the launcher or arrangement, and it adapts to the track. On instrument tracks you get a piano roll, performance pads, and instrument controls; on audio tracks the wave editor and clip controls replace the note editor.
 
 <figure class="manual-media" data-wrap="right">
 	<img
@@ -117,15 +147,15 @@ Detail View is Pooly's deep editing view for a selected track, clip, and pattern
 	</figcaption>
 </figure>
 
-The view is organized into panels with tabs for voices, modulators, filters, envelopes, samples, and audio effects. You can expand panels to fullscreen for focused editing. Selecting the header title on an instrument track opens the instrument browser, where you swap synth voices, samplers, or drum kits from the preset library. A parallel browser mode selects effects for a chosen device in the chain.
+A device bar along the top picks what you're editing, the instrument, or any effect on the track, and the pages below it show that device's controls, such as voices, modulators, filters, and envelopes. Panels can expand to fill the view for focused editing. Open the **Browser** to swap sounds or add effects.
 
-Detail View coordinates editing states: an active clip or an empty track with no content yet. Footer buttons for pattern length, duplicate, and quantize enable only when a content-backed pattern exists. An automation control bar and lane overlay let you select targets, draw automation, and manage lanes without leaving the editor. Layout state is remembered separately for MIDI and audio track types so switching between them restores your last panel arrangement.
+Pattern buttons such as Double, Quantize, and Duplicate only light up once the clip has content. An automation bar and lane overlay let you pick targets, draw automation, and manage lanes without leaving the editor.
 
 ## Musical building blocks
 
-### 1.7 Tracks
+### 1.9 Tracks
 
-A track is a lane in your project that owns a device chain, mixer settings, and all clips routed through it. Every track has a persistent numeric ID, a user-visible name, a color, and a **kind** that determines what content it accepts: **Instrument** tracks host synthesizers, samplers, or drum racks and play MIDI patterns, while **Audio** tracks host audio patterns backed by recorded or imported files.
+A track is a lane in your project that holds clips, a chain of devices, and mixer settings. Every track has a name, a color, and a **kind** that determines what it plays: **MIDI** tracks host synthesizers, samplers, or drum kits and play notes, while **Audio** tracks play recorded or imported sound.
 
 <figure class="manual-media" data-wrap="left">
 	<img
@@ -140,86 +170,82 @@ A track is a lane in your project that owns a device chain, mixer settings, and 
 	</figcaption>
 </figure>
 
-Each track's sound path runs through its **device chain**—the canonical store for devices, mixer parameters, routing, automation, and view state. When you add an instrument, the track name can update automatically to match unless you have renamed it yourself.
+Every project also has a **Main** track. Each track plays through it on the way to your speakers, so effects you add to Main shape the whole mix. Main lives in the Mixer; it doesn't hold clips.
 
-In the Launcher and Mixer, tracks appear as columns or channel strips with headers showing name, color, and context actions such as stop, duplicate, move, and delete. You add tracks with dedicated **MIDI** and **Audio** buttons at the edge of the launcher or mixer. Reordering tracks updates the grid and mixer together so clip slots and channel order remain aligned. In the Arranger, tracks can appear as rows or columns depending on the layout.
+When you load an instrument, the track name updates to match unless you've renamed it yourself. In the Launcher, Arranger, and Mixer, track headers show the track name, a track output indicator, and track icon (set by the first device loaded on a midi track, or fixed for audio tracks); long-press a header for actions such as fold, stop, change color, move, duplicate, and delete. Add tracks with the **MIDI** and **Audio** buttons at the edge of the launcher or mixer, or the add-track button in the Arranger. Reordering tracks updates every view together.
 
-### 1.8 Audio and MIDI
+### 1.10 Audio and MIDI
 
-Pooly works with two fundamentally different kinds of musical material. **Audio** is recorded waveform data. It can come from imported WAV or OGG files, recordings, or audio rendered inside the app. **MIDI** is symbolic performance data: instructions like "play this pitch at this time with this velocity," closer to a score than a recording. MIDI by itself makes no sound; a device on the track must interpret it.
+Pooly works with two fundamentally different kinds of musical material. **Audio** is recorded sound. It can come from imported WAV, OGG, or MP3 files, recordings, or audio resampled inside the app. **MIDI** is performance data: instructions like "play this pitch at this time with this velocity," closer to a score than a recording. MIDI by itself makes no sound; an instrument on the track has to play it.
 
-Instrument tracks translate MIDI into audio through playable devices such as FM synths, samplers, or drum racks. A sampler maps notes across one or many sounds; a drum rack maps each pad to its own sample or synth device. Audio tracks skip that step and play back audio patterns directly, with clip-level controls for gain, pan, warp mode, and warp markers to align material with the project tempo.
+MIDI tracks turn notes into sound through instruments such as FM synths, samplers, or drum kits. A sampler maps notes across one or many sounds; a drum kit gives each pad its own sound. Audio tracks skip that step and play their recordings directly, with clip controls for gain, pan, and warping to fit the project tempo.
 
-The track kind enforces compatibility: MIDI patterns belong on instrument tracks and audio patterns on audio tracks. You create each type with separate add-track controls in the Clip Launcher and Mixer. Clip Detail adapts its layout accordingly—piano roll and performance pads for MIDI, a wave editor and audio core panel for audio—while sharing parameter, automation, and device-editing surfaces where they apply.
+The track kind decides what it can hold: note clips go on MIDI tracks and audio clips on audio tracks. Detail View adapts to match—piano roll and performance pads for MIDI, the wave editor and clip controls for audio.
 
-### 1.9 Clips, Patterns, and Scenes
+### 1.11 Clips, Patterns, and Scenes
 
-Pooly separates *what you wrote* from *where it plays*. A **pattern** is the authored musical content—MIDI notes on an instrument track, or audio file data on an audio track. A **clip** is an instance that places a pattern on a track, either in the Launcher grid or on the Arranger timeline. Multiple clips can reference the same pattern; when they are linked, edits propagate across all of them, and when unlinked each clip owns its own forked copy.
+Pooly separates *what you wrote* from *where it plays*. A **pattern** is the musical content: notes on a MIDI track, or a recording on an audio track. A **clip** places a pattern on a track, either in the Launcher grid or on the Arranger timeline. Several clips can share one pattern; with linked editing on, changing one changes them all.
 
-**Scenes** organize the Launcher into horizontal rows. Each scene row holds one slot per track; launching a scene triggers the clips in that row together, which is useful for song sections and live performance. Scene launch buttons sit beside the launcher grid and can be shown or hidden from the footer. Launch quantization is governed by the song's launch-quantization setting so transitions land on musically sensible boundaries.
+**Scenes** are the rows of the Launcher. Each scene holds one slot per track; launching a scene triggers every clip in that row together, which is useful for song sections and live performance. Turn the scene buttons on or off in Settings under **App → Show Scene Launcher**. Scene launches wait for the next musical boundary so transitions land in time.
 
-Understanding the distinction matters in practice. You edit note or audio content in Detail View, working on the underlying pattern. You launch and arrange music by manipulating clips—moving them in the launcher, placing them on the timeline, or triggering scenes. Patterns hold length, key/scale metadata, and embedded automation; clips add playback geometry such as start/end bounds, loop windows, and per-instance audio parameters.
+ You edit notes or audio in Detail View, working on the pattern. You launch and arrange music by working with clips, moving them in the launcher, placing them on the timeline, or triggering scenes.
 
-### 1.10 Clips
+### 1.12 Clips
 
-A clip is the object that connects a pattern to a place in your project. It has a unique ID, references a pattern, and belongs to a track. Clips come in two kinds: **launcher** clips live in the Clip Launcher grid slots, and **arranger** clips sit on the timeline. The same pattern data can back multiple clips; the `linked` flag controls whether editing one clip's pattern updates all linked siblings or forks a private copy on first edit.
+A clip connects a pattern to a place in your project. **Launcher** clips live in the Clip Launcher grid, and **arranger** clips sit on the timeline.
 
-Clips own playback geometry separate from the pattern's authored length. Content bounds define which portion of the pattern plays. Loop bounds and clip loop state define cycling behavior during playback. Audio clips additionally store per-instance clip parameters and warp markers, so two clips referencing the same audio pattern can differ in gain, warp settings, or marker placement.
+Each clip decides how much of its pattern plays and whether it loops. Audio clips also keep their own gain, pan, and warp settings, so two clips playing the same recording can sound different.
 
-Clips also carry presentation metadata: an optional custom name and color override, and a disabled flag to mute them without deleting content. Arrangement and launcher views operate on clips; Detail View edits the pattern behind the selected clip.
+Clips can have their own name and color. **Linked Editing** (in the clip's long-press menu) controls whether edits to the clip's pattern reach other clips that share it. When linked editing is off, Pooly gives the clip its own copy the first time you edit it.
 
-### 1.11 MIDI Patterns
+### 1.13 MIDI Patterns
 
-A MIDI pattern holds the note content for an instrument track. Notes are stored as structured events with pitch, position, length, velocity. Patterns declare an authored length, which defines the loopable content window shared by every clip that references the pattern.
+A MIDI pattern holds the notes for a MIDI track. Each with a pitch, position, length, and velocity—along with the length of the loop it plays.
 
-MIDI patterns carry editing metadata used by the piano roll: scroll and zoom state, note row height, and quantization settings. Smart quantize biases note starts toward the previous grid step rather than the nearest one. Patterns also store optional key and scale indices that can override the song defaults for display and editing helpers in Detail View.
+Patterns remember how you were viewing them in the piano roll, such as scroll and zoom. Smart quantize nudges note starts toward the previous grid step rather than the nearest one. Patterns can also carry their own key and scale, overriding the song's for that clip.
 
-Embedded **automation lanes** live inside the pattern as an `AutomationLaneSet`, separate from device-chain automation. This lets you automate pattern-local targets alongside note data. When multiple clips share a linked pattern, a note edit in Detail View updates the underlying pattern for all linked instances; unlinking or forking creates an independent copy with its own ID.
+Patterns can hold their own **automation lanes**, so parameter moves travel with the notes they belong to.
 
-### 1.12 Audio Patterns
+### 1.14 Audio Patterns
 
-An audio pattern represents a trimmed portion of an external audio file that plays as clip content on an audio track. It stores the file path, the file's native duration and sample rate, and a dictionary of clip parameters such as gain, pan, pitch, and warp mode.
+An audio pattern is a recording that plays as clip content on an audio track, along with settings such as gain, pan, pitch, and warp mode.
 
-Warp mode controls how audio stretches to follow project tempo. Pooly supports several algorithms—off (no warping), repitch, tones, and texture—selected through the clip parameter UI. When warping is active, warp markers on the clip instance map between seconds in the source file and beats in the timeline, giving fine control over tempo-synced playback. Audio patterns can also carry embedded automation lanes for automating clip-level parameters over time.
+Warp mode controls how audio stretches to follow the project tempo. Choose from **Off**, **Repitch**, **Beats**, **Tones**, **Texture**, and **Complex** in the clip controls. Pooly detects a file's tempo when you load it, and warp markers let you pin moments in the recording to beats on the timeline. Audio patterns can also carry automation for clip settings over time.
 
-Unlike MIDI patterns, audio patterns do not contain notes. Their musical identity is the underlying recording plus clip-instance geometry: content start/end bounds, loop windows, and per-clip parameter overrides stored on the `Clip` resource. Detail View's wave editor is the primary surface for viewing and editing this material, while the audio core panel exposes the parameter set.
+Unlike MIDI patterns, audio patterns don't contain notes. Detail View's wave editor is where you view, trim, and loop them.
 
-### 1.13 Devices
+### 1.15 Devices
 
-Devices are the building blocks of sound generation and processing in Pooly. Each track owns a **device graph** inside its device chain: an ordered graph of device nodes with parameters, routing, and runtime state. The device kind catalog classifies every device as playable (generates sound from MIDI), a rack (container for other devices), or an audio effect (processes audio downstream).
+Devices are the building blocks of sound in Pooly. Each track has a chain of devices: **instruments** that turn notes into sound, **racks** that hold other devices, and **audio effects** that process the sound afterward.
 
-Playable leaf devices include **synth** and **sampler** instruments. **Drum racks** and **instrument racks** are container devices: a drum rack maps pads to child devices, while an instrument rack chains multiple instruments. Audio effects are drawn from the effect catalog—reverb, delay, filter, distortion, and others—and insert into the chain after the instrument path.
+Instruments include **synths** and **samplers**. **Drum racks** give each pad its own device, while **instrument racks** layer several instruments together. Audio effects include reverb, delay, chorus, filters, distortion, compression, EQ, and more.
 
-Audio flows from MIDI input through playable devices, then through any effects, then through the track mixer (volume, pan, mute, solo) before reaching the main output. You browse and swap instruments and effects from Pooly's browser.
+Sound flows from your notes through the instrument, then through any effects, then through the track's mixer strip and on to Main. Open the **Device Graph** from the header to see a track's whole chain at once—drag devices to reorder them, or build racks to layer sounds. You browse and swap instruments and effects from Pooly's Browser.
 
-### 1.14 Presets
+### 1.16 Presets
 
-Presets are the saved sound identities Pooly uses to build runtime instruments. Pooly ships with a large factory library of instrument presets—FM voices, sampled instruments, drum kits, and more.
+Presets are the saved sounds Pooly builds instruments from. Pooly ships with a large factory library of presets—FM voices, sampled instruments, drum kits, effects, and more.
 
-You choose presets through the **instrument browser** in Clip Detail. Browse by category and subcategory, search by name, and tap a preset to load it onto the current track's device. You can also load **effects** for an existing device in the chain from  the browser. Preset selection replaces the playable device configuration while preserving the track's mixer and routing; parameter tweaks afterward are stored in the device's canonical state, not in the preset file itself.
+You choose presets in the **Browser**. Pick a tab such as Instruments, Drums, or FX, narrow by category or search by name, and load a preset onto the selected track. Loading an instrument replaces the track's sound but keeps its mixer settings and effects. Any tweaks you make afterward are saved with your project, not the preset.
 
-You can save new presets via the devices core panel, located in *detail view*.
+You can save your own presets from the instrument's core panel in Detail View.
 
-### 1.15 Project Scale and Key
+### 1.17 Project Scale and Key
 
-Every Pooly project has a root **key** and **scale** stored on the song. These defaults apply project-wide—for example, dtermining which note rows are availble for editing in the piano roll and informing editing helpers. You change them from Settings under the Project tab using the root-note and scale selectors. Changes propagate immediately through the the project, retuning all midi thoughout the project, this operation is undoable and deterministic.
+Every Pooly project has a root **key** and **scale**. These decide which note rows the piano roll offers and guide Pooly's editing helpers. Change them in Settings on the **Project** tab using the **Root Note** and **Scale** selectors. Changes apply right away and retune the MIDI throughout your project—and like everything else, they can be undone.
 
-Individual MIDI patterns can also store their own key and scale indices. When a pattern defines these values, Clip Detail prefers the pattern's tonality for that clip's editor; otherwise it falls back to the song defaults. This lets you write a passage in a borrowed mode without retuning the entire project, while still keeping a global key for new material and display consistency.
+Individual MIDI patterns can also have their own key and scale. When a pattern has one, Detail View uses it for that clip; otherwise it uses the song's. This lets you write a passage in a borrowed mode without retuning the whole project.
 
-Scale and key are indexing into Pooly's note and scale tables—they are not merely display labels. Altering the project scale in Settings updates the active editing context for tracks that inherit song defaults, including piano roll and related UI. Pattern-level overrides remain intact until you clear or change them on the pattern itself.
+### 1.18 Automation
 
-### 1.16 Automation
+Automation records how a parameter changes over time so your sound can evolve during playback without hands-on tweaking. Pooly stores automation in **lanes**, each targeting a control on a device, the mixer, or a clip. Lanes hold points placed in musical time.
 
-Automation records how a parameter changes across time so sound can evolve during playback without manual tweaking. Pooly stores automation in **lanes**, each targeting a specific parameter on a trackdevice, mixer, clip or pattern. Lanes contain points positioned in musical time.
+Detail View shows automation with an automation bar and a lane overlay on the piano roll or wave editor: toggle the overlay, pick a lane, draw or edit points, mute lanes, or delete them.
 
-Clip Detail exposes automation through an automation control bar and a lane overlay on the piano roll or wave editor: toggle the overlay, pick a lane, draw or edit points, mute lanes, or delete them.
+You can also perform automation live—turn a control while the song plays, then commit it with the capture bar in the footer.
 
-Parameter Performances can be easily captured and written to a pattern as automation using the **capture button** in the **footer**. The captured automation is stored in the pattern's automation lane set.
+### 1.19 MIDI and Automation Capture
 
-### 1.17 MIDI and Automation Capture
+Capture is Pooly's always-listening record buffer. When you play notes on the pads or a MIDI controller, or turn a control during playback, Pooly holds onto what you played instead of writing it straight into the pattern.
 
-Capture is Pooly's live recording buffer for live input. When you play MIDI notes or tweak automateable controls during playback, pooly accumulates events in a session rather than writing them immediately. Note capture records pitch, timing, velocity, and duration relative to the active clip or pending pattern slot. Automation capture records parameter changes against a selected target on the track.
-
-A capture session stays open until you commit or discard it. While capturing, inactivity eventually freezes note input after roughly one bar without new notes—the buffer is preserved, not auto-committed. Starting playback clears any open capture session to avoid accidental merges. When material is ready, tap the capture button (a short press) to **commit** notes or automation points into the pattern and clear the buffer. **Long-press** the capture button to discard the buffer without committing.
-
-The capture button appears only when there is something to commit. It sits in the **footer** and reflects buffer state visually—growing while you hold to clear, popping in when captured material exists. Committed capture respects the current clip link state and may materialize a new launcher clip when capturing into an empty slot.
+As soon as there's something captured, a **capture bar** slides up from the footer. Tap the **capture** button to commit the notes or automation into the clip, or tap **✕** to throw the take away. If you stop playing for about a bar, Pooly pauses the take but keeps it, so nothing is lost. Capturing on an empty slot creates a new clip for you.

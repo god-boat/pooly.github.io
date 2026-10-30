@@ -8,7 +8,7 @@ order: 10
 
 ## 6.1 When to use Detail View
 
-Detail View is Pooly's deep editing surface for the selected track, clip, and pattern. Open it any time you need to write or refine note content, sculpt a voice, place automation, or audition device changes. It adapts to the track kind: instrument tracks expose a piano roll, performance pads, and instrument controls; audio tracks swap in the wave editor and the audio core panel.
+Detail View is Pooly's deep editing view for the selected track and clip. Open it any time you need to write or refine notes, sculpt a sound, draw automation, or try out effects. It adapts to the track: MIDI tracks get a piano roll, performance pads, and instrument controls; audio tracks swap in the wave editor and clip controls.
 
 <figure class="manual-media" data-wrap="right">
 	<img
@@ -25,53 +25,53 @@ Detail View is Pooly's deep editing surface for the selected track, clip, and pa
 
 ## 6.2 Opening Detail View
 
-From the Clip Launcher or Arranger, tap a clip to open its content in Detail View. Tap the **Back** button in the header to return to the previous view. The header title shows the active track or instrument name—tapping it on an instrument track opens the Browser to swap voices.
+From the Clip Launcher or Arranger, double tap a clip, or long-press it and choose **Edit**. Tapping an empty launcher slot or a track header opens it too. On a phone, tap **Back** to return; on larger screens Detail View sits beside your other views and follows whichever track you select.
 
-## 6.3 Panels and tabs
+## 6.3 Devices and pages
 
-Detail View is organized into panels with tabs for voices, modulators, filters, envelopes, samples, and audio effects. Any panel can be expanded to fullscreen for focused editing. Layout state is remembered separately for MIDI and audio track kinds, so switching between them restores your last arrangement.
+The device bar along the top chooses what you're editing: the track's instrument, any effect in its chain, or—on an audio track—the clip itself. Below it, pages such as voices, modulators, filters, envelopes, and samples show that device's controls. Panels can expand to fill the view when you want room to focus.
 
 ## 6.4 Editing MIDI clips
 
-On an instrument track Detail View shows:
+On a MIDI track Detail View shows:
 
 - The **piano roll** for note placement, length, and velocity
-- A **performance pad** surface for live input and drum racks
-- Instrument **device controls** for the active voice
-- An **automation overlay** for lane editing on top of the note grid
+- **Performance pads** for playing live, finger drumming, and chords
+- **Device controls** for the selected instrument or effect
+- An **automation overlay** for lane editing on top of the notes
 
-Footer buttons for pattern length, duplicate, and quantize enable only when the clip has content. Smart quantize biases note starts toward the previous grid step rather than the nearest one.
+Use **Pad Options** in the footer to change the pads' layout and octave. Footer buttons for **Double**, **Quantize**, and **Duplicate** light up once the clip has content. Smart quantize nudges note starts toward the previous grid step rather than the nearest one.
 
 ## 6.5 Editing audio clips
 
 On an audio track Detail View replaces the note editor with:
 
-- The **wave editor** for trimming, looping, and previewing the recorded material
-- The **audio core panel** exposing clip parameters such as gain, pan, pitch, and warp mode
+- The **wave editor** for trimming, looping, and previewing your audio
+- **Clip controls** such as gain, pan, pitch, and warp mode
 - The same **automation overlay** for lane editing
 
-Warp markers let you align audio with the project tempo when warping is active.
+An empty audio clip offers **Load Sample**, **Record**, **Resample**, and capturing audio playing on your device. Warp markers let you line audio up with the project tempo when warping is on.
 
-## 6.6 Devices and voices
+## 6.6 Sounds and effects
 
-Tap the header title on an instrument track to open the **Browser** and choose a new synth voice, sampler, or drum kit. From the device chain you can also load **effects** for any existing device. Preset selection replaces the playable device configuration while preserving the track's mixer and routing.
+Open the **Browser** to choose a new synth, sampler, or drum kit, or to add effects to the track. Loading a new instrument keeps the track's mixer settings and effects.
 
-You can save tweaked sounds as new presets from the device's core panel.
+You can save tweaked sounds as new presets from the instrument's core panel.
 
 ## 6.7 Automation in Detail View
 
-The **automation control bar** and the lane overlay let you select a target, draw automation, mute lanes, and manage targeting without leaving the editor. Use the **capture button** in the footer to commit a live parameter performance into the pattern's automation lane set.
+The **automation bar** and lane overlay let you pick a target, draw automation, mute lanes, and manage them without leaving the editor. To record automation live, move a control while the song plays and commit the take with the capture bar in the footer.
 
 ## 6.8 Tips
 
-- Long-press a panel header to expand it to fullscreen
-- Unlink a clip before editing if you only want to change one instance of a shared pattern
-- Use the automation overlay for fast parameter sweeps without picking up a separate tool
+- Turn off **Linked Editing** on a clip before editing if you only want to change that one copy of a shared pattern
+- Use the automation overlay for fast parameter sweeps without switching tools
+- Try the **Sound Design** layout to keep the Device Graph and Mixer close while you shape a sound
 
 ## Related pages
 
-- [1.6 Detail View](/manual/core-concepts/#16-detail-view)
+- [1.8 Detail View](/manual/core-concepts/#18-detail-view)
 - [2 Browser](/manual/views/browser/)
 - [3 Clip Launcher](/manual/views/clip-launcher/)
-- [1.16 Automation](/manual/core-concepts/#116-automation)
+- [1.18 Automation](/manual/core-concepts/#118-automation)
 - [Build an instrument](/learn/building-an-instrument/)
