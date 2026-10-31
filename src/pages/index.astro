@@ -3,16 +3,84 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 import TapeLabel from "../components/field/TapeLabel.astro";
 import HandNote from "../components/field/HandNote.astro";
 import Sticker from "../components/field/Sticker.astro";
-import FeatureBlock from "../components/field/FeatureBlock.astro";
 import Doodle from "../components/field/Doodle.astro";
+import { socials } from "../data/socials";
+import { getCollection } from "astro:content";
 
-const socialLinks = [
-	{ label: "Manual", href: "/manual/", internal: true },
-	{ label: "Discord", href: "https://discord.gg/zbNVJYBtw7" },
-	{ label: "Threads", href: "https://www.threads.net/@poolydaw" },
-	{ label: "Patreon", href: "https://patreon.com/godboat" },
-	{ label: "Instagram", href: "https://www.instagram.com/poolydaw" },
-	{ label: "YouTube", href: "https://www.youtube.com/@poolydaw" },
+const guides = (await getCollection("guides", ({ data }) => !data.draft))
+	.sort((a, b) => a.data.order - b.data.order);
+
+const discord = socials.find(link => link.label === "Discord")!;
+
+const ticker = [
+	"made on the bus",
+	"550+ voices",
+	"clips & patterns",
+	"scenes & mutes",
+	"phones · tablets · desktop",
+	"early access coming soon",
+	"catch it before it disappears",
+];
+
+const features = [
+	{
+		number: "01",
+		title: "Built for the first 30 seconds of an idea",
+		body: "Capture, sketch, and loop in moments. Clips, patterns, and variations — fast.",
+		image: "/images/application-screenshots/tracks.png",
+		imageAlt: "Pooly clip launcher",
+		note: "catch it before it disappears ♪",
+	},
+	{
+		number: "02",
+		title: "Playable, not just editable",
+		body: "Scenes, mutes, and performance pads put your song in your hands. Less spreadsheet, more instrument.",
+		image: "/images/application-screenshots/arranger%20+%20launcher.png",
+		imageAlt: "Pooly arranger and clip launcher",
+		wide: true,
+	},
+	{
+		number: "03",
+		title: "A small studio of instruments",
+		body: "FM synths, samplers, expressive kits, and everyday sounds — over 550 built-in voices to start from.",
+		image: "/images/application-screenshots/detail.png",
+		imageAlt: "Pooly instrument detail view",
+	},
+	{
+		number: "04",
+		title: "Finish the idea",
+		body: "Arrange, refine, and build your song all in one place. Turn sketches into songs without moving to a desktop.",
+		image: "/images/application-screenshots/launcher%20+%20detail.png",
+		imageAlt: "Pooly clip launcher and instrument detail",
+		note: "sketch → song",
+		wide: true,
+	},
+];
+
+const pics = [
+	{ src: "/images/application-screenshots/project%20selection.png", alt: "Pooly project list" },
+	{ src: "/images/application-screenshots/varrange%20+%20detail.png", alt: "Pooly arranger with instrument detail" },
+	{ src: "/images/galaxy%20s26%20ultra.jpg", alt: "Pooly drum kit on a phone" },
+];
+
+const topFriends = [
+	{ name: "lil pooly", doodle: "bad_pooly", color: "var(--color-note)" },
+	{ name: "fm guy", doodle: "fm", color: "var(--color-blue)" },
+	{ name: "strum", doodle: "strum", color: "var(--color-clay)" },
+	{ name: "turtle", doodle: "turtle", color: "var(--color-olive)" },
+	{ name: "cat?", doodle: "cat", color: "var(--color-accent)" },
+	{ name: "xy!", doodle: "xy", color: "var(--color-note)" },
+	{ name: "birb", doodle: "bird", color: "var(--color-blue)" },
+	{ name: "♫♫", doodle: "notes", color: "var(--color-clay)" },
+];
+
+const [lilPooly, fmGuy, , turtle, cat] = topFriends;
+
+const comments = [
+	{ from: turtle, when: "4 bars ago", text: "took three bus rides but i finished the loop. thanks for the add!!" },
+	{ from: cat, when: "8 bars ago", text: "walked across the pads by accident. kept it." },
+	{ from: fmGuy, when: "a verse ago", text: "FM" },
+	{ from: lilPooly, when: "the intro", text: "first!!!" },
 ];
 ---
 
@@ -20,618 +88,911 @@ const socialLinks = [
 	title="Pooly"
 	description="A touch-first music workstation for sketching, sampling, performing, and arranging on phones, tablets, and desktop."
 >
-	<section class="hero">
-		<div class="hero-bg"></div>
+	<div class="blanket" aria-hidden="true"></div>
 
-		<Doodle name="xy" class="hero-doodle-xy" color="var(--color-accent)" width="120px" rotate="-8deg" opacity="0.18" alt="" />
-		<Doodle name="notes" class="hero-doodle-notes" color="var(--color-note)" width="30px" rotate="19deg" opacity="0.35" alt="" />
-
-		<div class="hero-device">
-			<div class="hero-device-frame">
-				<img
-					src="/images/brand/poolyHero01.png"
-					alt="Pooly clip launcher"
-					width="800"
-					height="600"
-				/>
-			</div>
-
-			<Doodle name="layout" class="hero-doodle-layout" color="var(--color-tape)" width="160px" rotate="-3deg" opacity="0.55" alt="" />
-
-			<TapeLabel rotate="9deg" class="device-tape device-tape-a" color="light">Clip Launcher</TapeLabel>
-			<Sticker rotate="-7deg" color="var(--color-olive)" class="device-sticker">Made on<br/>the bus</Sticker>
-			<HandNote class="device-note device-note-a">^ scenes</HandNote>
-			<HandNote class="device-note device-note-b">clips & patterns</HandNote>
-
-			<div class="project-card">
-				<span class="project-card-title">my-song-02.pool</span>
-				<span class="project-card-meta">12 tracks · 202 bpm</span>
+	<div class="profile">
+		<div class="ticker" aria-hidden="true">
+			<div class="ticker-track">
+				{[0, 1].map(() => (
+					<ul>{ticker.map(item => <li>{item}</li>)}</ul>
+				))}
 			</div>
 		</div>
 
-		<div class="hero-content">
-			<TapeLabel rotate="-9.5deg" class="hero-tape">  Field Studio  </TapeLabel>
-			<!-- <HandNote class="hero-tagline">Sketch, loop, build.</HandNote> -->
-			<h1>Make music before<br />the idea disappears.</h1>
-			<p class="hero-subtitle">
-				Pooly is a touch-first music workstation for sketching,
-				sampling, performing, and arranging on phones, tablets, and desktop.
-			</p>
-			<div class="hero-links-group">
-				<HandNote class="hero-take-anywhere">take it anywhere →</HandNote>
-				<nav class="social-links" aria-label="Pooly links">
-					{socialLinks.map(link => (
-						<a
-							class="social-link"
-							href={link.href}
-							{...(link.internal ? {} : { target: "_blank", rel: "noopener noreferrer" })}
-						>
-							{link.label}
-						</a>
-					))}
-				</nav>
+		<div class="profile-cols">
+			<div class="profile-col">
+				<section class="box profile-card">
+					<p class="profile-name">Pooly</p>
+					<div class="profile-id">
+						<div class="profile-pic">
+							<img src="/images/brand/pooly mascot 3d fall.png" alt="Pooly mascot" width="1024" height="759" />
+							<TapeLabel rotate="-6deg" class="profile-tape">Field Studio</TapeLabel>
+						</div>
+						<div class="profile-facts">
+							<p class="profile-headline">"sketch, loop, build."</p>
+							<p>touch-first<br />music workstation<br />phones · tablets · desktop</p>
+							<p class="online"><span class="online-dot" aria-hidden="true"></span>Online Now!</p>
+						</div>
+					</div>
+					<p class="profile-line"><b>Mood:</b> looping ♪</p>
+					<p class="profile-line"><b>View My:</b> <a href="/learn/">Guides</a> | <a href="/manual/">Manual</a></p>
+				</section>
+
+				<section class="box contact">
+					<h2 class="box-head">Contacting Pooly</h2>
+					<ul class="contact-grid">
+						{socials.map(link => (
+							<li>
+								<a href={link.href} target="_blank" rel="noopener noreferrer">
+									<span class="contact-icon" set:html={link.icon} />
+									{link.label}
+								</a>
+							</li>
+						))}
+					</ul>
+				</section>
+
+				<section class="box url-box">
+					<h2 class="box-head">Pooly's URL</h2>
+					<p class="box-body"><a href="/">{Astro.site!.href}</a></p>
+				</section>
+
+				<section class="box blog">
+					<h2 class="box-head">
+						Pooly's Latest Blog Entries
+						<a href="/learn/">[view all]</a>
+					</h2>
+					<ul class="box-body blog-list">
+						{guides.map(guide => (
+							<li>
+								<a href={`/learn/${guide.id}/`}>{guide.data.title}</a>
+								<span class="blog-meta">{guide.data.difficulty}{guide.data.estimatedTime && ` · ${guide.data.estimatedTime}`}</span>
+								<a class="blog-more" href={`/learn/${guide.id}/`}>(view more)</a>
+							</li>
+						))}
+					</ul>
+				</section>
+
+				<section class="box interests">
+					<h2 class="box-head">Pooly's Interests</h2>
+					<table class="info-table">
+						<tr><th scope="row">General</th><td>sketching, sampling, performing, arranging</td></tr>
+						<tr><th scope="row">Music</th><td>clips, patterns, variations, scenes, mutes, performance pads</td></tr>
+						<tr><th scope="row">Instruments</th><td>FM synths, samplers, expressive kits, everyday sounds</td></tr>
+						<tr><th scope="row">Hangs out</th><td>the bus, the couch, the park, the floor</td></tr>
+					</table>
+				</section>
+
+				<section class="box details">
+					<h2 class="box-head">Pooly's Details</h2>
+					<table class="info-table">
+						<tr><th scope="row">Status</th><td>early access · coming soon</td></tr>
+						<tr><th scope="row">Here for</th><td>ideas in motion</td></tr>
+						<tr><th scope="row">Body type</th><td>touch-first</td></tr>
+						<tr><th scope="row">Hometown</th><td>your pocket</td></tr>
+						<tr><th scope="row">Voices</th><td><span class="counter"><span>0</span><span>5</span><span>5</span><span>0</span></span>+</td></tr>
+					</table>
+				</section>
+
+				<section class="box pics">
+					<h2 class="box-head">Pooly's Pics</h2>
+					<ul class="box-body pics-grid">
+						{pics.map(pic => (
+							<li>
+								<a href={pic.src} target="_blank" rel="noopener noreferrer">
+									<img src={pic.src} alt={pic.alt} loading="lazy" />
+								</a>
+							</li>
+						))}
+						<li class="pics-sketch">
+							<Doodle name="layout" color="var(--color-note)" width="92%" opacity="0.85" alt="Early sketch of the Pooly layout" />
+						</li>
+					</ul>
+				</section>
+			</div>
+
+			<div class="profile-col">
+				<section class="box network">
+					<p class="network-kicker">Pooly is in your extended network</p>
+					<h1>make music before the idea disappears.</h1>
+					<p class="network-lead">
+						Pooly is a touch-first music workstation for sketching,
+						sampling, performing, and arranging on phones, tablets, and desktop.
+					</p>
+					<Sticker rotate="9deg" color="var(--color-olive)" class="network-sticker">Made on<br />the bus</Sticker>
+				</section>
+
+				<section class="box box-warm blurbs">
+					<h2 class="box-head">Pooly's Blurbs</h2>
+					<div class="box-body">
+						<h3 class="blurb-label">About me:</h3>
+						{features.map(feature => (
+							<article class:list={["blurb-feature", { wide: feature.wide }]}>
+								<div class="blurb-copy">
+									<span class="blurb-number">{feature.number}</span>
+									<h4>{feature.title}</h4>
+									<p>{feature.body}</p>
+									{feature.note && <HandNote class="blurb-note">{feature.note}</HandNote>}
+								</div>
+								<figure class="blurb-pic">
+									<img src={feature.image} alt={feature.imageAlt} loading="lazy" />
+								</figure>
+							</article>
+						))}
+
+						<h3 class="blurb-label">Who I'd like to meet:</h3>
+						<p class="blurb-meet">
+							People with half a song stuck in their phone. People who hum into
+							voice memos on the bus. Anyone who has ever lost a melody somewhere
+							between the shower and the laptop.
+						</p>
+					</div>
+				</section>
+
+				<section class="box box-warm shows">
+					<h2 class="box-head">Pooly's Upcoming Shows</h2>
+					<div class="box-body">
+						<table class="shows-table">
+							<tr>
+								<td class="shows-when">soon</td>
+								<td><b>Early access</b></td>
+								<td>wherever you are</td>
+							</tr>
+						</table>
+						<div class="shows-hype">
+							<p class="glitter">★ coming soon ★</p>
+							<Doodle name="were" class="shows-doodle" color="var(--color-note)" width="150px" rotate="-6deg" opacity="0.8" alt="We're ready" />
+						</div>
+						<p class="shows-lead">Help shape a music app built for ideas in motion.</p>
+						<div class="shows-links">
+							<a class="bevel" href={discord.href} target="_blank" rel="noopener noreferrer">Join the Discord</a>
+							<a class="bevel" href="/learn/">Learn Pooly</a>
+							<a class="bevel" href="/manual/">Manual</a>
+						</div>
+					</div>
+				</section>
+
+				<section class="box box-warm friends">
+					<h2 class="box-head">Pooly's Friend Space</h2>
+					<div class="box-body">
+						<p class="friends-count">
+							Pooly has <b>550+</b> friends.
+							<HandNote class="friends-aside">(they're built-in voices. it counts.)</HandNote>
+						</p>
+						<ul class="top-friends">
+							{topFriends.map(friend => (
+								<li>
+									<span class="friend-pic">
+										<Doodle name={friend.doodle} color={friend.color} width="76%" opacity="0.9" alt="" />
+									</span>
+									<span class="friend-name">{friend.name}</span>
+								</li>
+							))}
+						</ul>
+					</div>
+				</section>
+
+				<section class="box box-warm comments">
+					<h2 class="box-head">Pooly's Friends Comments</h2>
+					<div class="box-body">
+						<p class="comments-count">
+							Displaying <b>{comments.length}</b> of <b>{comments.length}</b> comments
+							( <a href={discord.href} target="_blank" rel="noopener noreferrer">Add Comment</a> )
+						</p>
+						<table class="comments-table">
+							<tbody>
+							{comments.map(comment => (
+								<tr>
+									<th scope="row">
+										<span class="friend-pic">
+											<Doodle name={comment.from.doodle} color={comment.from.color} width="76%" opacity="0.9" alt="" />
+										</span>
+										<span class="friend-name">{comment.from.name}</span>
+									</th>
+									<td>
+										<p class="comment-when">{comment.when}</p>
+										<p>{comment.text}</p>
+									</td>
+								</tr>
+							))}
+							</tbody>
+						</table>
+					</div>
+				</section>
 			</div>
 		</div>
-	</section>
-
-	<div class="features-stack">
-		<FeatureBlock
-			number="01"
-			title="Built for the first 30 seconds of an idea"
-			body="Capture, sketch, and loop in moments. Clips, patterns, and variations — fast."
-			image="/images/application-screenshots/tracks.png"
-			imageAlt="Pooly clip launcher and instrument detail"
-		>
-			<HandNote class="artifact artifact-01">catch it before it disappears ♪</HandNote>
-			<Doodle slot="doodle" name="note" class="feature-doodle feature-doodle-01" color="var(--color-note)" width="80px" rotate="14deg" opacity="0.7" alt="" />
-		</FeatureBlock>
-
-		<FeatureBlock
-			number="02"
-			title="Playable, not just editable"
-			body="Scenes, mutes, and performance pads put your song in your hands. Less spreadsheet, more instrument."
-			image="/images/application-screenshots/arranger%20+%20launcher.png"
-			imageAlt="Pooly arranger and clip launcher"
-			reverse
-		>
-			<Doodle slot="doodle" name="strum" class="feature-doodle feature-doodle-02" color="var(--color-clay)" width="240px" rotate="-9deg" opacity="0.65" alt="" />
-			<TapeLabel rotate="-9deg" class="artifact artifact-02" color="warm">  live performance  </TapeLabel>
-		</FeatureBlock>
-
-		<FeatureBlock
-			number="03"
-			title="A small studio of instruments"
-			body="FM synths, samplers, expressive kits, and everyday sounds — over 550 built-in voices to start from."
-			image="/images/application-screenshots/detail.png"
-			imageAlt="Pooly instrument detail view"
-		>
-			<Sticker rotate="6deg" color="var(--color-blue)" class="artifact artifact-03">550+<br/>voices</Sticker>
-			<Doodle slot="doodle" name="fm" class="feature-doodle feature-doodle-03" color="var(--color-blue)" width="160px" rotate="5deg" opacity="0.55" alt="" />
-		</FeatureBlock>
-
-		<FeatureBlock
-			number="04"
-			title="Finish the idea"
-			body="Arrange, refine, and build your song all in one place. Turn sketches into songs without moving to a desktop."
-			image="/images/application-screenshots/launcher%20+%20detail.png"
-			imageAlt="Pooly tracks and arrangement view"
-			reverse
-		>
-			<HandNote class="artifact artifact-04">sketch → song</HandNote>
-			<Doodle slot="doodle" name="skecth" class="feature-doodle feature-doodle-04" color="var(--color-olive)" width="200px" rotate="-4deg" opacity="0.6" alt="" />
-		</FeatureBlock>
 	</div>
-
-	<section class="cta-section">
-		<Sticker color="var(--color-clay)" rotate="-6deg" class="cta-sticker">Start messy.<br/>Make it<br/>better.</Sticker>
-		<Doodle name="bad_pooly" class="cta-doodle-pooly" color="var(--color-note)" width="120px" rotate="-7deg" opacity="0.5" alt="" />
-		<Doodle name="were" class="cta-doodle-were" color="var(--color-accent)" width="70px" rotate="9deg" opacity="0.35" flip alt="" />
-		<div class="cta-content">
-			<h2>Join early access</h2>
-			<p class="cta-lead">
-				Help shape a music app built for ideas in motion.
-				<br/>COMING SOON
-			</p>
-			<div class="cta-cards">
-				<a href="/learn/" class="cta-card">
-					<span class="cta-card-title">Learn Pooly</span>
-					<span class="cta-card-desc">Step-by-step guides for getting started</span>
-				</a>
-				<a href="/manual/" class="cta-card">
-					<span class="cta-card-title">Manual</span>
-					<span class="cta-card-desc">In-depth reference for every feature</span>
-				</a>
-				<a href="https://discord.gg/zbNVJYBtw7" class="cta-card" target="_blank" rel="noopener noreferrer">
-					<span class="cta-card-title">Discord</span>
-					<span class="cta-card-desc">Join the community and share your music</span>
-				</a>
-			</div>
-		</div>
-	</section>
 </BaseLayout>
 
 <style>
-	/* ── Hero ── */
+	/* ── Backdrop ── */
 
-	.hero {
-		position: relative;
-		overflow: visible;
-		display: grid;
-		grid-template-columns: 1fr;
-		gap: var(--space-2xl);
-		padding:  clamp(1.25rem, 6vw, 6rem);
-		min-height: 80svh;
-		align-items: center;
-	}
-
-	.hero-bg {
-		position: absolute;
+	.blanket {
+		position: fixed;
 		inset: 0;
-		z-index: 0;
-		/* background:
-			radial-gradient(ellipse 80% 60% at 50% 40%, rgba(201, 185, 143, 0.06), transparent 70%),
-			linear-gradient(to bottom, transparent 70%, var(--color-bg)); */
+		z-index: -1;
+		background: var(--color-bg) url("/images/brand/poolyHero01.png") center 58% / cover no-repeat;
 	}
 
-	.hero-content {
-		position: relative;
-		z-index: 2;
+	/* ── Page frame ── */
+
+	.profile {
+		max-width: 60rem;
+		margin: 0 auto;
+		padding: clamp(10rem, 38svh, 24rem) var(--space-md) var(--space-4xl);
+		font-size: 0.8125rem;
+		line-height: 1.5;
+	}
+
+	.profile a {
+		font-weight: 700;
+	}
+
+	.profile a:hover {
+		text-decoration: underline;
+	}
+
+	.profile-cols {
 		display: flex;
 		flex-direction: column;
-		gap: var(--space-lg);
+		gap: var(--space-md);
 	}
 
-	.hero h1 {
-		font-size: clamp(2.4rem, 8vw, 4.2rem);
+	.profile-col {
+		display: contents;
+	}
+
+	/* One column on narrow screens: lead with the pitch */
+	.network { order: 1; }
+	.profile-card { order: 2; }
+	.contact { order: 3; }
+	.blurbs { order: 4; }
+	.shows { order: 5; }
+	.friends { order: 6; }
+	.blog { order: 7; }
+	.interests { order: 8; }
+	.details { order: 9; }
+	.pics { order: 10; }
+	.url-box { order: 11; }
+	.comments { order: 12; }
+
+	@media (min-width: 52rem) {
+		.profile-cols {
+			display: grid;
+			grid-template-columns: 19rem minmax(0, 1fr);
+			gap: var(--space-lg);
+			align-items: start;
+		}
+
+		.profile-col {
+			display: flex;
+			flex-direction: column;
+			gap: var(--space-md);
+		}
+
+		.profile-col > * {
+			order: 0;
+		}
+	}
+
+	/* ── Ticker ── */
+
+	.ticker {
+		overflow: hidden;
+		margin-bottom: var(--space-md);
+		background: var(--color-accent);
+		color: #1b120c;
+		box-shadow: var(--shadow-drop);
+	}
+
+	.ticker-track {
+		display: flex;
+		width: max-content;
+		animation: ticker 48s linear infinite;
+	}
+
+	.ticker ul {
+		display: flex;
+		list-style: none;
+	}
+
+	.ticker li {
+		padding: 0.3rem 0 0.3rem 1.25rem;
+		font-size: 0.7rem;
+		font-weight: 800;
+		letter-spacing: 0.12em;
+		text-transform: uppercase;
+		white-space: nowrap;
+	}
+
+	.ticker li::before {
+		content: "★";
+		margin-right: 1.25rem;
+		color: var(--color-clay);
+	}
+
+	@keyframes ticker {
+		to { transform: translateX(-50%); }
+	}
+
+	/* ── Boxes ── */
+
+	.box {
+		--box-tone: var(--color-blue);
+		--box-ink: var(--color-text);
+		--box-cell: color-mix(in srgb, var(--box-tone) 26%, var(--color-bg));
+		--box-cell-soft: color-mix(in srgb, var(--box-tone) 10%, var(--color-bg));
+
+		position: relative;
+		background: color-mix(in srgb, var(--color-bg) 92%, transparent);
+		border: 1px solid var(--box-tone);
+		box-shadow: var(--shadow-drop);
+	}
+
+	.box-warm {
+		--box-tone: var(--color-clay);
+		--box-ink: #1b120c;
+	}
+
+	.box-head {
+		display: flex;
+		flex-wrap: wrap;
+		justify-content: space-between;
+		align-items: baseline;
+		gap: 0 var(--space-sm);
+		padding: 0.3rem 0.6rem;
+		background: var(--box-tone);
+		color: var(--box-ink);
+		font-family: var(--font-body);
+		font-size: 0.8125rem;
+		font-weight: 800;
+		letter-spacing: 0.01em;
+		line-height: 1.4;
+	}
+
+	.box-head a {
+		color: var(--box-ink);
+		font-size: 0.72rem;
+	}
+
+	.box-body {
+		padding: 0.75rem;
+	}
+
+	/* ── Profile card ── */
+
+	.profile-card {
+		padding: 0.9rem;
+		border-color: var(--color-accent);
+	}
+
+	.profile-name {
+		font-family: var(--font-display);
+		font-size: 1.75rem;
+		font-weight: 700;
+		letter-spacing: -0.02em;
+		line-height: 1;
+		margin-bottom: 0.75rem;
+	}
+
+	.profile-id {
+		display: grid;
+		grid-template-columns: 8.5rem 1fr;
+		gap: 0.75rem;
+		align-items: start;
+		margin-bottom: 1.25rem;
+	}
+
+	.profile-pic {
+		position: relative;
+		padding: 0.35rem;
+		background: var(--color-paper-soft);
+		border: 1px solid var(--color-border-strong);
+	}
+
+	.profile-pic img {
+		width: 100%;
+		aspect-ratio: 1;
+		object-fit: contain;
+	}
+
+	.profile-pic :global(.profile-tape) {
+		position: absolute;
+		left: -0.75rem;
+		bottom: -0.9rem;
+	}
+
+	.profile-facts {
+		color: var(--color-text-soft);
+		font-size: 0.75rem;
+	}
+
+	.profile-facts p + p {
+		margin-top: 0.5rem;
+	}
+
+	.profile-headline {
+		font-family: var(--font-hand);
+		font-size: 1rem;
+		line-height: 1.2;
+		color: var(--color-note);
+	}
+
+	.online {
+		display: inline-flex;
+		align-items: center;
+		gap: 0.35rem;
+		color: var(--color-olive);
+		font-weight: 800;
+		text-transform: uppercase;
+		letter-spacing: 0.04em;
+	}
+
+	.online-dot {
+		width: 0.55rem;
+		height: 0.55rem;
+		border-radius: 50%;
+		background: var(--color-olive);
+		box-shadow: 0 0 0 3px color-mix(in srgb, var(--color-olive) 30%, transparent);
+		animation: blink 1.2s steps(2, jump-none) infinite;
+	}
+
+	@keyframes blink {
+		50% { opacity: 0.2; }
+	}
+
+	.profile-line {
+		color: var(--color-text-soft);
+	}
+
+	.profile-line + .profile-line {
+		margin-top: 0.4rem;
+	}
+
+	.profile-line b {
+		color: var(--color-text);
+	}
+
+	/* ── Contact ── */
+
+	.contact-grid {
+		display: grid;
+		grid-template-columns: repeat(2, minmax(0, 1fr));
+		gap: 1px;
+		list-style: none;
+		background: var(--box-cell);
+		padding: 1px;
+	}
+
+	.contact-grid a {
+		display: flex;
+		align-items: center;
+		gap: 0.5rem;
+		padding: 0.55rem 0.6rem;
+		background: var(--box-cell-soft);
+		font-size: 0.78rem;
+	}
+
+	.contact-grid a:hover {
+		background: var(--box-cell);
+	}
+
+	.contact-icon :global(svg) {
+		display: block;
+		width: 1rem;
+		height: 1rem;
+	}
+
+	/* ── Interests / details tables ── */
+
+	.info-table {
+		width: 100%;
+		border-collapse: separate;
+		border-spacing: 3px;
+	}
+
+	.info-table th,
+	.info-table td {
+		padding: 0.4rem 0.5rem;
+		vertical-align: top;
+		text-align: left;
+	}
+
+	.info-table th {
+		width: 34%;
+		background: var(--box-cell);
+		color: var(--color-note);
+		font-weight: 700;
+	}
+
+	.info-table td {
+		background: var(--box-cell-soft);
+		color: var(--color-text-soft);
+	}
+
+	.counter {
+		display: inline-flex;
+		gap: 2px;
+		margin-right: 0.2rem;
+	}
+
+	.counter span {
+		padding: 0 0.3rem;
+		background: #080807;
+		border: 1px solid var(--color-border-strong);
+		color: var(--color-olive);
+		font-family: var(--font-display);
+		font-size: 0.72rem;
+		font-weight: 600;
+	}
+
+	/* ── Pics ── */
+
+	.pics-grid {
+		display: grid;
+		grid-template-columns: repeat(2, minmax(0, 1fr));
+		gap: 0.5rem;
+		list-style: none;
+	}
+
+	.pics-grid li {
+		aspect-ratio: 1;
+		padding: 0.25rem;
+		background: #080807;
+		border: 1px solid var(--color-border-strong);
+	}
+
+	.pics-grid a {
+		display: block;
+		height: 100%;
+	}
+
+	.pics-grid img {
+		width: 100%;
+		height: 100%;
+		object-fit: cover;
+		object-position: top;
+	}
+
+	.pics-grid .pics-sketch {
+		display: grid;
+		place-items: center;
+		background: var(--color-paper-soft);
+	}
+
+	/* ── Extended network (hero) ── */
+
+	.network {
+		padding: clamp(1.25rem, 3vw, 2rem);
+		border: 3px double var(--color-accent);
+	}
+
+	.network-kicker {
+		padding-right: 4rem;
+		font-family: var(--font-display);
+		font-size: 0.85rem;
+		font-weight: 600;
+		color: var(--color-note);
+	}
+
+	.network h1 {
+		margin-top: 0.75rem;
+		font-size: clamp(2.2rem, 6vw, 3.4rem);
 		font-weight: 700;
 		line-height: 0.95;
 		letter-spacing: -0.03em;
 		text-transform: lowercase;
 	}
 
-	.hero-subtitle {
-		font-size: clamp(var(--text-base), 2.2vw, var(--text-lg));
-		color: var(--color-text-soft);
-		line-height: 1.6;
+	.network-lead {
+		margin-top: 1rem;
 		max-width: 32rem;
+		font-size: var(--text-base);
+		line-height: 1.6;
+		color: var(--color-text-soft);
 	}
 
-	/* ── Hero inline hand notes ── */
+	.network :global(.network-sticker) {
+		position: absolute;
+		top: -1.75rem;
+		right: -0.5rem;
+	}
 
-	.hero-content :global(.hero-tagline) {
+	@media (min-width: 52rem) {
+		.network :global(.network-sticker) {
+			right: -2rem;
+		}
+	}
+
+	/* ── Blog ── */
+
+	.blog-list {
+		list-style: none;
+		display: flex;
+		flex-direction: column;
+		gap: 0.6rem;
+	}
+
+	.blog-list li > a:first-child {
+		display: block;
+	}
+
+	.blog-meta {
+		color: var(--color-text-muted);
+	}
+
+	.blog-more {
+		margin-left: 0.4rem;
+		font-size: 0.72rem;
+	}
+
+	/* ── Blurbs (features) ── */
+
+	.blurb-label {
+		font-family: var(--font-body);
+		font-size: 0.9rem;
+		font-weight: 800;
+		letter-spacing: 0;
+		color: var(--color-clay);
+	}
+
+	.blurb-feature {
+		display: grid;
+		grid-template-columns: minmax(0, 1fr) 34%;
+		gap: var(--space-md);
+		align-items: center;
+		padding-block: var(--space-lg);
+		border-bottom: 1px dashed var(--color-border-strong);
+	}
+
+	.blurb-feature.wide {
+		grid-template-columns: 48% minmax(0, 1fr);
+	}
+
+	.blurb-feature.wide .blurb-pic {
+		order: -1;
+	}
+
+	.blurb-copy {
+		display: flex;
+		flex-direction: column;
+		gap: 0.35rem;
+	}
+
+	.blurb-number {
+		font-family: var(--font-display);
+		font-size: var(--text-2xl);
+		font-weight: 800;
+		line-height: 1;
+		color: var(--color-text-muted);
+	}
+
+	.blurb-copy h4 {
+		font-size: clamp(var(--text-base), 2.2vw, var(--text-lg));
+	}
+
+	.blurb-copy p {
+		color: var(--color-text-soft);
+	}
+
+	.blurb-copy :global(.blurb-note) {
 		align-self: flex-start;
-		font-size: 1.2rem;
-		color: var(--color-note);
-		margin-left: 0.25rem;
+		margin-top: 0.25rem;
+		font-size: 1.05rem;
 		transform: rotate(-2deg);
 	}
 
-	.hero-links-group {
-		display: flex;
-		flex-direction: column;
-		gap: 0.5rem;
-		max-width: 28rem;
+	.blurb-pic {
+		margin: 0;
+		padding: 0.3rem;
+		background: #080807;
+		border: 1px solid var(--color-media-border);
+		box-shadow: var(--shadow-md);
+		transform: rotate(1.5deg);
 	}
 
-	.hero-links-group :global(.hero-take-anywhere) {
-		align-self: flex-start;
-		font-size: 1.05rem;
-		color: var(--color-note);
-		margin-left: 0.75rem;
+	.blurb-feature.wide .blurb-pic {
 		transform: rotate(-1.5deg);
 	}
 
-	/* ── Hero tape (Field Studio) ── */
-
-	.hero-content :global(.hero-tape) {
-		align-self: flex-start;
-		position: relative;
-		z-index: 9;
-		margin-bottom: -2.6rem;
-		margin-left: -1rem;
+	.blurb-meet {
+		margin-top: var(--space-sm);
+		color: var(--color-text-soft);
+		font-size: 0.875rem;
 	}
 
-	/* ── Hero device with collage objects ── */
-
-	.hero-device {
-		position: absolute;
-		top: 50%;
-		right: -28%;
-		width: 95%;
-		max-width: 720px;
-		z-index: 1;
-		transform: translateY(-50%);
-		opacity: 0.42;
-		pointer-events: none;
+	.blurbs .blurb-label + .blurb-feature {
+		padding-top: var(--space-sm);
 	}
 
-	.hero-device-frame {
-		transform: rotate(-2deg);
+	.blurb-feature + .blurb-label {
+		margin-top: var(--space-lg);
 	}
 
-	.hero-device-frame img {
+	/* ── Upcoming shows (early access) ── */
+
+	.shows-table {
 		width: 100%;
-		border-radius: var(--radius-xl);
-		box-shadow: var(--shadow-drop);
+		border-collapse: separate;
+		border-spacing: 3px;
 	}
 
-	/* Hide collage objects on narrow where image is a faded backdrop */
-	.hero-device :global(.device-tape),
-	.hero-device :global(.device-sticker),
-	.hero-device :global(.device-note),
-	.project-card {
-		display: none;
+	.shows-table td {
+		padding: 0.45rem 0.6rem;
+		background: var(--box-cell-soft);
+		color: var(--color-text-soft);
 	}
 
-	.hero-device :global(.device-tape) {
-		position: absolute;
-		z-index: 4;
+	.shows-table .shows-when {
+		width: 4.5rem;
+		background: var(--box-cell);
+		color: var(--color-note);
+		font-weight: 800;
+		text-transform: uppercase;
+		letter-spacing: 0.06em;
 	}
 
-	.hero-device :global(.device-tape-a) {
-		bottom: -1rem;
-		left: 0%;
-	}
-
-	.hero-device :global(.device-sticker) {
-		position: absolute;
-		z-index: 4;
-		top: 5rem;
-		right: -4rem;
-	}
-
-	.hero-device :global(.device-note) {
-		position: absolute;
-		z-index: 4;
-	}
-
-	.hero-device :global(.device-note-a) {
-		top: 28%;
-		left: -3rem;
-	}
-
-	.hero-device :global(.device-note-b) {
-		bottom: 22%;
-		right: -2rem;
-	}
-
-	.project-card {
-		position: absolute;
-		z-index: 4;
-		top: -1.2rem;
-		left: 5%;
-		flex-direction: column;
-		gap: 2px;
-		padding: 0.4rem 0.65rem;
-		background: var(--color-paper);
-		border: 1px solid var(--color-border-strong);
-		border-radius: var(--radius-sm);
-		transform: rotate(1deg);
-		box-shadow: var(--shadow-drop);
-	}
-
-	.project-card-title {
-		font-family: var(--font-body);
-		font-size: 0.68rem;
-		font-weight: 600;
-		color: var(--color-text);
-		letter-spacing: 0.02em;
-	}
-
-	.project-card-meta {
-		font-size: 0.58rem;
-		color: var(--color-text-muted);
-		letter-spacing: 0.04em;
-	}
-
-	/* ── Social links ── */
-
-	.social-links {
-		display: grid;
-		grid-template-columns: repeat(2, minmax(0, 1fr));
-		gap: 0.25rem;
-		width: 100%;
-		max-width: 28rem;
-	}
-
-	.social-link {
+	.shows-hype {
 		display: flex;
+		flex-wrap: wrap;
 		align-items: center;
 		justify-content: center;
-		min-height: 3rem;
-		padding: 0.75rem 1rem;
-		border: none;
-		border-radius: var(--radius-sm);
-		background: var(--color-bg-glass-strong);
-		box-shadow: var(--shadow-drop);
-		backdrop-filter: blur(16px);
-		-webkit-backdrop-filter: blur(16px);
-		text-decoration: none;
-		text-transform: lowercase;
-		font-size: 0.72rem;
-		font-weight: 400;
-		letter-spacing: 0.14em;
-		color: var(--color-text);
-		transition:
-			transform 180ms ease,
-			background-color 180ms ease;
-	}
-
-	.social-link:hover,
-	.social-link:focus-visible {
-		background: var(--color-bg-glass-strong);
-		transform: translateY(-2px);
-		color: var(--color-text);
-	}
-
-	@media (min-width: 40rem) {
-		.social-links {
-			grid-template-columns: repeat(3, minmax(0, 1fr));
-		}
-	}
-
-	@media (min-width: 52rem) {
-		.hero {
-			grid-template-columns: 0.9fr 1.2fr;
-			gap: clamp(2rem, 5vw, 4rem);
-		}
-
-		.hero-device {
-			position: relative;
-			top: auto;
-			right: auto;
-			width: auto;
-			max-width: none;
-			transform: none;
-			opacity: 1;
-			pointer-events: auto;
-			grid-column: 2;
-			grid-row: 1;
-		}
-
-		.hero-content {
-			grid-column: 1;
-			grid-row: 1;
-		}
-
-		.hero-device :global(.device-tape),
-		.hero-device :global(.device-note) {
-			display: block;
-		}
-
-		.hero-device :global(.device-sticker) {
-			display: inline-grid;
-		}
-
-		.project-card {
-			display: flex;
-		}
-
-		.social-links {
-			grid-template-columns: repeat(3, minmax(0, 1fr));
-		}
-	}
-
-	@media (min-width: 64rem) {
-		.social-links {
-			grid-template-columns: repeat(6, minmax(0, 1fr));
-		}
-	}
-
-	/* ── Hero doodles ── */
-
-	.hero :global(.hero-doodle-xy) {
-		position: absolute;
-		top: 8%;
-		left: 4%;
-		z-index: 0;
-		display: none;
-	}
-
-	.hero :global(.hero-doodle-notes) {
-		position: absolute;
-		top: 20.5rem;
-		left: 1rem;
-		z-index: 1;
-		display: none;
-	}
-
-	.hero-device :global(.hero-doodle-layout) {
-		position: absolute;
-		top: -8%;
-		right: -10%;
-		z-index: 3;
-		display: none;
-	}
-
-	@media (min-width: 52rem) {
-		.hero :global(.hero-doodle-xy),
-		.hero :global(.hero-doodle-notes),
-		.hero-device :global(.hero-doodle-layout) {
-			display: inline-block;
-		}
-	}
-
-	/* ── Features ── */
-
-	.features-stack {
-		display: flex;
-		flex-direction: column;
-		gap: var(--space-2xl);
-		max-width: var(--content-max);
-		margin: 0 auto;
-		padding: var(--space-3xl) var(--space-md);
-	}
-
-	/* Per-section artifact positioning */
-	.features-stack :global(.artifact) {
-	position: absolute;
-	pointer-events: none;
-	}
-
-	.features-stack :global(.artifact-01) {
-		bottom: 2.5rem;
-		right: 2rem;
-		z-index: 3;
-	}
-
-	.features-stack :global(.artifact-02) {
-		top: -26.5rem;
-		right: -9rem;
-		z-index: 3;
-	}
-
-	.features-stack :global(.artifact-03) {
-		bottom: -3.5rem;
-		left: -3rem;
-		z-index: 0;
-	}
-
-	.features-stack :global(.artifact-04) {
-		top: 2rem;
-		left: 2rem;
-		font-size: 1.1rem;
-		z-index: 3;
-	}
-
-	/* Feature doodles overlap the screenshots */
-	.features-stack :global(.feature-doodle) {
-		position: absolute;
-		pointer-events: none;
-		display: none;
-	}
-
-	.features-stack :global(.feature-doodle-01) {
-		top: -1.5rem;
-		right: -1rem;
-		z-index: 4;
-	}
-
-	.features-stack :global(.feature-doodle-02) {
-		bottom: -2rem;
-		left: -3rem;
-		z-index: 4;
-	}
-
-	.features-stack :global(.feature-doodle-03) {
-		top: -8rem;
-		right: -8rem;
-		z-index: 4;
-	}
-
-	.features-stack :global(.feature-doodle-04) {
-		bottom: -3rem;
-		right: -1.5rem;
-		z-index: 4;
-	}
-
-	@media (min-width: 52rem) {
-		.features-stack :global(.feature-doodle) {
-			display: inline-block;
-		}
-	}
-
-	/* ── CTA ── */
-
-	.cta-section {
-		position: relative;
-		text-align: center;
-		padding: var(--space-4xl) var(--space-md);
-		max-width: var(--content-max);
-		margin: 0 auto;
-	}
-
-	.cta-sticker {
-		position: absolute;
-		top: var(--space-xl);
-		right: var(--space-2xl);
-		display: none;
-	}
-
-	.cta-section :global(.cta-doodle-pooly) {
-		position: absolute;
-		top: 0;
-		left: -1rem;
-		z-index: 2;
-		display: none;
-	}
-
-	.cta-section :global(.cta-doodle-were) {
-		position: absolute;
-		bottom: -2rem;
-		right: 4%;
-		z-index: 2;
-		display: none;
-	}
-
-	@media (min-width: 52rem) {
-		.cta-section :global(.cta-doodle-pooly),
-		.cta-section :global(.cta-doodle-were) {
-			display: inline-block;
-		}
-	}
-
-	@media (min-width: 52rem) {
-		.cta-sticker {
-			display: inline-grid;
-		}
-	}
-
-	.cta-content {
-		max-width: var(--content-max);
-		margin: 0 auto;
-	}
-
-	.cta-lead {
-		color: var(--color-text-soft);
-		font-size: var(--text-lg);
+		gap: 0 var(--space-lg);
 		margin-top: var(--space-md);
-		line-height: 1.6;
 	}
 
-	.cta-cards {
-		display: grid;
-		grid-template-columns: 1fr;
-		gap: var(--space-md);
-		margin-top: var(--space-2xl);
-		text-align: left;
-	}
-
-	.cta-card {
-		display: flex;
-		flex-direction: column;
-		gap: var(--space-xs);
-		padding: var(--space-xl);
-		border-radius: var(--radius-2xl);
-		background: var(--color-paper);
-		border: 1px solid var(--color-border);
-		box-shadow: var(--shadow-drop);
-		color: var(--color-text);
-		text-decoration: none;
-		transition: all var(--duration-normal) var(--ease-out);
-	}
-
-	.cta-card:hover {
-		background: var(--color-paper-soft);
-		border-color: var(--color-border-strong);
-		transform: translateY(-2px);
-		color: var(--color-text);
-	}
-
-	.cta-card-title {
+	.glitter {
 		font-family: var(--font-display);
-		font-weight: 600;
-		font-size: var(--text-lg);
+		font-size: clamp(1.4rem, 4vw, 2rem);
+		font-weight: 800;
+		letter-spacing: -0.01em;
+		text-transform: uppercase;
+		background: linear-gradient(
+			100deg,
+			var(--color-clay) 0%,
+			var(--color-note) 25%,
+			var(--color-text) 32%,
+			var(--color-accent) 40%,
+			var(--color-olive) 60%,
+			var(--color-note) 75%,
+			var(--color-clay) 100%
+		);
+		background-size: 200% auto;
+		-webkit-background-clip: text;
+		background-clip: text;
+		color: transparent;
+		animation: glitter 3.5s linear infinite;
 	}
 
-	.cta-card-desc {
+	@keyframes glitter {
+		to { background-position: -200% center; }
+	}
+
+	/* The drawing is a wide strip inside the doodle's square box */
+	.shows-hype :global(.shows-doodle) {
+		margin-block: -2.75rem;
+	}
+
+	.shows-lead {
+		margin-top: var(--space-sm);
+		text-align: center;
 		color: var(--color-text-soft);
-		font-size: var(--text-sm);
+		font-size: 0.875rem;
 	}
 
-	@media (min-width: 40rem) {
-		.cta-cards {
-			grid-template-columns: repeat(3, 1fr);
+	.shows-links {
+		display: flex;
+		flex-wrap: wrap;
+		justify-content: center;
+		gap: var(--space-sm);
+		margin-top: var(--space-md);
+	}
+
+	.bevel {
+		padding: 0.4rem 0.9rem;
+		background: linear-gradient(var(--color-note), var(--color-accent));
+		border: 1px solid #1b120c;
+		box-shadow:
+			inset 1px 1px 0 rgba(255, 255, 255, 0.55),
+			inset -1px -1px 0 rgba(0, 0, 0, 0.3);
+		color: #1b120c;
+		font-size: 0.78rem;
+	}
+
+	.profile .bevel:hover {
+		color: #1b120c;
+		text-decoration: none;
+		background: linear-gradient(var(--color-accent-hover), var(--color-note));
+	}
+
+	.bevel:active {
+		box-shadow:
+			inset -1px -1px 0 rgba(255, 255, 255, 0.55),
+			inset 1px 1px 0 rgba(0, 0, 0, 0.3);
+	}
+
+	/* ── Friend space ── */
+
+	.friends-count {
+		color: var(--color-text-soft);
+	}
+
+	.friends-count b {
+		color: var(--color-clay);
+		font-size: 0.95rem;
+	}
+
+	.friends-count :global(.friends-aside) {
+		margin-left: 0.35rem;
+	}
+
+	.top-friends {
+		display: grid;
+		grid-template-columns: repeat(4, minmax(0, 1fr));
+		gap: var(--space-md) var(--space-sm);
+		margin-top: var(--space-md);
+		list-style: none;
+	}
+
+	.friend-pic {
+		display: grid;
+		place-items: center;
+		aspect-ratio: 1;
+		background: var(--color-paper-soft);
+		border: 1px solid var(--color-border-strong);
+	}
+
+	.friend-name {
+		display: block;
+		margin-top: 0.3rem;
+		text-align: center;
+		color: var(--color-accent);
+		font-weight: 700;
+		font-size: 0.75rem;
+	}
+
+	/* ── Comments ── */
+
+	.comments-count {
+		color: var(--color-text-soft);
+	}
+
+	.comments-table {
+		width: 100%;
+		margin-top: var(--space-sm);
+		border-collapse: separate;
+		border-spacing: 3px;
+	}
+
+	.comments-table th {
+		width: 6.5rem;
+		padding: 0.5rem;
+		background: var(--box-cell);
+		vertical-align: top;
+	}
+
+	.comments-table td {
+		padding: 0.6rem 0.75rem;
+		background: var(--box-cell-soft);
+		color: var(--color-text-soft);
+		vertical-align: top;
+	}
+
+	.comments-table p + p {
+		margin-top: 0.3rem;
+	}
+
+	.comment-when {
+		color: var(--color-clay);
+		font-weight: 700;
+		font-size: 0.72rem;
+	}
+
+	@media (prefers-reduced-motion: reduce) {
+		.ticker-track,
+		.online-dot,
+		.glitter {
+			animation: none;
 		}
 	}
 </style>
