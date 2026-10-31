@@ -1,6 +1,6 @@
 ---
 title: Clip Launcher
-description: The session grid for creating, launching, and performing clips.
+description: The grid where you create and launch clips.
 number: "3"
 section: views
 order: 20
@@ -8,7 +8,7 @@ order: 20
 
 ## 3.1 When to use the Clip Launcher
 
-Use the Clip Launcher when you want to try ideas quickly, trigger clips live, or build song sections scene by scene. It's where a project opens—a grid where each track has a lane of clip slots and each scene lines them up across tracks.
+Use the Clip Launcher when you want to try ideas quickly, trigger clips live, or build song sections scene by scene. Projects open here. Each track has a lane of clip slots, and each scene lines up one slot from every track.
 
 ## 3.2 Layout
 
@@ -16,9 +16,9 @@ The launcher is a scrollable grid:
 
 - **Tracks** each get a lane of slots (MIDI or audio)
 - **Scenes** line up one slot from every track
-- **Cells** hold clips or empty slots waiting for content
+- **Cells** each hold a clip or sit empty
 
-Track headers sit at the end of each lane with name, color, and quick controls. Scene launch buttons sit beside the grid when the scene launcher is turned on. By default the grid follows your device's orientation—change it in Settings under **App → Time Axis Orientation**.
+Track headers sit at the end of each lane with name, color, and quick controls. Scene launch buttons sit beside the grid when the scene launcher is turned on. By default the grid follows your device's orientation. You can change it in Settings under **App → Time Axis Orientation**.
 
 ## 3.3 Adding tracks
 
@@ -32,7 +32,7 @@ Tap an **empty slot** on a MIDI track. Pooly creates a clip and opens it in Deta
 
 ### 3.4.2 Launch a clip
 
-Tap a clip that already has content to **launch** it on that track. If transport isn't running, press **Play** first—or turn on **Auto Play on Trigger** in Settings under **App** so launching a clip starts playback automatically.
+Tap a clip that already has content to **launch** it on that track. If transport isn't running, press **Play** first, or turn on **Auto Play on Trigger** in Settings under **App** so launching a clip starts playback automatically.
 
 ### 3.4.3 Edit a clip
 

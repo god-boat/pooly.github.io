@@ -1,6 +1,6 @@
 ---
 title: Arranger
-description: Build your song on a timeline from start to finish.
+description: Lay out your song on a timeline.
 number: "4"
 section: views
 order: 30
@@ -8,7 +8,7 @@ order: 30
 
 ## 4.1 When to use the Arranger
 
-Use the Arranger when your ideas need a fixed order—a verse that always comes before a chorus, a DJ mix with timed drops, or a song you're exporting bar by bar. The Launcher is for jamming; the Arranger is for structure.
+Use the Arranger when sections need to play in a fixed order, like a verse that always leads into the chorus. Export renders the Arranger timeline, so a song has to be laid out here before you export it.
 
 ## 4.2 Opening the Arranger
 
@@ -23,13 +23,13 @@ The Arranger shows:
 - **Clips** as colored blocks positioned on the grid
 - A **playhead** you can drag to audition any moment
 
-A **pattern dock** can sit beside the timeline—toggle it with **Pattern Dock** in the footer—to grab patterns while you place clips.
+Tap **Pattern Dock** in the footer to show your patterns beside the timeline so you can grab them while you place clips.
 
 ## 4.4 Adding clips and tracks
 
 **Double tap** an empty spot on a track lane to create a new clip there and open it in Detail View.
 
-Clips on the timeline play the same patterns you edit in Detail View—with linked editing on, changing one updates every copy.
+Clips on the timeline play the same patterns you edit in Detail View. With linked editing on, changing one updates every clip that shares the pattern.
 
 Use the add-track button to create a **New MIDI Track** or **New Audio Track** without leaving the timeline.
 
@@ -41,21 +41,21 @@ Drag a clip to move it in time or to another track. Drag its edges to change how
 
 ### 4.5.2 Long-press menu
 
-Long-press a clip for **Edit**, **Clone Clip**, **Duplicate**, **Rename Clip**, **Linked Editing**, and **Delete**. Choose **Edit**—or just double tap the clip—to open it in Detail View.
+Long-press a clip for **Edit**, **Clone Clip**, **Duplicate**, **Rename Clip**, **Linked Editing**, and **Delete**. Choose **Edit**, or double tap the clip, to open it in Detail View.
 
 ### 4.5.3 Loop the arrangement
 
-Use the loop toggle to repeat a section while you work. Set the loop bounds so playback stays focused on the bars you're editing.
+Turn on the loop toggle to repeat a section while you work, and set the loop bounds around the bars you're editing.
 
 ## 4.6 Playback
 
-Press **Play** in the footer. The timeline plays from the playhead forward, respecting loop settings. Drag the playhead handle to scrub before you play. Tap the playhead handle to turn **Follow** on or off, so the timeline scrolls along with playback.
+Press **Play** in the footer. The timeline plays from the playhead forward, respecting loop settings. Drag the playhead handle to scrub before you play. Tap the playhead handle to turn **Follow** on or off. With Follow on, the timeline scrolls along with playback.
 
 ## 4.7 Tips
 
 - Sketch sections in the launcher first, then lay them out on the timeline
-- Zoom the timeline for detailed edits; zoom out to see the whole song
-- Export renders the timeline—set the bar range when you export to match what you built here
+- Zoom in for detailed edits and out to see the whole song
+- Export renders the timeline, so set the export bar range to cover what you built here
 
 ## Related pages
 

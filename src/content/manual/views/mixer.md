@@ -8,7 +8,7 @@ order: 10
 
 ## 5.1 When to use the Mixer
 
-Use the Mixer when clips are playing and you want to balance volume, adjust panning, or mute and solo tracks. It mirrors your project's track list—every track has a matching channel strip here.
+Use the Mixer when clips are playing and you want to balance volume, adjust panning, or mute and solo tracks. Every track in your project has a channel strip here.
 
 ## 5.2 Opening the Mixer
 
@@ -30,7 +30,7 @@ Drag a fader to raise or lower a track's level. Adjust pan to shift a sound left
 
 ## 5.5 Mute and solo
 
-**Mute** silences a track without deleting its clips. **Solo** focuses on one or more tracks by muting the others temporarily—useful when checking a single part during a dense mix.
+**Mute** silences a track without deleting its clips. **Solo** silences every track except the soloed ones, so you can hear one part on its own.
 
 ## 5.6 The Main track
 
@@ -42,11 +42,11 @@ Tap a track header to select it. **Long-press** a header to open the context men
 
 ## 5.8 Adding tracks
 
-The **MIDI** and **Audio** add buttons at the end of the strips work the same as in the Clip Launcher—create tracks without leaving the mixer.
+The **MIDI** and **Audio** add buttons at the end of the strips work the same as in the Clip Launcher.
 
 ## 5.9 Tips
 
-- Mix at modest levels—leave headroom so the main output doesn't distort
+- Keep levels modest and leave headroom so the Main output doesn't distort
 - Use solo to check one element, then un-solo before exporting
 
 ## Related pages

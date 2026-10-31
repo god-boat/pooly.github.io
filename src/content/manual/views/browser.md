@@ -12,22 +12,22 @@ Use the Browser when you want to change a track's instrument, add an effect, loa
 
 ## 2.2 Opening the Browser
 
-Tap the **Browser** button in the header. On a phone the Browser fills the screen; on a tablet it slides in beside your work; on a large screen it can stay open in its own pane. In Detail View on a phone, you can also tap the track name in the header to jump straight to it.
+Tap the **Browser** button in the header. On a phone the Browser fills the screen; on a tablet it slides in beside your work; on a large screen it can stay open in its own pane. In Detail View on a phone, you can also tap the track name in the header to open it.
 
 ## 2.3 Finding sounds
 
 ### 2.3.1 Tabs
 
-Tabs along the Browser sort everything by type:
+The tabs sort everything by type:
 
-- **Browse** — everything in one place
-- **Recents** and **Favorites** — sounds you've used lately and sounds you've hearted
-- **Instruments** and **Drums** — synths, sampled instruments, and drum kits
-- **FX** — audio effects
-- **Samples** — audio files
-- **Chord Sets** — chord collections for the performance pads
+- **Browse**: everything in one place
+- **Recents** and **Favorites**: sounds you've used lately and sounds you've hearted
+- **Instruments** and **Drums**: synths, sampled instruments, and drum kits
+- **FX**: audio effects
+- **Samples**: audio files
+- **Chord Sets**: chord collections for the performance pads
 
-Tap into categories to narrow things down; the breadcrumbs at the top take you back out.
+Tap a category to narrow the list. The breadcrumbs at the top take you back out.
 
 ### 2.3.2 Search
 
@@ -39,7 +39,7 @@ The source picker filters results to **Core** (Pooly's built-in library), **User
 
 ## 2.4 Loading a sound
 
-Tap a result to select it, then tap it again or press **Load** to put it on the selected track. Press **Preview** to hear a sound before you commit. Tap the heart on any result to add it to Favorites.
+Tap a result to select it, then tap it again or press **Load** to put it on the selected track. Press **Preview** to hear a sound before you load it. Tap the heart on any result to add it to Favorites.
 
 Loading an effect adds it to the end of the track's effect chain. If you have an effect selected in Detail View, loading another effect replaces it. With a drum pad selected, an instrument loads onto just that pad.
 
@@ -49,9 +49,9 @@ Link a folder of your own samples or presets and it shows up in the Browser alon
 
 ## 2.6 Tips
 
-- Select a track first—the **Load** button stays disabled until there's a track to load onto
+- Select a track first. The **Load** button stays disabled until there's a track to load onto
 - Play the pads or piano roll right after loading to hear the new sound in context
-- Start from a preset close to your goal, then tweak parameters
+- Start from a preset close to what you want, then adjust it
 
 ## Related pages
 

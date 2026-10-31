@@ -8,11 +8,11 @@ estimatedTime: 5 min
 
 ## What you'll do
 
-You'll turn your project into a file you can share—most often a WAV audio file.
+You'll render your project to a file you can share, usually a WAV.
 
 ## Step 1: Decide what to export
 
-Export renders your **Arranger** timeline, so build your arrangement there first and give the song a clear start and end. The export dialog lets you choose which **bars** to render—it starts out covering your whole timeline.
+Export renders your **Arranger** timeline, so lay out the song there first. The export dialog lets you choose which **bars** to render. By default it covers the whole timeline.
 
 You can also export **MIDI** if you want to move your notes into another app. WAV is the usual choice for listening and sharing.
 
@@ -30,7 +30,7 @@ Rendering time depends on song length and how many tracks and effects you used.
 
 ## Step 4: Share
 
-Open the saved file from your device's files app or share it directly to messaging, cloud storage, or social apps. Listen on headphones before sending to catch level or clipping issues.
+Open the file from your device's files app to play or share it. Listen on headphones before you send it to check for clipping and level problems.
 
 ## Tips
 

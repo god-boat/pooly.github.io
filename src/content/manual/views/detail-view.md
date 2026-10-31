@@ -1,6 +1,6 @@
 ---
 title: Detail View
-description: Edit note content, shape sounds, and manage per-clip controls.
+description: Edit notes and audio, shape sounds, and draw automation.
 number: "6"
 section: views
 order: 10
@@ -8,18 +8,18 @@ order: 10
 
 ## 6.1 When to use Detail View
 
-Detail View is Pooly's deep editing view for the selected track and clip. Open it any time you need to write or refine notes, sculpt a sound, draw automation, or try out effects. It adapts to the track: MIDI tracks get a piano roll, performance pads, and instrument controls; audio tracks swap in the wave editor and clip controls.
+Detail View is where you edit the selected track and clip. Open it to write notes, change a sound, draw automation, or add effects. What it shows depends on the track: MIDI tracks get a piano roll, performance pads, and instrument controls; audio tracks swap in the wave editor and clip controls.
 
 <figure class="manual-media" data-wrap="right">
 	<img
 		src="/images/application-screenshots/detail.png"
-		alt="Pooly Clip Detail view showing voice controls and drum clip slots."
+		alt="Pooly Detail View showing voice controls and drum clip slots."
 		width="686"
 		height="1029"
 		loading="lazy"
 	/>
 	<figcaption>
-		Clip Detail combines clip editing, voice controls, and instrument shaping in one screen.
+		Detail View on a drum track.
 	</figcaption>
 </figure>
 
@@ -29,7 +29,7 @@ From the Clip Launcher or Arranger, double tap a clip, or long-press it and choo
 
 ## 6.3 Devices and pages
 
-The device bar along the top chooses what you're editing: the track's instrument, any effect in its chain, or—on an audio track—the clip itself. Below it, pages such as voices, modulators, filters, envelopes, and samples show that device's controls. Panels can expand to fill the view when you want room to focus.
+The device bar along the top chooses what you're editing: the track's instrument, any effect in its chain, or, on an audio track, the clip itself. Below it, pages such as voices, modulators, filters, envelopes, and samples show that device's controls. Panels can expand to fill the view.
 
 ## 6.4 Editing MIDI clips
 
@@ -65,7 +65,7 @@ The **automation bar** and lane overlay let you pick a target, draw automation, 
 ## 6.8 Tips
 
 - Turn off **Linked Editing** on a clip before editing if you only want to change that one copy of a shared pattern
-- Use the automation overlay for fast parameter sweeps without switching tools
+- Draw quick parameter sweeps right on the automation overlay
 - Try the **Sound Design** layout to keep the Device Graph and Mixer close while you shape a sound
 
 ## Related pages
